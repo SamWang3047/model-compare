@@ -1,0 +1,13 @@
+{
+  "name": "model-compare",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A sourced, interactive guide to Chinese and Western AI coding models.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "check:links": "node scripts/link-check.mjs"
+  }
+}
