@@ -51,10 +51,10 @@ function metric(item, formatter, compact = true) {
   const note = normalized.note ? `<span class="cmp-metric-note">${esc(normalized.note)}</span>` : '';
   return `<div class="cmp-fact"><strong class="cmp-fact-value">${esc(displayValue(normalized, formatter))}</strong>${badge(normalized)}${provenance(normalized, compact)}${note}</div>`;
 }
-function content(item, title = '', compact = false) {
+function content(item, title = '', compact = false, showEvidenceLabel = true) {
   const normalized = fact(item);
   const text = normalized.text ?? normalized.value ?? 'Not found';
-  return `<div class="content-item cmp-content">${title ? `<h4>${esc(title)}</h4>` : ''}${badge(normalized)}<p>${esc(text)}</p>${provenance(normalized, compact)}</div>`;
+  return `<div class="content-item cmp-content">${title ? `<h4>${esc(title)}</h4>` : ''}${showEvidenceLabel ? badge(normalized) : ''}<p>${esc(text)}</p>${provenance(normalized, compact)}</div>`;
 }
 function write(selector, html) {
   const target = $(selector);
@@ -178,17 +178,6 @@ function renderTable(target, rows, expanded) {
 function cardMetric(label, item, formatter) {
   return `<div><dt>${esc(label)}</dt><dd>${metric(item, formatter)}</dd></div>`;
 }
-function renderCompanyCards() {
-  write('#company-cards', data.companies.map(company => {
-    const model = modelFor(company.flagshipId);
-    if (!model) return '';
-    const metrics = model.metrics || {};
-    const headline = model.kind === 'video' ? cardMetric('Video arena score', metrics.elo, value => number(value, 0)) + cardMetric('API $/second', metrics.priceSecond, money) : cardMetric('Intelligence Index', metrics.ii, intelligence) + cardMetric('API input, $/M', metrics.input, money) + cardMetric('API output, $/M', metrics.output, money);
-    const profile = (company.profile || []).map(item => `<div class="cmp-profile-line"><dt>${esc(item.label)}</dt><dd><p>${esc(item.text)}</p>${badge(item)}${provenance(item, true)}</dd></div>`).join('');
-    return `<article class="company-card" id="company-${esc(company.id)}"><div class="cmp-card-head"><span class="small-label">${model.kind === 'video' ? 'VIDEO COMPANY' : 'LLM COMPANY'}</span><h3>${esc(company.name)}</h3><p>${esc(model.name)}</p></div>${company.gapBadge ? `<div class="cmp-gap-badge">${content(company.gapBadge, '', true)}</div>` : ''}<dl class="cmp-card-metrics">${headline}</dl><dl class="cmp-profile">${profile}</dl>${company.match ? `<div class="cmp-match">${content(company.match, 'How it compares', true)}</div>` : ''}<a class="cmp-detail-link" href="#model-${esc(model.id)}" data-open-model="${esc(model.id)}">Sources, prices &amp; model details →</a></article>`;
-  }).join(''));
-  $('#company-cards')?.classList.add('companies-grid');
-}
 const detailMetrics = [
   ['ii', 'Intelligence Index', intelligence], ['rank', 'Current leaderboard rank'], ['input', 'API input, $/M', money], ['output', 'API output, $/M', money], ['cache', 'Cached input, $/M', money], ['blended', 'Blended API price, $/M', money],
   ['tb4', 'Terminal-Bench 4.0', percent], ['sciCode', 'SciCode (under review)', percent], ['agent', 'AutomationBench (SaaS workflows)', percent], ['context', 'Context tokens', value => number(value, 0)], ['weights', 'Weight availability'], ['modalities', 'Input / output modalities'],
@@ -204,20 +193,11 @@ function renderModelDetails() {
     return `<details class="accordion cmp-model-detail" id="model-${esc(model.id)}" data-model-kind="${esc(model.kind)}"${model.kind !== mode ? ' hidden' : ''}><summary>${esc(model.name)}<span class="summary-meta">${esc(model.baseline ? 'Reference baseline' : model.role || 'Model details')}</span></summary><div class="detail-body"><dl class="cmp-detail-metrics">${fields}</dl>${(model.notes || []).map(item => content(item, item.title || '')).join('')}</div></details>`;
   }).join(''));
 }
-function renderPlans() {
-  const groupIds = [...new Set((data.plans || []).map(plan => plan.companyId))];
-  write('#plan-details', groupIds.map(id => {
-    const company = data.companies.find(item => item.id === id);
-    const plans = data.plans.filter(plan => plan.companyId === id);
-    return `<details class="accordion cmp-plan-group"><summary>${esc(company?.name || id)}<span class="summary-meta">Plans, limits &amp; supported tools</span></summary><div class="detail-body cmp-plan-grid">${plans.map(plan => `<article class="cmp-plan"><h4>${esc(plan.name)}</h4><div class="cmp-plan-price">${metric(plan.price, value => `${plan.priceUnit?.startsWith('CNY') ? `¥${number(value, 4)}` : money(value)}${plan.priceUnit?.includes('month') ? ' / month' : ''}`)}${plan.priceUnit ? `<span class="cmp-price-unit">${esc(plan.priceUnit)}</span>` : ''}</div>${plan.usage ? content(plan.usage, 'Usage limits', true) : ''}${plan.tools ? content(plan.tools, 'Tools', true) : ''}${(plan.notes || []).map(item => content(item, item.title || '', true)).join('')}</article>`).join('')}</div></details>`;
-  }).join(''));
-}
 function renderOverview() {
   write('#overview-text', content(data.overview));
   write('#method-notes', (data.methods || []).map(item => content(item, item.title || '')).join(''));
-  write('#scenario-guide', (data.scenarios || []).map(item => `<article class="recommendation-card cmp-scenario">${content(item, item.title || '')}</article>`).join(''));
+  write('#scenario-guide', (data.scenarios || []).map(item => `<article class="recommendation-card cmp-scenario">${content(item, item.title || '', false, false)}</article>`).join(''));
   $('#scenario-guide')?.classList.add('recommendation-grid');
-  write('#data-limits', (data.limits || []).map(item => `<details class="accordion"><summary>${esc(item.title || 'Data limit')}</summary><div class="detail-body">${content(item)}</div></details>`).join(''));
   write('#source-list', (data.sources || []).map(source => `<div class="source-item">${sourceLink(source, `${source.title} ↗`)}<time datetime="${esc(source.date || data.snapshot_date)}">${dateText(source.date || data.snapshot_date)}</time></div>`).join(''));
   const date = $('#last-updated');
   if (date) { date.textContent = dateText(data.snapshot_date); date.dateTime = data.snapshot_date; }
@@ -403,7 +383,7 @@ async function start() {
     const reportData = await reportResponse.json();
     data.value_zone = reportData.chart_settings?.value_zone;
     sourceMap = new Map((data.sources || []).map(source => [source.id, source]));
-    renderOverview(); renderCompanyCards(); renderPlans(); setMode('llm');
+    renderOverview(); setMode('llm');
     renderCompanyCharts(data);
     initComparisonDialog();
     initNavigation();
