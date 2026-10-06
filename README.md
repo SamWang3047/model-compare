@@ -1,10 +1,10 @@
 # Model Compare
 
-A readable, interactive static website comparing Chinese coding models with GPT-6.1 Sol and Claude Opus. It turns the original research report into a conclusion-first guide with sortable comparisons, model cards, interactive charts, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
+A readable, interactive static website comparing Chinese AI models with GPT-6.1 Sol and Claude Opus. The original coding report and Chinese AI companies overview are merged into one guide, with one comparison table, one task guide, interactive graphs, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
 
 **[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
 
-**[Chinese AI Companies Overview](https://model-compare-delta.vercel.app/companies.html)** covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun and ByteDance Seedance. The overview has separate LLM/video comparisons, compact sortable table previews with accessible full-table dialogs, sourced pricing, a scenario guide, and interactive intelligence/price and video quality/price charts. The intelligence/price plot uses direct model labels and a configurable value zone. Company profiles, plans and research limitations remain in the downloadable dataset.
+The comparison covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun, Xiaomi/MiMo, Alibaba/Qwen and ByteDance Seedance alongside the Western baselines. The LLM/video tabs share a compact table and accessible full-table dialog. The companies overview’s intelligence/price and video quality/price graphs are retained, alongside the coding and monthly-cost graphs. Repeated model rows, recommendations, billing paragraphs and source URLs are consolidated. The former `/companies.html` URL redirects to the canonical page, preserving section links.
 
 Vercel is connected to this repository. Pushes to `main` automatically deploy to production.
 
@@ -35,11 +35,13 @@ To check external source links, run `npm run check:links`. The checker separates
 
 - `index.html` — page structure and SEO metadata.
 - `styles.css` — responsive blue-and-white theme, dark mode and accessible controls.
-- `app.js` — data-driven content, table sorting, accordions and copy controls.
+- `app.js` — reusable coding benchmark, harness and cost sections, plus copy controls.
 - `charts.js` — interactive coding and monthly-cost charts, with the original value-chart renderer retained for reuse.
-- `data.json` — every model figure, plan, scenario, conclusion, caveat and source.
-- `companies.html`, `companies.js`, `companies.css` — the new company overview, using the existing design system.
-- `companies.json` — all new model metrics, company briefs, subscriptions, scenarios, limits and dated source references.
+- `data.json` — original coding figures, plans, scenarios, conclusions, caveats and sources.
+- `companies.js`, `companies.css` — the unified page controller, sortable comparison, modal, task guide and responsive styles.
+- `model-data.js` — joins identical model configurations, adds unique models and deduplicates source URLs while retaining each fact’s date.
+- `companies.html` — a fallback redirect for the old overview URL; Vercel also redirects it in production.
+- `companies.json` — intelligence and video metrics, company briefs, plans, task scenarios, limits and dated sources.
 - `companies-charts.js`, `companies-charts.css` — interactive overview charts, with keyboard/touch inspection and accessible data tables.
 - `scripts/` — dependency-free local development, build and validation tools.
 
@@ -49,7 +51,9 @@ To check external source links, run `npm run check:links`. The checker separates
 
 Edit **`data.json`** without changing the layout. Model rows preserve full-precision values; the interface rounds values only for display. The comparison uses one GLM Flash entry. Adjust `chart_settings.value_zone.intelligence_min` and `chart_settings.value_zone.blended_price_max` in `data.json` to change the chart’s shaded screening region (defaults: Intelligence Index ≥40 and blended price ≤$2/M); the rule is analyst inference, not cost per successful task. Monthly scenarios are illustrative calculations, not measured developer averages.
 
-To update the new overview, edit **`companies.json`**. Each metric has `value`, `type`, `date`, `source_ids` and optional `note`; prose has the same evidence fields with `text`. Null means **Not found**, never zero. Keep company profile text below 100 words and the overview below 40 words. Flagships, companions and comparison baselines are explicit roles. Source dates are access dates; unavailable benchmark-run dates are disclosed.
+Edit **`companies.json`** for intelligence, video and task-guide content. Each metric has `value`, `type`, `date`, `source_ids` and optional `note`; prose has the same evidence fields with `text`. Null means **Not found**, never zero. `model_labels` supplies the highlighted models beside task headings. Flagships, companions and comparison baselines are explicit roles. Source dates are access dates; unavailable benchmark-run dates are disclosed.
+
+Both datasets retain their original snapshots. `model-data.js` combines them when the page loads: identical model/effort configurations appear once; overview prices and existing metrics retain their values, while coding cost, speed, delay and context-recall facts retain the coding report’s date. MiMo, Qwen and Sol medium have no Intelligence Index in these stored snapshots, so that field stays **Not found** and they are excluded from the intelligence scatter. They remain available in the full comparison and model details. The footer lists each source URL once.
 
 GLM Flash’s refreshed global rank is 36 among 260 scored model/effort variants in 264 current default leaderboard entries. Other models retain ranks from the earlier 259-scored/263-entry snapshot. Ranks use unrounded scores, including estimates, rather than model-page price-class ranks. Intelligence Index displays use one decimal. Flash gaps subtract raw scores and display one decimal; other models retain their original integer-rounded gap values, with that convention disclosed. Blended price uses an illustrative **3:1 uncached input:output** mix, not AA's default cached mix. Output-price ratios are tariff comparisons, not costs per successful task. The video chart uses only **AA-Video-T2V v2.0 with audio**, retaining its confidence intervals and AA's creator-API minute prices divided by 60; I2V results are kept separate. The dataset’s positioning entries contain qualitative statements, not invented numeric scores.
 
@@ -91,9 +95,9 @@ All source links and snapshot dates are stored in `data.json`; remaining model m
 - [MiMo V2.6 Pro](https://mimo.mi.com/models/en-US/mimo-v2.6-pro), [Qwen3.8 Max documentation](https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max), [Kimi pricing](https://platform.kimi.ai/docs/pricing/chat) and [MiniMax pricing](https://platform.minimax.io/docs/guides/pricing-paygo).
 - [OpenAI GPT-6.1 Sol documentation](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [Anthropic pricing](https://platform.claude.com/docs/en/about-claude/pricing) and [OpenCode Go plans](https://opencode.ai/docs/go/).
 
-Known discrepancies remain visible: GLM's AA versus official cache rate, MiniMax's cache-write entry and Z.ai Team initial annual billing versus advertised renewal-equivalent pricing. Recommendations are analyst inference, not vendor guarantees.
+Known discrepancies remain documented in the datasets and applicable model or billing notes: GLM's AA versus official cache rate, MiniMax's cache-write entry and Z.ai Team initial annual billing versus advertised renewal-equivalent pricing. Recommendations are analyst inference, not vendor guarantees.
 
-The new overview also reads the [AA model leaderboard](https://artificialanalysis.ai/models), [Intelligence Index methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking), [audio T2V arena](https://artificialanalysis.ai/video/leaderboard/text-to-video) and [separate I2V arena](https://artificialanalysis.ai/video/leaderboard/image-to-video), cross-checked against:
+The intelligence and video comparisons also use the [AA model leaderboard](https://artificialanalysis.ai/models), [Intelligence Index methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking), [audio T2V arena](https://artificialanalysis.ai/video/leaderboard/text-to-video) and [separate I2V arena](https://artificialanalysis.ai/video/leaderboard/image-to-video), cross-checked against:
 
 - [MiniMax API prices](https://platform.minimax.io/docs/guides/pricing-paygo), [current M Plan](https://platform.minimax.io/docs/m-plan/intro) and [regular monthly offers](https://platform.minimax.io/docs/m-plan/monthly-offer).
 - [Kimi API pricing](https://platform.kimi.ai/docs/pricing/chat), [current coding models](https://www.kimi.com/code/docs/en/kimi-code/models.html), [membership rules](https://www.kimi.com/code/docs/en/kimi-code/membership.html) and public official checkout pricing.

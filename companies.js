@@ -1,4 +1,6 @@
 import { renderCompanyCharts } from './companies-charts.js';
+import { renderCodingSections } from './app.js';
+import { createUnifiedData } from './model-data.js';
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -15,7 +17,7 @@ const typeLabels = { verified: 'Verified fact', inference: 'Analyst inference', 
 let data;
 let sourceMap = new Map();
 let mode = 'llm';
-let sort = { key: 'ii', direction: -1 };
+let sort = { key: 'tb4', direction: -1 };
 let infoEntries = new Map();
 let infoTrigger = null;
 let dialogTrigger = null;
@@ -68,9 +70,9 @@ function valueFor(model, key) {
   const value = model.metrics?.[key]?.value;
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }
-function chooseRows() {
+function chooseRows(expanded = false) {
   const flagshipIds = new Set(data.companies.map(company => company.flagshipId));
-  return data.models.filter(model => model.kind === mode && (model.baseline || model.role === 'flagship' || flagshipIds.has(model.id)));
+  return data.models.filter(model => model.kind === mode && (expanded || model.baseline || model.role === 'flagship' || flagshipIds.has(model.id)));
 }
 function bestForFact(model) {
   const company = companyFor(model);
@@ -113,6 +115,7 @@ function tableColumns(expanded = false) {
     { key: 'name', label: 'Model / effort', direction: 1, render: model => `<strong>${esc(model.name)}</strong>${effortLabel(model)}` }
   ];
   if (!expanded) return mode === 'llm' ? [...common,
+    { key: 'tb4', label: 'Coding TB4 ↑', direction: -1, render: model => previewMetric(model, 'tb4', 'Terminal-Bench 4.0 solved', percent) },
     { key: 'ii', label: 'Intelligence ↑', direction: -1, render: model => previewMetric(model, 'ii', 'Intelligence Index', intelligence) },
     { key: 'input', label: 'Input $/M ↓', direction: 1, render: model => previewMetric(model, 'input', 'Input $/M', money) },
     { key: 'output', label: 'Output $/M ↓', direction: 1, render: model => previewMetric(model, 'output', 'Output $/M', money) },
@@ -127,6 +130,11 @@ function tableColumns(expanded = false) {
   return mode === 'llm' ? [identity,
     { key: 'ii', label: 'Intelligence ↑', direction: -1, render: intelligenceCell },
     { key: 'rank', label: 'Global rank ↓', direction: 1, render: model => metric(model.metrics?.rank, value => `#${number(value, 0)}`) },
+    { key: 'tb4', label: 'Coding TB4 ↑', direction: -1, render: model => metric(model.metrics?.tb4, percent) },
+    { key: 'speed', label: 'Speed tok/s ↑', direction: -1, render: model => metric(model.metrics?.speed, value => number(value)) },
+    { key: 'latency', label: 'Answer delay ↓', direction: 1, render: model => metric(model.metrics?.latency, value => `${number(value)}s`) },
+    { key: 'lcr', label: 'Long context LCR ↑', direction: -1, render: model => metric(model.metrics?.lcr, percent) },
+    { key: 'codingCost', label: 'Coding $/attempt ↓', direction: 1, render: model => metric(model.metrics?.codingCost, money) },
     { key: 'gap', label: 'Gap to baselines', render: gapCell },
     { key: 'input', label: 'Input $/M ↓', direction: 1, render: model => metric(model.metrics?.input, money) },
     { key: 'output', label: 'Output $/M ↓', direction: 1, render: model => metric(model.metrics?.output, money) },
@@ -143,15 +151,15 @@ function tableColumns(expanded = false) {
 function renderComparison() {
   closeInfo();
   infoEntries = new Map();
-  const rows = chooseRows().sort((a, b) => {
+  const compare = (a, b) => {
     const av = valueFor(a, sort.key), bv = valueFor(b, sort.key);
     if (av == null && bv == null) return a.name.localeCompare(b.name);
     if (av == null) return 1;
     if (bv == null) return -1;
     return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * sort.direction;
-  });
-  renderTable($('#company-table'), rows, false);
-  renderTable($('#expanded-company-table'), rows, true);
+  };
+  renderTable($('#company-table'), chooseRows().sort(compare), false);
+  renderTable($('#expanded-company-table'), chooseRows(true).sort(compare), true);
   const heading = $('#comparison-dialog-title');
   if (heading) heading.textContent = mode === 'llm' ? 'Full LLM comparison' : 'Full video comparison';
   document.querySelectorAll('#dialog-mode-toggle [data-mode]').forEach(button => {
@@ -163,12 +171,12 @@ function renderComparison() {
 function renderTable(target, rows, expanded) {
   if (!target) return;
   const columns = tableColumns(expanded);
-  const best = new Map(columns.filter(column => ['ii', 'input', 'output', 'cache', 'elo', 'priceSecond', 'priceMinute'].includes(column.key)).map(column => {
+  const best = new Map(columns.filter(column => ['ii', 'tb4', 'speed', 'latency', 'lcr', 'codingCost', 'input', 'output', 'cache', 'elo', 'priceSecond', 'priceMinute'].includes(column.key)).map(column => {
     const values = rows.map(model => valueFor(model, column.key)).filter(value => typeof value === 'number');
     return [column.key, values.length ? Math[column.direction === 1 ? 'min' : 'max'](...values) : null];
   }));
   const caption = target.querySelector('caption') || target.createCaption();
-  caption.textContent = mode === 'llm' ? `Flagship LLMs + baselines · ${dateText(data.snapshot_date)} · USD / million tokens` : `Video arena + baselines · ${dateText(data.snapshot_date)} · USD / second`;
+  caption.textContent = mode === 'llm' ? `${expanded ? 'All LLMs + effort variants' : 'Flagships + primary coding choices'} · USD / million tokens · Dates in evidence` : `Video arena + baselines · ${dateText(data.snapshot_date)} · USD / second`;
   if (expanded) caption.textContent += ' · Sources, dates and pricing conditions included';
   const head = target.tHead || target.createTHead();
   head.innerHTML = `<tr>${columns.map(column => `<th scope="col"${column.direction ? ` aria-sort="${column.key === sort.key ? (sort.direction === 1 ? 'ascending' : 'descending') : 'none'}"` : ''}>${column.direction ? `<button type="button" data-company-sort="${esc(column.key)}">${esc(column.label)}<span class="sort-indicator" aria-hidden="true">${column.key === sort.key ? (sort.direction === 1 ? '↑' : '↓') : '↕'}</span></button>` : esc(column.label)}</th>`).join('')}</tr>`;
@@ -181,6 +189,7 @@ function cardMetric(label, item, formatter) {
 const detailMetrics = [
   ['ii', 'Intelligence Index', intelligence], ['rank', 'Current leaderboard rank'], ['input', 'API input, $/M', money], ['output', 'API output, $/M', money], ['cache', 'Cached input, $/M', money], ['blended', 'Blended API price, $/M', money],
   ['tb4', 'Terminal-Bench 4.0', percent], ['sciCode', 'SciCode (under review)', percent], ['agent', 'AutomationBench (SaaS workflows)', percent], ['context', 'Context tokens', value => number(value, 0)], ['weights', 'Weight availability'], ['modalities', 'Input / output modalities'],
+  ['speed', 'Output speed, tok/s', value => number(value)], ['latency', 'Time to first answer', value => `${number(value)}s`], ['lcr', 'Long-context recall', percent], ['codingCost', 'TB4 API cost per attempt', money],
   ['gapSol', 'II gap vs. Sol max', points], ['gapOpus', 'II gap vs. Opus max', points], ['outputRatioSol', 'Output-price ratio to Sol', value => `${number(value, 4)}×`], ['outputRatioOpus', 'Output-price ratio to Opus', value => `${number(value, 4)}×`],
   ['elo', 'Video arena score', value => number(value, 0)], ['ciLow', '95% interval lower bound', value => number(value, 0)], ['ciHigh', '95% interval upper bound', value => number(value, 0)], ['priceMinute', 'Price per minute', money], ['priceSecond', 'Price per second', money], ['modes', 'Generation modes'], ['resolution', 'Maximum resolution'], ['duration', 'Maximum duration']
 ];
@@ -188,29 +197,33 @@ function renderModelDetails() {
   const rows = data.models;
   write('#model-details', rows.map(model => {
     const shown = detailMetrics.filter(([key]) => model.metrics?.[key]);
-    const extras = Object.entries(model.metrics || {}).filter(([key]) => !detailMetrics.some(([known]) => known === key));
+    const extras = Object.entries(model.metrics || {}).filter(([key]) => key !== 'lcr_percent' && !detailMetrics.some(([known]) => known === key));
     const fields = shown.map(([key, label, formatter]) => cardMetric(label, model.metrics[key], formatter)).join('') + extras.map(([key, value]) => cardMetric(key.replace(/([A-Z])/g, ' $1').replace(/^./, char => char.toUpperCase()), value)).join('');
     return `<details class="accordion cmp-model-detail" id="model-${esc(model.id)}" data-model-kind="${esc(model.kind)}"${model.kind !== mode ? ' hidden' : ''}><summary>${esc(model.name)}<span class="summary-meta">${esc(model.baseline ? 'Reference baseline' : model.role || 'Model details')}</span></summary><div class="detail-body"><dl class="cmp-detail-metrics">${fields}</dl>${(model.notes || []).map(item => content(item, item.title || '')).join('')}</div></details>`;
   }).join(''));
 }
 function renderOverview() {
-  write('#overview-text', content(data.overview));
+  write('#overview-text', content(data.report.conclusion));
   write('#method-notes', (data.methods || []).map(item => content(item, item.title || '')).join(''));
   write('#scenario-guide', (data.scenarios || []).map(item => {
     const models = (item.model_labels || []).map(esc).join(' / ');
     const heading = `<h4>${esc(item.title || '')}${models ? ` – <span class="cmp-scenario-model">${models}</span>` : ''}</h4>`;
-    return `<article class="recommendation-card cmp-scenario">${heading}${content(item, '', false, false)}</article>`;
+    const codingOptions = item.title === 'Coding' ? `<details class="cmp-coding-options"><summary>Other coding choices</summary>${data.report.final_recommendations.filter((_, index) => [0, 3, 4, 5].includes(index)).map(choice => {
+      const separator = choice.text.indexOf(':');
+      return content({ ...choice, text: separator > 0 ? choice.text.slice(separator + 1).trim() : choice.text }, separator > 0 ? choice.text.slice(0, separator) : 'Other Chinese options', false, false);
+    }).join('')}</details>` : '';
+    return `<article class="recommendation-card cmp-scenario">${heading}${content(item, '', false, false)}${codingOptions}</article>`;
   }).join(''));
   $('#scenario-guide')?.classList.add('recommendation-grid');
   write('#source-list', (data.sources || []).map(source => `<div class="source-item">${sourceLink(source, `${source.title} ↗`)}<time datetime="${esc(source.date || data.snapshot_date)}">${dateText(source.date || data.snapshot_date)}</time></div>`).join(''));
   const date = $('#last-updated');
   if (date) { date.textContent = dateText(data.snapshot_date); date.dateTime = data.snapshot_date; }
   const footerDate = $('#footer-date');
-  if (footerDate) footerDate.textContent = `New companies overview updated ${dateText(data.snapshot_date)}. The original coding report retains its 5 October 2026 snapshot.`;
+  if (footerDate) footerDate.textContent = `Last updated ${dateText(data.snapshot_date)} · Prices in USD before tax. Each fact retains its source date.`;
 }
 function setMode(nextMode) {
   mode = nextMode === 'video' ? 'video' : 'llm';
-  sort = { key: mode === 'llm' ? 'ii' : 'elo', direction: -1 };
+  sort = { key: mode === 'llm' ? 'tb4' : 'elo', direction: -1 };
   document.documentElement.dataset.companyMode = mode;
   document.querySelectorAll('#mode-toggle [data-mode]').forEach(button => {
     const active = button.dataset.mode === mode;
@@ -326,11 +339,26 @@ function initComparisonDialog() {
   }, true);
 }
 function initNavigation() {
+  const aliases = { overview: 'conclusion', recommendation: 'scenarios', profiles: 'comparison', limits: 'comparison', takeaways: 'conclusion' };
   const revealModel = detail => {
     if (!detail) return;
     detail.open = true;
     let parent = detail.parentElement;
     while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
+  };
+  const resolveHash = () => {
+    const legacyTarget = aliases[location.hash.slice(1)];
+    if (legacyTarget) {
+      history.replaceState(null, '', `#${legacyTarget}`);
+      requestAnimationFrame(() => document.getElementById(legacyTarget)?.scrollIntoView());
+      return;
+    }
+    if (!location.hash.startsWith('#model-')) return;
+    const model = modelFor(decodeURIComponent(location.hash.slice(7)));
+    if (!model) return;
+    if (model.kind !== mode) setMode(model.kind);
+    const detail = document.getElementById(`model-${model.id}`);
+    if (detail) { revealModel(detail); requestAnimationFrame(() => detail.scrollIntoView()); }
   };
   document.addEventListener('click', event => {
     const toggle = event.target.closest('#mode-toggle [data-mode], #dialog-mode-toggle [data-mode]');
@@ -368,14 +396,8 @@ function initNavigation() {
     }, { rootMargin: '-18% 0px -65% 0px', threshold: 0 });
     document.querySelectorAll('.report-section, .report-footer').forEach(section => observer.observe(section));
   }
-  if (location.hash.startsWith('#model-')) {
-    const model = modelFor(decodeURIComponent(location.hash.slice(7)));
-    if (model) {
-      if (model.kind !== mode) setMode(model.kind);
-      const detail = document.getElementById(`model-${model.id}`);
-      if (detail) { revealModel(detail); requestAnimationFrame(() => detail.scrollIntoView()); }
-    }
-  }
+  window.addEventListener('hashchange', resolveHash);
+  resolveHash();
 }
 async function start() {
   initTheme();
@@ -383,18 +405,19 @@ async function start() {
     const [response, reportResponse] = await Promise.all([fetch('./companies.json'), fetch('./data.json')]);
     if (!response.ok) throw new Error(`Company dataset returned ${response.status}`);
     if (!reportResponse.ok) throw new Error(`Chart settings returned ${reportResponse.status}`);
-    data = await response.json();
+    const companyData = await response.json();
     const reportData = await reportResponse.json();
-    data.value_zone = reportData.chart_settings?.value_zone;
+    data = createUnifiedData(companyData, reportData);
     sourceMap = new Map((data.sources || []).map(source => [source.id, source]));
     renderOverview(); setMode('llm');
+    renderCodingSections(data.report);
     renderCompanyCharts(data);
     initComparisonDialog();
     initNavigation();
     document.documentElement.dataset.ready = 'true';
   } catch (error) {
-    write('#overview-text', '<p>The companies overview could not load. Refresh the page or download <a href="./companies.json">companies.json</a>.</p>');
-    console.error('Companies overview initialization failed:', error);
+    write('#overview-text', '<p>The report could not load. Refresh the page or download <a href="./data.json">coding data</a> and <a href="./companies.json">model data</a>.</p>');
+    console.error('Model Compare initialization failed:', error);
   }
 }
 start();

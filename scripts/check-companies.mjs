@@ -2,6 +2,7 @@ import { readFile, access } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createUnifiedData } from '../model-data.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [];
@@ -125,6 +126,92 @@ for (const row of data.positioning.rows) {
   for (const cell of row.cells) assert(typeof cell.value === 'string', `${row.company}: qualitative positioning must not invent numeric ratings.`);
 }
 
+// The unified page adds coding evidence to exact model configurations while
+// retaining the separately dated source snapshots and graph coordinates.
+const inputSnapshots = [JSON.stringify(data), JSON.stringify(report)];
+const unified = createUnifiedData(data, report);
+assert(JSON.stringify(data) === inputSnapshots[0], 'Unified adapter must not mutate companies.json input.');
+assert(JSON.stringify(report) === inputSnapshots[1], 'Unified adapter must not mutate data.json input.');
+const unifiedModels = new Map(unified.models.map(model => [model.id, model]));
+const unifiedSources = new Map(unified.sources.map(source => [source.id, source]));
+assert(unifiedModels.size === unified.models.length, 'Unified model IDs must remain unique.');
+assert(unified.models.filter(model => model.kind === 'llm').length === 13, 'Unified comparison must contain thirteen distinct LLM configurations.');
+assert(unified.models.filter(model => model.kind === 'video').length === 5, 'Unified comparison must retain all five video configurations.');
+assert(unifiedSources.size === unified.sources.length, 'Unified source IDs must be unique.');
+
+const normalizedUrl = url => {
+  const parsed = new URL(url);
+  parsed.hash = '';
+  parsed.pathname = parsed.pathname.replace(/\/+$/u, '') || '/';
+  return parsed.href.replace(/\/$/u, '');
+};
+const unifiedUrls = unified.sources.map(source => normalizedUrl(source.url));
+const originalSources = [...data.sources, ...report.sources];
+assert(new Set(unifiedUrls).size === unifiedUrls.length, 'Unified sources must deduplicate identical URLs, including trailing-slash variants.');
+assert(new Set(originalSources.map(source => normalizedUrl(source.url))).size === unified.sources.length, 'Unified source registry must preserve every distinct source URL.');
+const urlsFor = (fact, registry) => [...new Set((fact.source_ids || []).map(id => normalizedUrl(registry.get(id)?.url)))].sort();
+const same = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+
+function unifiedReferenceIntegrity(value, location = 'unified') {
+  if (!value || typeof value !== 'object') return;
+  if (Array.isArray(value)) return value.forEach((item, index) => unifiedReferenceIntegrity(item, `${location}[${index}]`));
+  if (Object.hasOwn(value, 'type')) {
+    assert(kinds.has(value.type), `${location}: unknown unified evidence type.`);
+    assert(isoDate.test(value.date || ''), `${location}: unified fact needs its own observation date.`);
+  }
+  for (const [key, child] of Object.entries(value)) {
+    if (key === 'source_ids') {
+      assert(Array.isArray(child), `${location}: source_ids must be an array.`);
+      for (const id of child || []) assert(unifiedSources.has(id), `${location}: unresolved unified source ${id}.`);
+    } else if (key === 'metric_sources') {
+      for (const id of Object.values(child || {})) assert(unifiedSources.has(id), `${location}: unresolved unified metric source ${id}.`);
+    } else {
+      unifiedReferenceIntegrity(child, `${location}.${key}`);
+    }
+  }
+}
+unifiedReferenceIntegrity(unified);
+
+for (const original of data.models) {
+  const merged = unifiedModels.get(original.id);
+  assert(Boolean(merged), `${original.id}: overview model disappeared during page merge.`);
+  if (!merged) continue;
+  for (const [key, fact] of Object.entries(original.metrics)) {
+    const { source_ids: originalIds, ...originalFact } = fact;
+    const { source_ids: mergedIds, ...mergedFact } = merged.metrics[key] || {};
+    assert(same(originalFact, mergedFact), `${original.id}.${key}: existing overview value, date or evidence metadata changed during merge.`);
+    assert(same(urlsFor(fact, sources), urlsFor(merged.metrics[key] || {}, unifiedSources)), `${original.id}.${key}: existing overview source changed during merge.`);
+  }
+}
+
+const reportSourceMap = new Map(report.sources.map(source => [source.id, source]));
+const codingFields = { speed: 'output_tokens_per_second', latency: 'first_answer_seconds', lcr_percent: 'aa_lcr_percent', codingCost: 'tb4_api_usd_per_attempt' };
+assert(unified.models.filter(model => model.reportModelId).length === report.models.length, 'Every original coding model must appear once in the unified comparison.');
+for (const original of report.models) {
+  const matches = unified.models.filter(model => model.reportModelId === original.id);
+  assert(matches.length === 1, `${original.id}: coding model must join exactly one configuration.`);
+  const merged = matches[0];
+  if (!merged) continue;
+  for (const [key, field] of Object.entries(codingFields)) {
+    const metric = merged.metrics[key];
+    assert(metric?.value === original[field], `${original.id}.${field}: coding evidence changed during merge.`);
+    assert(metric?.date === original.date, `${original.id}.${field}: original coding observation date changed during merge.`);
+    const expectedUrl = normalizedUrl(reportSourceMap.get(original.metric_sources[field])?.url);
+    assert(same(urlsFor(metric || {}, unifiedSources), [expectedUrl]), `${original.id}.${field}: coding evidence joined the wrong source or effort variant.`);
+  }
+  const aaUrl = normalizedUrl(original.aa_source);
+  assert(Object.values(merged.metrics).some(metric => urlsFor(metric, unifiedSources).includes(aaUrl)), `${original.id}: unified configuration must retain its exact AA model-page source.`);
+}
+for (const id of ['mimo-v2-6-pro', 'qwen3-8-max-0902', 'gpt-6-1-sol-medium']) {
+  assert(unifiedModels.get(id)?.metrics.ii?.value === null && unifiedModels.get(id)?.metrics.ii?.type === 'missing', `${id}: absent Intelligence Index must stay missing rather than inherit a vendor or effort-variant score.`);
+}
+assert(unifiedModels.get('kimi-k3')?.reportModelId === 'kimi', 'Original Kimi coding evidence must join K3.');
+assert(!unifiedModels.get('kimi-k2-7-code')?.reportModelId, 'Kimi K2.7 Code must not receive K3 coding evidence.');
+const plotted = (items, kind) => items.filter(model => model.kind === kind && Number.isFinite(model.metrics[kind === 'video' ? 'elo' : 'ii']?.value) && Number.isFinite(model.metrics[kind === 'video' ? 'priceSecond' : 'blended']?.value) && model.metrics[kind === 'video' ? 'priceSecond' : 'blended'].value > 0).map(model => model.id).sort();
+assert(same(plotted(data.models, 'llm'), plotted(unified.models, 'llm')), 'Unified page must preserve the ten existing LLM graph points.');
+assert(same(plotted(data.models, 'video'), plotted(unified.models, 'video')), 'Unified page must preserve the four existing video graph points.');
+assert(same(unified.chart_settings, unified.report.chart_settings), 'Unified charts must retain the editable value-zone settings and remapped provenance.');
+
 // This revision explicitly refreshes GLM and adds a data-driven value zone.
 // Preserve every unrelated numeric leaf, using stable row IDs so removing the
 // retired full-GLM overview row cannot shift an array-based comparison.
@@ -231,5 +318,5 @@ if (failures.length) {
   console.error(`${failures.length} failures across ${checks} checks:\n${failures.map(message => `- ${message}`).join('\n')}`);
   process.exitCode = 1;
 } else {
-  console.log(`Passed ${checks} companies checks: ${factCount} sourced facts, six concise profiles, Flash deduplication, editable value-zone thresholds, formulas and unrelated-number preservation.`);
+  console.log(`Passed ${checks} companies checks: ${factCount} sourced snapshot facts, unified configuration joins, ${unified.sources.length} deduplicated sources, graph preservation, Flash deduplication, editable value-zone thresholds and formulas.`);
 }

@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Model Compare — AI Coding Models, Price &amp; Performance</title>
-  <meta name="description" content="Compare Chinese AI coding models with GPT-6.1 Sol and Claude Opus. Explore sourced coding scores, speed, API prices, subscriptions and agent harness recommendations.">
+  <title>Model Compare — Coding, Intelligence, Cost &amp; Video</title>
+  <meta name="description" content="Compare Chinese AI coding models with GPT-6.1 Sol and Claude Opus. Explore sourced coding scores, intelligence, speed, API prices, subscriptions, agent harnesses and creative video.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Model Compare — AI Coding Models, Price &amp; Performance">
+  <meta property="og:title" content="Model Compare — Coding, Intelligence, Cost &amp; Video">
   <meta property="og:description" content="A coding-first guide to GLM, DeepSeek, MiMo, Qwen, Kimi, MiniMax, Sol and Opus. Interactive charts, transparent costs and source links.">
   <meta property="og:url" content="https://model-compare-delta.vercel.app/">
   <meta property="og:image" content="https://model-compare-delta.vercel.app/og.png">
@@ -19,12 +19,14 @@
   <link rel="canonical" href="https://model-compare-delta.vercel.app/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/companies.css">
+  <link rel="stylesheet" href="/companies-charts.css">
   <script>
     try { const mode = localStorage.getItem('model-compare-theme') || 'system'; document.documentElement.dataset.theme = mode; } catch { document.documentElement.dataset.theme = 'system'; }
   </script>
-  <script type="module" src="/app.js"></script>
+  <script type="module" src="/companies.js"></script>
 </head>
-<body>
+<body class="companies-page unified-report">
   <a class="skip-link" href="#main">Skip to report</a>
   <header class="site-header">
     <a class="brand" href="#conclusion" aria-label="Model Compare home"><img src="/favicon.svg" alt="" width="30" height="30"><span>model<span class="brand-secondary">compare</span></span></a>
@@ -32,43 +34,45 @@
   </header>
   <div class="page-layout">
     <aside class="sidebar">
-      <nav aria-label="Report sections" id="toc">
-        <p class="nav-label">THE REPORT</p>
-        <a class="active" href="#conclusion"><span>01</span>Conclusion</a>
+      <nav id="toc" aria-label="Report sections">
+        <p class="nav-label">MODEL COMPARE</p>
+        <a class="active" href="#conclusion"><span>01</span>Overview</a>
         <a href="#comparison"><span>02</span>Compare models</a>
-        <a href="#harness"><span>03</span>Choose a harness</a>
-        <a href="#subscriptions"><span>04</span>Understand costs</a>
-        <a href="#recommendation"><span>05</span>What to choose</a>
-        <a href="/companies.html"><span>↗</span>Chinese AI Companies Overview</a>
+        <a href="#scenarios"><span>03</span>Choose by task</a>
+        <a href="#harness"><span>04</span>Choose a harness</a>
+        <a href="#subscriptions"><span>05</span>Understand costs</a>
         <a class="sources-nav" href="#sources">Sources &amp; data ↗</a>
       </nav>
-      <div class="sidebar-note"><p>Every metric is linked to its source.</p><a href="/data.json" download>Download the data ↓</a></div>
+      <div class="sidebar-note"><p>LLM intelligence, coding and video quality use different scales.</p><a href="/data.json" download>Coding data ↓</a><br><a href="/companies.json" download>Model &amp; video data ↓</a></div>
     </aside>
     <main id="main">
       <section id="conclusion" class="hero report-section" aria-labelledby="hero-title">
-        <h1 id="hero-title" class="visually-hidden">AI coding model comparison</h1>
-        <p class="hero-intro">Chinese AI models and Western flagships, compared on the work that matters.</p>
-        <p class="snapshot-note"><a href="/companies.html">Chinese AI Companies Overview ↗</a></p>
-        <div class="conclusion-block"><span class="content-label inference">Analyst conclusion</span><p id="conclusion-text"></p></div>
+        <h1 id="hero-title" class="visually-hidden">AI model comparison</h1>
+        <p class="hero-intro">Chinese AI models and Western flagships: coding, intelligence, cost and creative video.</p>
+        <div id="overview-text" class="conclusion-block"></div>
         <a class="primary-link" href="#comparison">Explore the comparison <span aria-hidden="true">↓</span></a>
-        <div id="decision-cards" class="decision-grid"></div>
       </section>
       <section id="comparison" class="report-section" aria-labelledby="comparison-heading">
         <div class="section-heading"><span class="section-number">02</span><div><h2 id="comparison-heading">Compare the models</h2></div></div>
-        <div id="benchmark-method" class="callout"></div>
-        <div class="comparison-toolbar"><div class="filter-tabs" role="group" aria-label="Filter models"><button class="selected" data-filter="all" aria-pressed="true">All models</button><button data-filter="China" aria-pressed="false">Chinese</button><button data-filter="Western" aria-pressed="false">Western</button></div><span class="toolbar-hint">Click a column to sort · Scroll table sideways</span></div>
-        <div class="table-scroll" role="region" aria-label="Sortable model comparison" tabindex="0"><table id="model-table"><caption id="comparison-caption"></caption><thead></thead><tbody></tbody></table></div>
-        <p class="table-key"><span class="best-example">Best in column</span> Lowest price or delay; highest score or speed. These highlights are not an overall model ranking.</p>
-        <details class="accordion" open><summary>Model cards</summary><div id="model-cards" class="model-grid"></div></details>
-        <div class="chart-panel"><div class="panel-heading"><h3>How many tasks get solved?</h3></div><div id="coding-chart"></div></div>
-        <div id="comparison-interpretation" class="analysis-block"></div>
+        <div class="comparison-toolbar"><div id="mode-toggle" class="filter-tabs" role="group" aria-label="Model comparison category"><button type="button" class="selected" data-mode="llm" aria-pressed="true">LLMs</button><button type="button" data-mode="video" aria-pressed="false">Video</button></div><button id="expand-comparison" class="cmp-expand-button" type="button" aria-haspopup="dialog" aria-controls="comparison-dialog"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Expand table</button></div>
+        <div class="table-scroll cmp-preview-scroll" role="region" aria-label="Compact sortable flagship comparison; scroll horizontally on small screens" tabindex="0"><table id="company-table" class="cmp-preview-table"><caption>Loading sourced comparison…</caption><thead></thead><tbody></tbody></table></div>
+        <p class="table-key">Highlighted rows are comparison baselines. Click a heading to sort; use an info icon for evidence or expand for all columns.</p>
+        <details class="accordion"><summary>How to read the comparison <span class="summary-meta">Effort, global rank, price mix and coding harness</span></summary><div id="method-notes" class="detail-body"></div></details>
+        <div class="chart-panel" data-kind-panel="llm"><div class="panel-heading"><span class="small-label">LLM INTELLIGENCE / PRICE</span><h3>What does intelligence cost?</h3><p>A transparent token-price mix on a logarithmic price axis. This is not cost per successful task.</p></div><div id="llm-value-chart"></div></div>
+        <div class="chart-panel" data-kind-panel="video" hidden><div class="panel-heading"><span class="small-label">VIDEO QUALITY / PRICE</span><h3>Creative video, on its own scale</h3><p>Human preference in the audio text-to-video arena. Higher score and lower price are preferable.</p></div><div id="video-value-chart"></div></div>
+        <div class="chart-panel" data-kind-panel="llm"><div class="panel-heading"><h3>How many coding tasks get solved?</h3></div><div id="benchmark-method" class="callout"></div><div id="coding-chart"></div><div id="comparison-interpretation" class="analysis-block"></div></div>
+        <details class="accordion"><summary>Model details</summary><div id="model-details" class="detail-body"></div></details>
+      </section>
+      <section id="scenarios" class="report-section" aria-labelledby="scenarios-heading">
+        <div class="section-heading"><span class="section-number">03</span><div><h2 id="scenarios-heading">Choose by the task</h2></div></div>
+        <div id="scenario-guide" class="recommendation-grid"></div>
       </section>
       <section id="harness" class="report-section" aria-labelledby="harness-heading">
-        <div class="section-heading"><span class="section-number">03</span><div><h2 id="harness-heading">Choose the right harness</h2></div></div>
+        <div class="section-heading"><span class="section-number">04</span><div><h2 id="harness-heading">Choose the right harness</h2></div></div>
         <div id="harness-overview" class="harness-grid"></div>
       </section>
       <section id="subscriptions" class="report-section" aria-labelledby="subscriptions-heading">
-        <div class="section-heading"><span class="section-number">04</span><div><h2 id="subscriptions-heading">Understand the real cost</h2></div></div>
+        <div class="section-heading"><span class="section-number">05</span><div><h2 id="subscriptions-heading">Understand the real cost</h2></div></div>
         <div id="billing-overview" class="billing-grid"></div>
         <div class="chart-panel"><div class="panel-heading"><h3>What could a month cost?</h3></div><div id="cost-chart"></div></div>
         <details class="accordion" open><summary>Workload assumptions &amp; exact monthly costs</summary><div id="cost-details" class="detail-body"></div></details>
@@ -77,14 +81,20 @@
         <details class="accordion"><summary>OpenCode Go: a third-party alternative</summary><div id="go-plans" class="detail-body"></div></details>
         <details class="accordion"><summary>Temporary offers &amp; ambiguous annual prices</summary><div id="subscription-caveats" class="detail-body"></div></details>
       </section>
-      <section id="recommendation" class="report-section" aria-labelledby="recommendation-heading">
-        <div class="section-heading"><span class="section-number">05</span><div><h2 id="recommendation-heading">What should you choose?</h2></div></div>
-        <div id="recommendation-list" class="recommendation-grid"></div>
-      </section>
-      <footer id="sources" class="report-footer"><div class="section-heading"><div><h2>Sources &amp; data</h2></div></div><div id="source-list" class="source-grid"></div><div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Download data.json</a><a id="github-link" href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div></footer>
+      <footer id="sources" class="report-footer">
+        <div class="section-heading"><div><h2>Sources &amp; data</h2></div></div>
+        <div id="source-list" class="source-grid"></div>
+        <div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Coding data</a><a href="/companies.json" download>Model &amp; video data</a><a href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div>
+      </footer>
     </main>
   </div>
+  <dialog id="comparison-dialog" class="cmp-comparison-dialog" aria-labelledby="comparison-dialog-title" aria-describedby="comparison-dialog-description">
+    <div class="cmp-dialog-header"><div><h2 id="comparison-dialog-title">Full LLM comparison</h2><p id="comparison-dialog-description">All columns with evidence, dates and sources. Click a heading to sort.</p></div><button id="close-comparison" class="cmp-dialog-close" type="button" aria-label="Close expanded comparison"><span aria-hidden="true">×</span></button></div>
+    <div class="cmp-dialog-toolbar"><div id="dialog-mode-toggle" class="filter-tabs" role="group" aria-label="Expanded comparison category"><button type="button" class="selected" data-mode="llm" aria-pressed="true">LLMs</button><button type="button" data-mode="video" aria-pressed="false">Video</button></div><span class="toolbar-hint">Company and model stay visible as you scroll</span></div>
+    <div class="cmp-dialog-scroll" role="region" aria-label="Full sortable model comparison" tabindex="0"><table id="expanded-company-table" class="cmp-full-table"><caption>Full sourced comparison</caption><thead></thead><tbody></tbody></table></div>
+  </dialog>
+  <div id="table-info-popover" class="cmp-info-popover" popover="auto" role="dialog" aria-label="Metric evidence"></div>
   <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
-  <noscript><p class="noscript-note">This interactive report needs JavaScript. The complete sourced snapshot is available in <a href="/data.json">data.json</a>.</p></noscript>
+  <noscript><p class="noscript-note">The sourced report is available in <a href="/data.json">coding data</a> and <a href="/companies.json">model and video data</a>. Interactive comparisons need JavaScript.</p></noscript>
 </body>
 </html>
