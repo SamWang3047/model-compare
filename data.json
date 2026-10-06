@@ -1689,5 +1689,100 @@
       ],
       "rule": "Value zone: Intelligence Index ≥40 and illustrative 3:1 uncached blended price ≤$2/M. Among the ten plotted models, the median Intelligence Index is 40.6, so 40 is a simple near-median screening cutoff; $2 is half Sol’s $4/M illustrative blend. These round thresholds are analyst inference and user-adjustable, not a measured benchmark, model ranking or cost per successful task."
     }
+  },
+  "multi_model_workflow": {
+    "updated_date": "2026-10-06",
+    "title": "My multi-model workflow",
+    "intro": [
+      "Tasks are split by difficulty and cost.",
+      "The expensive model is used only where strong reasoning is needed.",
+      "Token-heavy exploration, file reading and mechanical edits go to cheaper models in the opencode Go subscription, keeping quality high while saving usage quota."
+    ],
+    "cards": [
+      {
+        "id": "lead",
+        "role": "Lead layer",
+        "model_name": "GPT-6.1 Sol (xhigh)",
+        "status": "decided",
+        "does": "Planning, architecture, task breakdown, complex implementation, hard debugging, key decisions and reviews of important subagent output.",
+        "why": "Strongest reasoning where mistakes cost most; medium/high for daily coding and xhigh reserved for hard problems."
+      },
+      {
+        "id": "exploration",
+        "role": "Exploration layer",
+        "model_name": "DeepSeek V4.1 Flash",
+        "status": "decided",
+        "does": "Explorer / general subagents: repo search, file reading, code-structure summaries, implementation checks, simple and repetitive edits.",
+        "why": "Exploration uses the most tokens but needs little reasoning; low cost and a generous quota reduce main-model usage."
+      },
+      {
+        "id": "implementation",
+        "role": "Implementation layer",
+        "model_name": "GLM-5.3 Flash (max)",
+        "status": "decided",
+        "does": "Medium-difficulty implementation from the lead’s plan: multi-file changes, tests and ordinary bug fixes.",
+        "why": "More thinking than exploration without using the lead model; max effort compensates for Flash-tier reasoning depth."
+      },
+      {
+        "id": "frontend",
+        "role": "Frontend layer",
+        "model_name": "Kimi K3",
+        "status": "decided",
+        "status_note": "Used sparingly",
+        "does": "UI components, styling, layout and interactions.",
+        "why": "Smaller Go quota: use sparingly, bundle the complete frontend task and hand it over once to avoid back-and-forth."
+      },
+      {
+        "id": "candidates",
+        "role": "Candidates",
+        "model_name": "Qwen3.8 Flash and MiMo V2.6 Pro",
+        "status": "to_test",
+        "trials": [
+          {
+            "model_name": "Qwen3.8 Flash",
+            "text": "Planned trial for parallel exploration, document summaries, batch mechanical edits or a fallback when DeepSeek quota runs low."
+          },
+          {
+            "model_name": "MiMo V2.6 Pro",
+            "text": "Planned trial as a second implementation choice for medium tasks or plan+build, or a fallback when GLM quota runs low."
+          }
+        ],
+        "why": "Not enough hands-on test data; compare the same task set before deciding."
+      }
+    ],
+    "flow": [
+      "Lead model plans",
+      "Split and delegate",
+      [
+        "Exploration layer researches",
+        "Implementation layer writes code",
+        "Frontend layer builds UI"
+      ],
+      "Lead model reviews key output",
+      "After a big chunk of work, review and update project rules"
+    ],
+    "practices": [
+      {
+        "title": "Move exploration out of the main model",
+        "reason": "Exploration is the biggest source of token use, so moving it saves the most."
+      },
+      {
+        "title": "Tell the main agent in AGENTS.md to save tokens and delegate first",
+        "reason": "This makes the layering happen instead of relying on ad-hoc reminders."
+      },
+      {
+        "title": "Review and add project rules after each big chunk of work",
+        "reason": "The setup becomes more efficient over time without becoming over-complicated."
+      }
+    ],
+    "validation_plan": {
+      "title": "Validation plan",
+      "text": "Run the same task set—repo exploration summary, adding a small feature from a plan, batch test writing and fixing a medium bug—2–3 times on each candidate model. Compare quality, speed and quota use, then decide the default split."
+    },
+    "footnote": "This split is based on task roles and quota considerations, and will be adjusted after hands-on testing.",
+    "comparison_link": {
+      "label": "See the model comparison above",
+      "href": "#comparison"
+    }
   }
 }

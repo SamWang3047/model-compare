@@ -236,7 +236,13 @@ if (referenceIndex >= 0) {
     for (const file of ['data.json', 'companies.json']) {
       const previous = spawnSync('git', ['show', `${revision}:${file}`], { cwd: root, encoding: 'utf8' });
       assert(previous.status === 0, `Cannot read ${file} from the audit revision.`);
-      if (previous.status === 0) assert(JSON.stringify(JSON.parse(previous.stdout)) === JSON.stringify(JSON.parse(await read(file))), `${file}: existing report data must remain unchanged in this additive update.`);
+      if (previous.status === 0) {
+        const previousData = JSON.parse(previous.stdout);
+        const currentData = JSON.parse(await read(file));
+        for (const [key, value] of Object.entries(previousData)) {
+          assert(JSON.stringify(value) === JSON.stringify(currentData[key]), `${file}.${key}: existing report data must remain unchanged in this additive update.`);
+        }
+      }
     }
     const previousHtml = spawnSync('git', ['show', `${revision}:index.html`], { cwd: root, encoding: 'utf8' });
     assert(previousHtml.status === 0, 'Cannot read the original page for the additive section audit.');

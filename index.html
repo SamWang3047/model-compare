@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/companies.css">
   <link rel="stylesheet" href="/companies-charts.css">
   <link rel="stylesheet" href="/coding-comparison.css">
+  <link rel="stylesheet" href="/workflow.css">
   <script>
     try { const mode = localStorage.getItem('model-compare-theme') || 'system'; document.documentElement.dataset.theme = mode; } catch { document.documentElement.dataset.theme = 'system'; }
   </script>
@@ -43,6 +44,7 @@
         <a href="#scenarios"><span>03</span>Choose by task</a>
         <a href="#harness"><span>04</span>Choose a harness</a>
         <a href="#subscriptions"><span>05</span>Understand costs</a>
+        <a href="#workflow"><span>06</span>My workflow</a>
         <a class="sources-nav" href="#sources">Sources &amp; data ↗</a>
       </nav>
       <div class="sidebar-note"><p>LLM intelligence, coding and video quality use different scales.</p><a href="/data.json" download>Coding data ↓</a><br><a href="/companies.json" download>Model &amp; video data ↓</a><br><a href="/coding.json" download>New coding evidence ↓</a></div>
@@ -99,6 +101,15 @@
         <details class="accordion"><summary>DeepSeek billing &amp; rate limits</summary><div id="deepseek-billing" class="detail-body"></div></details>
         <details class="accordion"><summary>OpenCode Go: a third-party alternative</summary><div id="go-plans" class="detail-body"></div></details>
         <details class="accordion"><summary>Temporary offers &amp; ambiguous annual prices</summary><div id="subscription-caveats" class="detail-body"></div></details>
+      </section>
+      <section id="workflow" class="report-section" aria-labelledby="workflow-heading">
+        <div class="section-heading"><span class="section-number">06</span><div><h2 id="workflow-heading">My multi-model workflow</h2></div></div>
+        <p id="workflow-intro" class="workflow-intro"></p>
+        <div id="workflow-cards" class="workflow-cards"></div>
+        <ol id="workflow-flow" class="workflow-flow" aria-label="Workflow sequence"></ol>
+        <ol id="workflow-practices" class="workflow-practices" aria-label="Three key practices"></ol>
+        <details id="workflow-validation" class="accordion"><summary aria-expanded="false" aria-controls="workflow-validation-body">Validation plan</summary><div id="workflow-validation-body" class="detail-body"></div></details>
+        <div class="workflow-bottom"><p id="workflow-footnote" class="workflow-footnote"></p><a id="workflow-comparison-link" href="#comparison">See the model comparison above</a></div>
       </section>
       <footer id="sources" class="report-footer">
         <div class="section-heading"><div><h2>Sources &amp; data</h2></div></div>

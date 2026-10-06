@@ -8,6 +8,8 @@ The comparison covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun, Xia
 
 Vercel is connected to this repository. Pushes to `main` automatically deploy to production.
 
+The compact **[My multi-model workflow](https://model-compare-delta.vercel.app/#workflow)** section uses editable content and card statuses in `data.json.multi_model_workflow`, with a closed validation accordion and no new benchmark or pricing figures.
+
 **Original coding-report snapshot: 5 October 2026.** The original report was prepared on **6 October 2026**. Benchmark evaluation dates are not consistently disclosed by Artificial Analysis. The website preserves the report's figures and conclusions; it does not claim that the snapshot is live pricing.
 
 **Site updated: 6 October 2026.** Zhipu’s overview now uses only **GLM 5.3 Flash**, refreshed directly from Artificial Analysis and official Z.ai pricing. Its tested effort is **max**; AA’s model page uses spaces while its leaderboard/API name is **GLM-5.3-Flash**. Other models’ figures remain unchanged; the larger-model native-agent row was removed rather than relabelled as Flash.

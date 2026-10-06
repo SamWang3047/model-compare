@@ -3,6 +3,7 @@ import { renderCodingSections } from './app.js';
 import { createUnifiedData } from './model-data.js';
 import { initTableDialog } from './table-dialog.js';
 import { renderCodingComparison } from './coding-comparison.js';
+import { renderWorkflow } from './workflow.js';
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -389,7 +390,8 @@ async function start() {
     renderCodingSections(data.report);
     renderCompanyCharts(data);
     renderCodingComparison(codingData);
-    const updatedDate = [data.snapshot_date, codingData.metadata.updated_date].sort().at(-1);
+    renderWorkflow(reportData.multi_model_workflow);
+    const updatedDate = [data.snapshot_date, codingData.metadata.updated_date, reportData.multi_model_workflow?.updated_date].filter(Boolean).sort().at(-1);
     $('#last-updated').textContent = dateText(updatedDate);
     $('#last-updated').dateTime = updatedDate;
     $('#footer-date').textContent = `Last updated ${dateText(updatedDate)} · Prices in USD before tax. Each fact retains its source date.`;
