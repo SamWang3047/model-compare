@@ -196,7 +196,11 @@ function renderModelDetails() {
 function renderOverview() {
   write('#overview-text', content(data.overview));
   write('#method-notes', (data.methods || []).map(item => content(item, item.title || '')).join(''));
-  write('#scenario-guide', (data.scenarios || []).map(item => `<article class="recommendation-card cmp-scenario">${content(item, item.title || '', false, false)}</article>`).join(''));
+  write('#scenario-guide', (data.scenarios || []).map(item => {
+    const models = (item.model_labels || []).map(esc).join(' / ');
+    const heading = `<h4>${esc(item.title || '')}${models ? ` – <span class="cmp-scenario-model">${models}</span>` : ''}</h4>`;
+    return `<article class="recommendation-card cmp-scenario">${heading}${content(item, '', false, false)}</article>`;
+  }).join(''));
   $('#scenario-guide')?.classList.add('recommendation-grid');
   write('#source-list', (data.sources || []).map(source => `<div class="source-item">${sourceLink(source, `${source.title} ↗`)}<time datetime="${esc(source.date || data.snapshot_date)}">${dateText(source.date || data.snapshot_date)}</time></div>`).join(''));
   const date = $('#last-updated');

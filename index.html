@@ -35,67 +35,53 @@
       <nav aria-label="Report sections" id="toc">
         <p class="nav-label">THE REPORT</p>
         <a class="active" href="#conclusion"><span>01</span>Conclusion</a>
-        <a href="#takeaways"><span>02</span>Key takeaways</a>
-        <a href="#comparison"><span>03</span>Compare models</a>
-        <a href="#harness"><span>04</span>Choose a harness</a>
-        <a href="#subscriptions"><span>05</span>Understand costs</a>
-        <a href="#recommendation"><span>06</span>What to choose</a>
+        <a href="#comparison"><span>02</span>Compare models</a>
+        <a href="#harness"><span>03</span>Choose a harness</a>
+        <a href="#subscriptions"><span>04</span>Understand costs</a>
+        <a href="#recommendation"><span>05</span>What to choose</a>
         <a href="/companies.html"><span>↗</span>Chinese AI Companies Overview</a>
         <a class="sources-nav" href="#sources">Sources &amp; data ↗</a>
       </nav>
-      <div class="sidebar-note"><span class="small-label">CODING FIRST</span><p>A dated research snapshot. Every metric is linked to its source.</p><a href="/data.json" download>Download the data ↓</a></div>
+      <div class="sidebar-note"><p>Every metric is linked to its source.</p><a href="/data.json" download>Download the data ↓</a></div>
     </aside>
     <main id="main">
       <section id="conclusion" class="hero report-section" aria-labelledby="hero-title">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> AI MODEL RESEARCH <span class="eyebrow-divider">/</span> CODING FIRST</div>
-        <h1 id="hero-title">Better coding.<br><span>Smarter spending.</span></h1>
+        <h1 id="hero-title" class="visually-hidden">AI coding model comparison</h1>
         <p class="hero-intro">Chinese AI models and Western flagships, compared on the work that matters.</p>
-        <p class="snapshot-note"><a href="/companies.html">New: Chinese AI Companies Overview ↗</a> · A separate 6 October snapshot covering six companies and creative video.</p>
+        <p class="snapshot-note"><a href="/companies.html">Chinese AI Companies Overview ↗</a></p>
         <div class="conclusion-block"><span class="content-label inference">Analyst conclusion</span><p id="conclusion-text"></p></div>
-        <div id="snapshot-note" class="snapshot-note"></div>
         <a class="primary-link" href="#comparison">Explore the comparison <span aria-hidden="true">↓</span></a>
         <div id="decision-cards" class="decision-grid"></div>
       </section>
-      <section id="takeaways" class="report-section" aria-labelledby="takeaways-heading">
-        <div class="section-heading"><span class="section-number">02</span><div><h2 id="takeaways-heading">What matters most</h2><p>The main findings, before the details.</p></div></div>
-        <div id="takeaway-list" class="takeaway-list"></div>
-      </section>
       <section id="comparison" class="report-section" aria-labelledby="comparison-heading">
-        <div class="section-heading"><span class="section-number">03</span><div><h2 id="comparison-heading">Compare the models</h2><p>One common coding harness. Transparent prices. No mixed benchmark headlines.</p></div></div>
+        <div class="section-heading"><span class="section-number">02</span><div><h2 id="comparison-heading">Compare the models</h2></div></div>
         <div id="benchmark-method" class="callout"></div>
         <div class="comparison-toolbar"><div class="filter-tabs" role="group" aria-label="Filter models"><button class="selected" data-filter="all" aria-pressed="true">All models</button><button data-filter="China" aria-pressed="false">Chinese</button><button data-filter="Western" aria-pressed="false">Western</button></div><span class="toolbar-hint">Click a column to sort · Scroll table sideways</span></div>
         <div class="table-scroll" role="region" aria-label="Sortable model comparison" tabindex="0"><table id="model-table"><caption id="comparison-caption"></caption><thead></thead><tbody></tbody></table></div>
         <p class="table-key"><span class="best-example">Best in column</span> Lowest price or delay; highest score or speed. These highlights are not an overall model ranking.</p>
-        <details class="accordion" open><summary>Model cards <span class="summary-meta">The essentials at a glance</span></summary><div id="model-cards" class="model-grid"></div></details>
-        <div class="chart-panel"><div class="panel-heading"><span class="small-label">CODING PERFORMANCE</span><h3>How many tasks get solved?</h3><p>Terminal-Bench 4.0 in AA’s common harness. Higher is better.</p></div><div id="coding-chart"></div></div>
-        <div class="chart-panel"><div class="panel-heading"><span class="small-label">PERFORMANCE PER DOLLAR</span><h3>Where coding quality meets cost</h3><p>Move toward the upper left for more tasks solved at a lower cost per attempt.</p></div><div id="value-chart"></div></div>
+        <details class="accordion" open><summary>Model cards</summary><div id="model-cards" class="model-grid"></div></details>
+        <div class="chart-panel"><div class="panel-heading"><h3>How many tasks get solved?</h3></div><div id="coding-chart"></div></div>
         <div id="comparison-interpretation" class="analysis-block"></div>
-        <details class="accordion"><summary>Repository coding &amp; longer agent tasks <span class="summary-meta">A separate, real-agent evaluation</span></summary><div id="repository-evidence" class="detail-body"></div></details>
-        <details class="accordion"><summary>Context, cache fees &amp; conflicting data <span class="summary-meta">Read before comparing bills</span></summary><div id="api-caveats" class="detail-body"></div></details>
       </section>
       <section id="harness" class="report-section" aria-labelledby="harness-heading">
-        <div class="section-heading"><span class="section-number">04</span><div><h2 id="harness-heading">Choose the right harness</h2><p>The model and the agent framework work together. Their results can change together, too.</p></div></div>
+        <div class="section-heading"><span class="section-number">03</span><div><h2 id="harness-heading">Choose the right harness</h2></div></div>
         <div id="harness-overview" class="harness-grid"></div>
-        <div class="setup-panel"><div class="panel-heading"><span class="small-label">STEP-BY-STEP SETUP</span><h3>GLM Flash inside Claude Code</h3><p>Configuration for a Z.ai Coding Plan account.</p></div><div id="glm-setup"></div></div>
-        <details class="accordion"><summary>GLM compatibility &amp; billing limitations <span class="summary-meta">Supported by Z.ai; gateway caveats apply</span></summary><div id="glm-compatibility" class="detail-body"></div></details>
-        <details class="accordion"><summary>DeepSeek native harness vs. other frameworks <span class="summary-meta">Vendor-run results, kept separate from AA</span></summary><div id="deepseek-harness" class="detail-body"></div></details>
       </section>
       <section id="subscriptions" class="report-section" aria-labelledby="subscriptions-heading">
-        <div class="section-heading"><span class="section-number">05</span><div><h2 id="subscriptions-heading">Understand the real cost</h2><p>Subscriptions can save money. Their reset windows can also stop a long task.</p></div></div>
+        <div class="section-heading"><span class="section-number">04</span><div><h2 id="subscriptions-heading">Understand the real cost</h2></div></div>
         <div id="billing-overview" class="billing-grid"></div>
-        <div class="chart-panel"><div class="panel-heading"><span class="small-label">SUBSCRIPTION VS. API</span><h3>What could a month cost?</h3><p>Illustrative billed-token workloads. Choose a scenario to compare the options.</p></div><div id="cost-chart"></div></div>
-        <details class="accordion" open><summary>Workload assumptions &amp; exact monthly costs <span class="summary-meta">Calculated, not measured developer averages</span></summary><div id="cost-details" class="detail-body"></div></details>
-        <details class="accordion"><summary>All current Z.ai plans <span class="summary-meta">Individual and Team pricing, quotas and tools</span></summary><div id="zai-plans" class="detail-body"></div></details>
-        <details class="accordion"><summary>DeepSeek billing &amp; rate limits <span class="summary-meta">Direct API pricing and time windows</span></summary><div id="deepseek-billing" class="detail-body"></div></details>
-        <details class="accordion"><summary>OpenCode Go: a third-party alternative <span class="summary-meta">Allowances, tool support and limitations</span></summary><div id="go-plans" class="detail-body"></div></details>
-        <details class="accordion"><summary>Temporary offers &amp; ambiguous annual prices <span class="summary-meta">Excluded from ongoing cost estimates</span></summary><div id="subscription-caveats" class="detail-body"></div></details>
+        <div class="chart-panel"><div class="panel-heading"><h3>What could a month cost?</h3></div><div id="cost-chart"></div></div>
+        <details class="accordion" open><summary>Workload assumptions &amp; exact monthly costs</summary><div id="cost-details" class="detail-body"></div></details>
+        <details class="accordion"><summary>All current Z.ai plans</summary><div id="zai-plans" class="detail-body"></div></details>
+        <details class="accordion"><summary>DeepSeek billing &amp; rate limits</summary><div id="deepseek-billing" class="detail-body"></div></details>
+        <details class="accordion"><summary>OpenCode Go: a third-party alternative</summary><div id="go-plans" class="detail-body"></div></details>
+        <details class="accordion"><summary>Temporary offers &amp; ambiguous annual prices</summary><div id="subscription-caveats" class="detail-body"></div></details>
       </section>
       <section id="recommendation" class="report-section" aria-labelledby="recommendation-heading">
-        <div class="section-heading"><span class="section-number">06</span><div><h2 id="recommendation-heading">What should you choose?</h2><p>Recommendations for heavy use and multi-hour coding tasks.</p></div></div>
+        <div class="section-heading"><span class="section-number">05</span><div><h2 id="recommendation-heading">What should you choose?</h2></div></div>
         <div id="recommendation-list" class="recommendation-grid"></div>
-        <div id="closing-note" class="callout"></div>
       </section>
-      <footer id="sources" class="report-footer"><div class="section-heading"><div><h2>Sources &amp; data</h2><p>Follow a source to inspect the original result. Download the snapshot to update this report.</p></div></div><div id="source-list" class="source-grid"></div><div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Download data.json</a><a id="github-link" href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div></footer>
+      <footer id="sources" class="report-footer"><div class="section-heading"><div><h2>Sources &amp; data</h2></div></div><div id="source-list" class="source-grid"></div><div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Download data.json</a><a id="github-link" href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div></footer>
     </main>
   </div>
   <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>

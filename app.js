@@ -58,8 +58,6 @@ function renderIntro() {
   $('#last-updated').textContent = dateText(data.metadata.lastUpdated);
   $('#last-updated').dateTime = data.metadata.lastUpdated;
   $('#conclusion-text').textContent = data.conclusion.text;
-  $('#snapshot-note').textContent = `Data snapshot: ${dateText(data.metadata.snapshotDate)} · ${data.metadata.priceNote}. ${data.metadata.evaluationDateNote}`;
-  $('#takeaway-list').innerHTML = data.takeaways.map(item => `<article class="takeaway">${badge(item)}<p>${escapeHTML(item.text)}</p>${provenance(item)}</article>`).join('');
   const choices = [
     { id: 'sol_medium', label: 'Balanced primary agent', field: 'tb4_percent', format: percent, unit: 'TB4 solved' },
     { id: 'glm', label: 'Budget subscription', field: 'tb4_api_usd_per_attempt', format: dollars, unit: 'AA cost / attempt' },
@@ -72,25 +70,10 @@ function renderIntro() {
   $('#benchmark-method').innerHTML = `<strong>${escapeHTML(data.benchmark.title)} · ${escapeHTML(data.benchmark.harness)}</strong><p>${escapeHTML(data.benchmark_methodology)} ${escapeHTML(data.benchmark.lcrDefinition)} ${escapeHTML(data.benchmark.speedDefinition)}</p>${badge(data.benchmark)}${provenance(data.benchmark)}`;
   $('#comparison-caption').textContent = `Verified snapshot · ${dateText(data.snapshot_date)} · USD before tax · DeepSeek peak tariff · LCR is a context test, not overnight reliability`;
   $('#comparison-interpretation').innerHTML = content(data.benchmark.interpretation);
-  $('#repository-evidence').innerHTML = content(data.repository_agent_note) + table([
-    { label: 'Model + harness', render: row => `<strong>${escapeHTML(row.model)}</strong><br>${escapeHTML(row.harness)}` },
-    { label: 'DeepSWE v1.1 solved', render: row => percent(row.deepswe_percent) },
-    { label: 'Average API $/task*', render: row => dollars(row.api_usd_per_task) },
-    { label: 'Average minutes/task*', render: row => number(row.minutes_per_task, 1) }
-  ], data.repository_agents, 'AA coding agents · cost/time averages across three suites, not DeepSWE alone') + content(data.long_task_note, 'What remains unproven');
-  $('#api-caveats').innerHTML = data.caveats.map(item => content(item, item.conflict ? 'Conflicting pricing data' : '')).join('');
 }
 function renderHarness() {
   const glm = data.harness.glm, ds = data.harness.deepseek;
   $('#harness-overview').innerHTML = `<article class="harness-card"><span class="small-label">GLM 5.3-FLASH</span><h3>ZCode or Claude Code</h3>${content(glm.official)}${content(glm.recommendation)}</article><article class="harness-card"><span class="small-label">DEEPSEEK V4.1 FLASH</span><h3>Native Standard Harness</h3>${content(ds.recommendation)}${content(ds.setup)}</article>`;
-  const headings = ['Get your Z.ai key', 'Merge the settings', 'Check the model aliases', 'Start and verify a session'];
-  $('#glm-setup').innerHTML = `<ol class="setup-steps">${glm.steps.map((step, index) => `<li class="setup-step"><h4>${headings[index]}</h4><p>${escapeHTML(step.text)}</p>${index === 1 ? codeBlock(glm.configCode, glm.configPath, 'glm-config-code') : ''}${index === 3 ? codeBlock('/effort max\n/status', 'Claude Code commands', 'glm-session-code') : ''}${provenance(step)}</li>`).join('')}</ol><div class="callout">${content(glm.compatibility.at(-1))}</div>`;
-  $('#glm-compatibility').innerHTML = glm.compatibility.map(item => content(item)).join('');
-  $('#deepseek-harness').innerHTML = content(ds.benchmarkNote) + table([
-    { key: 'harness', label: 'Harness' },
-    { label: 'DeepSWE solved', render: row => percent(row.deepswe_percent) },
-    { label: 'Terminal-Bench 2.1 solved', render: row => percent(row.tb21_percent) }
-  ], ds.rows, 'Vendor-run same-model results · not comparable to AA Terminal-Bench 4.0') + content(ds.limitations) + content(ds.interpretation) + content(data.long_task_note);
 }
 function renderSubscriptions() {
   const { zai, deepseek, go } = data.subscriptions;
@@ -127,15 +110,17 @@ function renderSubscriptions() {
     { label: 'DeepSeek allowance equivalent', render: row => dollars(row.deepseek_flash_allowance_usd_equivalent) }
   ], go.plans, 'Third-party OpenCode Go · shared normalized allowances') + content(go.limits) + content(go.compatibility);
   $('#subscription-caveats').innerHTML = content(zai.campaign, 'Temporary campaign') + content(zai.annualConflict, 'Ambiguous Team annual price');
+  $('#subscriptions').querySelectorAll('.content-label').forEach(label => {
+    if (label.textContent === kindLabels.verified) label.remove();
+  });
 }
 function renderRecommendations() {
   $('#recommendation-list').innerHTML = data.final_recommendations.map(item => {
     const colon = item.text.indexOf(':');
     const heading = colon > 0 ? item.text.slice(0, colon) : 'Other Chinese options';
     const body = colon > 0 ? item.text.slice(colon + 1).trim() : item.text;
-    return `<article class="recommendation-card">${badge(item)}<h3>${escapeHTML(heading)}</h3><p>${escapeHTML(body)}</p>${provenance(item)}</article>`;
+    return `<article class="recommendation-card"><h3>${escapeHTML(heading)}</h3><p>${escapeHTML(body)}</p>${provenance(item)}</article>`;
   }).join('');
-  $('#closing-note').innerHTML = content(data.final_note);
   $('#source-list').innerHTML = data.sources.map(source => `<div class="source-item">${link(source.url, `${source.title} ↗`)}<time datetime="${source.date}">${dateText(source.date)}</time></div>`).join('');
   $('#footer-date').textContent = `Data last updated ${dateText(data.metadata.lastUpdated)} · Report prepared ${dateText(data.metadata.reportDate)} · ${data.metadata.priceNote}. ${data.metadata.evaluationDateNote}`;
 }

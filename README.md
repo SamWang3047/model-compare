@@ -1,6 +1,6 @@
 # Model Compare
 
-A readable, interactive static website comparing Chinese coding models with GPT-6.1 Sol and Claude Opus. It turns the original research report into a conclusion-first guide with sortable comparisons, model cards, interactive charts, harness instructions and subscription cost scenarios.
+A readable, interactive static website comparing Chinese coding models with GPT-6.1 Sol and Claude Opus. It turns the original research report into a conclusion-first guide with sortable comparisons, model cards, interactive charts, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
 
 **[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
 
@@ -36,7 +36,7 @@ To check external source links, run `npm run check:links`. The checker separates
 - `index.html` — page structure and SEO metadata.
 - `styles.css` — responsive blue-and-white theme, dark mode and accessible controls.
 - `app.js` — data-driven content, table sorting, accordions and copy controls.
-- `charts.js` — interactive coding, value and monthly-cost charts.
+- `charts.js` — interactive coding and monthly-cost charts, with the original value-chart renderer retained for reuse.
 - `data.json` — every model figure, plan, scenario, conclusion, caveat and source.
 - `companies.html`, `companies.js`, `companies.css` — the new company overview, using the existing design system.
 - `companies.json` — all new model metrics, company briefs, subscriptions, scenarios, limits and dated source references.
@@ -84,7 +84,7 @@ For automatic deployments on every push, import the public **model-compare** Git
 
 ## Data sources
 
-All source links and snapshot dates are stored in `data.json` and visible on the website. The research starts with [Artificial Analysis model results](https://artificialanalysis.ai/) and its [coding-agent leaderboard](https://artificialanalysis.ai/agents/coding-agents), cross-checked against:
+All source links and snapshot dates are stored in `data.json`; remaining model metrics and recommendation text show their provenance on the website. The research starts with [Artificial Analysis model results](https://artificialanalysis.ai/) and its [coding-agent leaderboard](https://artificialanalysis.ai/agents/coding-agents), cross-checked against:
 
 - [Z.ai API pricing](https://docs.z.ai/guides/overview/pricing), [Coding Plan quotas](https://docs.z.ai/devpack/overview), [Team plans](https://docs.z.ai/devpack/teamplan), [Claude Code integration](https://docs.z.ai/devpack/tool/claude) and [ZCode](https://zcode.z.ai/en).
 - [DeepSeek API pricing](https://api-docs.deepseek.com/quick_start/pricing/), [V4.1 Flash model card](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) and [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).

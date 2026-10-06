@@ -3202,7 +3202,8 @@
         "s3"
       ],
       "text": "For reviewed repository work on a budget, test GLM 5.3 Flash; retain Sol or Opus for difficult failures and high-stakes review. Flash’s lower tariff does not erase their measured coding advantage.",
-      "title": "Coding"
+      "title": "Coding",
+      "model_labels": ["GLM 5.3 Flash"]
     },
     {
       "type": "inference",
@@ -3213,7 +3214,8 @@
         "s18"
       ],
       "text": "For inexpensive tool loops, try DeepSeek V4.1 Flash with Standard Harness, or GLM Flash with ZCode/Claude Code. Validate your repository before running multi-hour autonomous work.",
-      "title": "Agents and tool use"
+      "title": "Agents and tool use",
+      "model_labels": ["DeepSeek V4.1 Flash", "GLM 5.3 Flash"]
     },
     {
       "type": "inference",
@@ -3224,7 +3226,8 @@
         "s2"
       ],
       "text": "For document-plus-code or video-grounded reasoning, test Step 5 Preview or Kimi K3. Large context is useful but does not guarantee reliable retrieval or sustained task completion.",
-      "title": "Long context"
+      "title": "Long context",
+      "model_labels": ["Step 5 Preview", "Kimi K3"]
     },
     {
       "type": "inference",
@@ -3234,7 +3237,8 @@
         "s12"
       ],
       "text": "For the lowest uncached text tariff in this set, choose GLM 5.3 Flash. For cache-heavy workloads, compare DeepSeek Flash’s peak and off-peak cache rates. A cheap model can still cost more after retries.",
-      "title": "Lowest cost"
+      "title": "Lowest cost",
+      "model_labels": ["GLM 5.3 Flash"]
     },
     {
       "type": "inference",
@@ -3244,7 +3248,8 @@
         "s47"
       ],
       "text": "For reference-led audiovisual storytelling, test Seedance 2.5. Wan 3.0 ranks higher and costs less on this T2V board; Veo and Kling remain workflow alternatives, not automatic quality upgrades.",
-      "title": "Creative video"
+      "title": "Creative video",
+      "model_labels": ["Seedance 2.5"]
     }
   ],
   "limits": [
