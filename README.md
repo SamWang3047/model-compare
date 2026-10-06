@@ -2,6 +2,10 @@
 
 A readable, interactive static website comparing Chinese coding models with GPT-6.1 Sol and Claude Opus. It turns the original research report into a conclusion-first guide with sortable comparisons, model cards, interactive charts, harness instructions and subscription cost scenarios.
 
+**[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
+
+Vercel is connected to this repository. Pushes to `main` automatically deploy to production.
+
 **Data snapshot / last updated: 5 October 2026.** The original report was prepared on **6 October 2026**. Benchmark evaluation dates are not consistently disclosed by Artificial Analysis. The website preserves the report's figures and conclusions; it does not claim that the snapshot is live pricing.
 
 ## Run locally
@@ -21,6 +25,8 @@ npm run build
 
 The production build is written to `dist/`. The check validates the dataset, its source references and the site's local assets. Browser verification also checks the site at mobile and desktop sizes.
 
+To check external source links, run `npm run check:links`. The checker separates broken links from requests blocked by a provider; it does not rewrite the report's sources.
+
 ## Project structure
 
 - `index.html` — page structure and SEO metadata.
@@ -29,6 +35,8 @@ The production build is written to `dist/`. The check validates the dataset, its
 - `charts.js` — interactive coding, value and monthly-cost charts.
 - `data.json` — every model figure, plan, scenario, conclusion, caveat and source.
 - `scripts/` — dependency-free local development, build and validation tools.
+
+`og.png` is a pre-generated social preview. The optional `scripts/create-og.py` helper requires Pillow only if you want to regenerate that image; it is not part of the application or build.
 
 ## Update the report
 
