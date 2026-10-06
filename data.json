@@ -1,0 +1,1691 @@
+{
+  "snapshot_date": "2026-10-05",
+  "measurement_date": "not consistently disclosed by Artificial Analysis",
+  "models": [
+    {
+      "id": "glm",
+      "model": "GLM-5.3-Flash (max)",
+      "group": "China",
+      "tb4_percent": 32.8283,
+      "tb4_api_usd_per_attempt": 0.789999,
+      "output_tokens_per_second": 51.3628,
+      "first_answer_seconds": 42.2523,
+      "aa_lcr_percent": 80,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 0.15,
+      "output_usd_per_million": 0.5,
+      "cache_read_usd_per_million": 0.03,
+      "aa_source": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "pricing_source": "https://docs.z.ai/guides/overview/pricing",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_glm",
+        "zai_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_glm",
+        "tb4_api_usd_per_attempt": "aa_glm",
+        "output_tokens_per_second": "aa_glm",
+        "first_answer_seconds": "aa_glm",
+        "aa_lcr_percent": "aa_glm",
+        "context_tokens": "zai_pricing",
+        "input_usd_per_million": "zai_pricing",
+        "output_usd_per_million": "zai_pricing",
+        "cache_read_usd_per_million": "zai_pricing"
+      },
+      "display_name": "GLM 5.3-Flash",
+      "short_name": "GLM Flash",
+      "card_description": {
+        "text": "Competitive budget coding option. Claude Code is documented by Z.ai; ZCode is its first-party harness.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_glm",
+          "zai_claude",
+          "zcode"
+        ]
+      }
+    },
+    {
+      "id": "deepseek",
+      "model": "DeepSeek V4.1 Flash (max)",
+      "group": "China",
+      "tb4_percent": 26.7677,
+      "tb4_api_usd_per_attempt": 1.156028,
+      "output_tokens_per_second": 213.1792,
+      "first_answer_seconds": 10.4323,
+      "aa_lcr_percent": 84,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 0.3,
+      "output_usd_per_million": 1.2,
+      "cache_read_usd_per_million": 0.006,
+      "aa_source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+      "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_deepseek",
+        "deepseek_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_deepseek",
+        "tb4_api_usd_per_attempt": "aa_deepseek",
+        "output_tokens_per_second": "aa_deepseek",
+        "first_answer_seconds": "aa_deepseek",
+        "aa_lcr_percent": "aa_deepseek",
+        "context_tokens": "deepseek_pricing",
+        "input_usd_per_million": "deepseek_pricing",
+        "output_usd_per_million": "deepseek_pricing",
+        "cache_read_usd_per_million": "deepseek_pricing"
+      },
+      "display_name": "DeepSeek V4.1 Flash",
+      "short_name": "DeepSeek Flash",
+      "card_description": {
+        "text": "Fast generation and inexpensive cached context. Prefer direct API billing with native Standard Harness.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_deepseek",
+          "deepseek_pricing",
+          "deepseek_harness"
+        ]
+      }
+    },
+    {
+      "id": "mimo",
+      "model": "MiMo-V2.6-Pro",
+      "group": "China",
+      "tb4_percent": 34.8485,
+      "tb4_api_usd_per_attempt": 0.43805,
+      "output_tokens_per_second": 41.1762,
+      "first_answer_seconds": 52.7648,
+      "aa_lcr_percent": 86.3333,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 0.435,
+      "output_usd_per_million": 0.87,
+      "cache_read_usd_per_million": 0.0036,
+      "aa_source": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "pricing_source": "https://mimo.mi.com/models/en-US/mimo-v2.6-pro",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_mimo",
+        "mimo_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_mimo",
+        "tb4_api_usd_per_attempt": "aa_mimo",
+        "output_tokens_per_second": "aa_mimo",
+        "first_answer_seconds": "aa_mimo",
+        "aa_lcr_percent": "aa_mimo",
+        "context_tokens": "mimo_pricing",
+        "input_usd_per_million": "mimo_pricing",
+        "output_usd_per_million": "mimo_pricing",
+        "cache_read_usd_per_million": "mimo_pricing"
+      },
+      "display_name": "MiMo V2.6 Pro",
+      "short_name": "MiMo Pro",
+      "card_description": {
+        "text": "Strong Chinese API value in this snapshot; worth testing on your repositories.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_mimo"
+        ]
+      }
+    },
+    {
+      "id": "qwen",
+      "model": "Qwen3.8 Max 0902",
+      "group": "China",
+      "tb4_percent": 38.8889,
+      "tb4_api_usd_per_attempt": 18.676073,
+      "output_tokens_per_second": 37.1498,
+      "first_answer_seconds": 56.4799,
+      "aa_lcr_percent": 80.3333,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 2,
+      "output_usd_per_million": 6,
+      "cache_read_usd_per_million": 0.25,
+      "aa_source": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "pricing_source": "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_qwen",
+        "qwen_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_qwen",
+        "tb4_api_usd_per_attempt": "aa_qwen",
+        "output_tokens_per_second": "aa_qwen",
+        "first_answer_seconds": "aa_qwen",
+        "aa_lcr_percent": "aa_qwen",
+        "context_tokens": "qwen_pricing",
+        "input_usd_per_million": "qwen_pricing",
+        "output_usd_per_million": "qwen_pricing",
+        "cache_read_usd_per_million": "qwen_pricing"
+      },
+      "display_name": "Qwen3.8 Max 0902",
+      "short_name": "Qwen Max",
+      "card_description": {
+        "text": "Stronger common-harness score, but high attempt cost in this test. Consider it within an existing Alibaba workflow.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_qwen"
+        ]
+      }
+    },
+    {
+      "id": "kimi",
+      "model": "Kimi K3 (max)",
+      "group": "China",
+      "tb4_percent": 12.6263,
+      "tb4_api_usd_per_attempt": 5.088442,
+      "output_tokens_per_second": 45.0068,
+      "first_answer_seconds": 48.2723,
+      "aa_lcr_percent": 88.6667,
+      "context_tokens": 1048576,
+      "input_usd_per_million": 3,
+      "output_usd_per_million": 15,
+      "cache_read_usd_per_million": 0.3,
+      "aa_source": "https://artificialanalysis.ai/models/kimi-k3",
+      "pricing_source": "https://platform.kimi.ai/docs/pricing/chat",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_kimi",
+        "kimi_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_kimi",
+        "tb4_api_usd_per_attempt": "aa_kimi",
+        "output_tokens_per_second": "aa_kimi",
+        "first_answer_seconds": "aa_kimi",
+        "aa_lcr_percent": "aa_kimi",
+        "context_tokens": "kimi_pricing",
+        "input_usd_per_million": "kimi_pricing",
+        "output_usd_per_million": "kimi_pricing",
+        "cache_read_usd_per_million": "kimi_pricing"
+      },
+      "display_name": "Kimi K3",
+      "short_name": "Kimi K3",
+      "card_description": {
+        "text": "Use the native Kimi Code CLI. Repository results are much stronger than its generic terminal score suggests.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_agents",
+          "aa_kimi"
+        ]
+      }
+    },
+    {
+      "id": "minimax",
+      "model": "MiniMax M3",
+      "group": "China",
+      "tb4_percent": 2.0202,
+      "tb4_api_usd_per_attempt": 3.039877,
+      "output_tokens_per_second": 97.2199,
+      "first_answer_seconds": 22.6002,
+      "aa_lcr_percent": 83,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 0.3,
+      "output_usd_per_million": 1.2,
+      "cache_read_usd_per_million": 0.06,
+      "aa_source": "https://artificialanalysis.ai/models/minimax-m3",
+      "pricing_source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_minimax",
+        "minimax_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_minimax",
+        "tb4_api_usd_per_attempt": "aa_minimax",
+        "output_tokens_per_second": "aa_minimax",
+        "first_answer_seconds": "aa_minimax",
+        "aa_lcr_percent": "aa_minimax",
+        "context_tokens": "minimax_pricing",
+        "input_usd_per_million": "minimax_pricing",
+        "output_usd_per_million": "minimax_pricing",
+        "cache_read_usd_per_million": "minimax_pricing"
+      },
+      "display_name": "MiniMax M3",
+      "short_name": "MiniMax M3",
+      "card_description": {
+        "text": "Fast generation, but would not be the first choice for autonomous coding based on this specific benchmark.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_minimax"
+        ]
+      }
+    },
+    {
+      "id": "sol_medium",
+      "model": "GPT-6.1 Sol (medium)",
+      "group": "Western",
+      "tb4_percent": 47.9798,
+      "tb4_api_usd_per_attempt": 0.613755,
+      "output_tokens_per_second": 47.5166,
+      "first_answer_seconds": 5.4283,
+      "aa_lcr_percent": 83.3333,
+      "context_tokens": 1050000,
+      "input_usd_per_million": 2,
+      "output_usd_per_million": 10,
+      "cache_read_usd_per_million": 0.1,
+      "aa_source": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
+      "pricing_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_sol_medium",
+        "sol_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_sol_medium",
+        "tb4_api_usd_per_attempt": "aa_sol_medium",
+        "output_tokens_per_second": "aa_sol_medium",
+        "first_answer_seconds": "aa_sol_medium",
+        "aa_lcr_percent": "aa_sol_medium",
+        "context_tokens": "sol_pricing",
+        "input_usd_per_million": "sol_pricing",
+        "output_usd_per_million": "sol_pricing",
+        "cache_read_usd_per_million": "sol_pricing"
+      },
+      "display_name": "GPT-6.1 Sol medium",
+      "short_name": "Sol medium",
+      "card_description": {
+        "text": "Best balanced primary-agent recommendation here: strong repository results, task cost and turnaround time.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_agents",
+          "aa_sol_medium"
+        ]
+      }
+    },
+    {
+      "id": "sol_max",
+      "model": "GPT-6.1 Sol (max)",
+      "group": "Western",
+      "tb4_percent": 56.0606,
+      "tb4_api_usd_per_attempt": 1.822763,
+      "output_tokens_per_second": 55.6746,
+      "first_answer_seconds": 273.2534,
+      "aa_lcr_percent": 83,
+      "context_tokens": 1050000,
+      "input_usd_per_million": 2,
+      "output_usd_per_million": 10,
+      "cache_read_usd_per_million": 0.1,
+      "aa_source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "pricing_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_sol_max",
+        "sol_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_sol_max",
+        "tb4_api_usd_per_attempt": "aa_sol_max",
+        "output_tokens_per_second": "aa_sol_max",
+        "first_answer_seconds": "aa_sol_max",
+        "aa_lcr_percent": "aa_sol_max",
+        "context_tokens": "sol_pricing",
+        "input_usd_per_million": "sol_pricing",
+        "output_usd_per_million": "sol_pricing",
+        "cache_read_usd_per_million": "sol_pricing"
+      },
+      "display_name": "GPT-6.1 Sol max",
+      "short_name": "Sol max",
+      "card_description": {
+        "text": "Use higher effort selectively for difficult work; the evaluated max configuration takes longer than medium.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_sol_max",
+          "aa_sol_medium"
+        ]
+      }
+    },
+    {
+      "id": "opus",
+      "model": "Claude Opus 5.5 (max, fallback)",
+      "group": "Western",
+      "tb4_percent": 59.596,
+      "tb4_api_usd_per_attempt": 13.109276,
+      "output_tokens_per_second": 90.7785,
+      "first_answer_seconds": 755.5445,
+      "aa_lcr_percent": 84.6667,
+      "context_tokens": 1000000,
+      "input_usd_per_million": 4,
+      "output_usd_per_million": 20,
+      "cache_read_usd_per_million": 0.2,
+      "aa_source": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "type": "verified",
+      "date": "2026-10-05",
+      "evaluationDate": "Not consistently disclosed by Artificial Analysis",
+      "source_ids": [
+        "aa_opus",
+        "opus_pricing"
+      ],
+      "metric_sources": {
+        "tb4_percent": "aa_opus",
+        "tb4_api_usd_per_attempt": "aa_opus",
+        "output_tokens_per_second": "aa_opus",
+        "first_answer_seconds": "aa_opus",
+        "aa_lcr_percent": "aa_opus",
+        "context_tokens": "opus_pricing",
+        "input_usd_per_million": "opus_pricing",
+        "output_usd_per_million": "opus_pricing",
+        "cache_read_usd_per_million": "opus_pricing"
+      },
+      "display_name": "Claude Opus 5.5 max",
+      "short_name": "Opus max",
+      "card_description": {
+        "text": "Premium escalation option for difficult tasks. The evaluated configuration permits fallback and has high cost and latency.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_opus"
+        ]
+      }
+    }
+  ],
+  "benchmark_methodology": "AA Terminal-Bench 4.0; mini-swe-agent; 66 tasks; three repeats; 500 steps; no context compaction. Attempt costs include failed attempts.",
+  "methodology_source": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+  "notes": [
+    "AA GLM cache price is $0.026/M; official Z.ai is $0.03/M. Benchmark attempt cost retains AA's snapshot. Monthly cost calculations use official price.",
+    "DeepSeek benchmark cost uses peak pricing. Off-peak equivalent is an arithmetic estimate at half the cost with unchanged tokens/cache behavior.",
+    "Opus max benchmark includes AA default fallback. It is not a guaranteed pure-model run.",
+    "Qwen prices are Singapore/international. AA effective context is 983616; official total context is 1000000.",
+    "Sol official context is 1050000; AA rounds to 1000000. Standard short-context rates shown: above 272K input tokens, input/cache rates double and output rate increases 50%; cache writes are extra.",
+    "Kimi prices verified from official pricing Markdown/MDX and caching guide. Cache writes: $3/5min, $6/1hour per million; write/read/uncached token buckets are exclusive.",
+    "AA-LCR tests long-context reasoning, not autonomous multi-hour task completion.",
+    "Speed is standardized API output speed; first-answer latency includes thinking and varies by effort/provider/time.",
+    "MiniMax M3 rates double above512K input. Official passive cache has no extra write fee; AA .375 write entry conflicts. AA attempt cost retained unadjusted.",
+    "GLM Claude Code Anthropic endpoint is Coding Plan route; normal PAYG uses OpenAI-compatible api/paas/v4. No automatic PAYG fallback for previously subscribed accounts."
+  ],
+  "workload_assumptions": {
+    "type": "illustrative",
+    "days": 28,
+    "workdays": 20,
+    "weekly_blocks": 4,
+    "input_cache_hit_fraction": 0.95,
+    "session_distribution": "one five-hour quota window per workday; equal usage across four weeks and twenty workdays; heavy is aggregate parallel-agent traffic, not one sequential stream",
+    "output": "total billed output, including reasoning",
+    "excluded": "tool fees, taxes, temporary campaigns, unquantified ZCode usage bonus",
+    "scenarios": [
+      {
+        "label": "Light",
+        "uncached_input_millions": 1,
+        "cached_input_millions": 19,
+        "output_millions": 1
+      },
+      {
+        "label": "Medium",
+        "uncached_input_millions": 20,
+        "cached_input_millions": 380,
+        "output_millions": 20
+      },
+      {
+        "label": "Heavy",
+        "uncached_input_millions": 100,
+        "cached_input_millions": 1900,
+        "output_millions": 100
+      }
+    ],
+    "glm_plan_source": "https://docs.z.ai/devpack/overview",
+    "glm_price_source": "https://docs.z.ai/guides/overview/pricing",
+    "deepseek_price_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "opencode_source": "https://opencode.ai/docs/go/",
+    "date": "2026-10-05",
+    "source_ids": [
+      "zai_pricing",
+      "zai_quotas",
+      "deepseek_pricing",
+      "opencode_go"
+    ]
+  },
+  "sources": [
+    {
+      "id": "aa_method",
+      "title": "Artificial Analysis intelligence benchmarking methodology",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_agents",
+      "title": "Artificial Analysis coding-agent results",
+      "url": "https://artificialanalysis.ai/agents/coding-agents",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_agent_method",
+      "title": "Artificial Analysis coding-agent methodology",
+      "url": "https://artificialanalysis.ai/methodology/coding-agents-benchmarking",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_pricing",
+      "title": "Z.ai API pricing",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_pricing",
+      "title": "DeepSeek API pricing",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "mimo_pricing",
+      "title": "MiMo V2.6 Pro model and pricing",
+      "url": "https://mimo.mi.com/models/en-US/mimo-v2.6-pro",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "qwen_pricing",
+      "title": "Alibaba Qwen3.8 Max documentation",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-max",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot",
+      "publishedDate": "2026-09-28"
+    },
+    {
+      "id": "kimi_pricing",
+      "title": "Kimi chat pricing",
+      "url": "https://platform.kimi.ai/docs/pricing/chat",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "kimi_cache",
+      "title": "Kimi context caching",
+      "url": "https://platform.kimi.ai/docs/guide/context-caching",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "minimax_pricing",
+      "title": "MiniMax pay-as-you-go pricing",
+      "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "minimax_cache",
+      "title": "MiniMax prompt caching",
+      "url": "https://platform.minimax.io/docs/api-reference/text-prompt-caching",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "sol_pricing",
+      "title": "OpenAI GPT-6.1 Sol model documentation",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "opus_pricing",
+      "title": "Anthropic API pricing",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zcode",
+      "title": "ZCode first-party coding agent",
+      "url": "https://zcode.z.ai/en",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_claude",
+      "title": "Z.ai Claude Code integration",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_models",
+      "title": "Z.ai latest-model configuration",
+      "url": "https://docs.z.ai/devpack/latest-model",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "anthropic_gateway",
+      "title": "Anthropic LLM gateway documentation",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zcode_config",
+      "title": "ZCode configuration and billing routes",
+      "url": "https://zcode.z.ai/en/docs/configuration",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_faq",
+      "title": "Z.ai Coding Plan FAQ",
+      "url": "https://docs.z.ai/devpack/faq",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_card",
+      "title": "DeepSeek V4.1 Flash official model card",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_harness",
+      "title": "DeepSeek Harness repository",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_providers",
+      "title": "DeepSeek Harness provider configuration",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/providers.md",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_subscribe",
+      "title": "Z.ai subscription checkout",
+      "url": "https://z.ai/subscribe",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_quotas",
+      "title": "Z.ai Coding Plan quota rules",
+      "url": "https://docs.z.ai/devpack/overview",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_team",
+      "title": "Z.ai Team plan documentation",
+      "url": "https://docs.z.ai/devpack/teamplan",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_team_billing",
+      "title": "Z.ai public Team billing data",
+      "url": "https://api.z.ai/api/biz/overseas/team/subscribe/product/public_pricing",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_tools",
+      "title": "Z.ai supported coding tools",
+      "url": "https://docs.z.ai/devpack/tool/others",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_limits",
+      "title": "Z.ai dynamic usage policy",
+      "url": "https://docs.z.ai/devpack/usage-policy",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "zai_campaign",
+      "title": "GLM Flash temporary campaign terms",
+      "url": "https://docs.z.ai/devpack/notice/event-glm-5.3-flash",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_terms",
+      "title": "DeepSeek Harness terms of use",
+      "url": "https://deepseek.com/en/harness/terms-of-use/",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot",
+      "publishedDate": "2026-09-20"
+    },
+    {
+      "id": "deepseek_limits",
+      "title": "DeepSeek API rate limits",
+      "url": "https://api-docs.deepseek.com/quick_start/rate_limit/",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "deepseek_thinking",
+      "title": "DeepSeek thinking-mode documentation",
+      "url": "https://api-docs.deepseek.com/guides/thinking_mode/",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "opencode_go",
+      "title": "OpenCode Go subscription documentation",
+      "url": "https://opencode.ai/docs/go/",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot",
+      "publishedDate": "2026-10-03"
+    },
+    {
+      "id": "aa_glm",
+      "title": "Artificial Analysis: GLM-5.3-Flash (max)",
+      "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_deepseek",
+      "title": "Artificial Analysis: DeepSeek V4.1 Flash (max)",
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_mimo",
+      "title": "Artificial Analysis: MiMo-V2.6-Pro",
+      "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_qwen",
+      "title": "Artificial Analysis: Qwen3.8 Max 0902",
+      "url": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_kimi",
+      "title": "Artificial Analysis: Kimi K3 (max)",
+      "url": "https://artificialanalysis.ai/models/kimi-k3",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_minimax",
+      "title": "Artificial Analysis: MiniMax M3",
+      "url": "https://artificialanalysis.ai/models/minimax-m3",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_sol_medium",
+      "title": "Artificial Analysis: GPT-6.1 Sol (medium)",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_sol_max",
+      "title": "Artificial Analysis: GPT-6.1 Sol (max)",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    },
+    {
+      "id": "aa_opus",
+      "title": "Artificial Analysis: Claude Opus 5.5 (max, fallback)",
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "date": "2026-10-05",
+      "dateMeaning": "Accessed in the original report snapshot"
+    }
+  ],
+  "metadata": {
+    "title": "Chinese AI Coding Models: Price, Performance & Harnesses",
+    "snapshotDate": "2026-10-05",
+    "reportDate": "2026-10-06",
+    "lastUpdated": "2026-10-05",
+    "currency": "USD",
+    "priceNote": "USD before tax",
+    "timezone": "Australia/Sydney",
+    "dataPolicy": "All numbers and conclusions are preserved from the earlier report. No new research or model figures were added.",
+    "evaluationDateNote": "Benchmark figures were observed on the snapshot date; evaluation-run dates are not consistently disclosed.",
+    "description": "Compare GLM Flash, DeepSeek Flash, MiMo, Qwen, Kimi and MiniMax with GPT-6.1 Sol and Claude Opus. Explore coding evidence, API prices, harnesses and subscriptions."
+  },
+  "conclusion": {
+    "text": "For heavy coding, GLM Flash subscriptions and DeepSeek’s fast cached API offer low costs; Sol medium has stronger independent coding results, while MiMo deserves serious consideration among Chinese models.",
+    "type": "inference",
+    "date": "2026-10-05",
+    "source_ids": [
+      "aa_glm",
+      "aa_deepseek",
+      "aa_sol_medium",
+      "aa_mimo",
+      "zai_quotas"
+    ]
+  },
+  "takeaways": [
+    {
+      "text": "Sol medium combines stronger coding scores with lower benchmark task costs than either Flash model. Cheap tokens do not guarantee cheap completed tasks.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_sol_medium",
+        "aa_glm",
+        "aa_deepseek"
+      ]
+    },
+    {
+      "text": "DeepSeek leads this group in generation speed; GLM Flash scores higher in AA’s common coding harness.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_deepseek",
+        "aa_glm"
+      ]
+    },
+    {
+      "text": "Harness choice substantially changes results. Kimi’s native CLI performs much better on repository tasks than its generic terminal benchmark suggests.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_kimi"
+      ]
+    },
+    {
+      "text": "For heavy autonomous use, subscription reset windows, compaction and recovery matter alongside model quality. A large context window alone does not establish reliability.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_method",
+        "zai_quotas",
+        "deepseek_harness"
+      ]
+    },
+    {
+      "text": "MiMo offers strong Chinese API value in this snapshot; Opus leads the common coding benchmark but costs substantially more per attempt.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_mimo",
+        "aa_opus"
+      ]
+    }
+  ],
+  "benchmark": {
+    "title": "AA Terminal-Bench 4.0",
+    "harness": "mini-swe-agent",
+    "contextCompaction": false,
+    "costDefinition": "API cost per attempt includes unsuccessful attempts.",
+    "speedDefinition": "Output tokens per second and first-answer delay; delay includes thinking.",
+    "lcrDefinition": "AA-LCR measures long-context reasoning, not overnight autonomous success.",
+    "type": "verified",
+    "date": "2026-10-05",
+    "source_ids": [
+      "aa_method"
+    ],
+    "interpretation": {
+      "text": "MiMo and Sol medium occupy the attractive combination of coding success and low benchmark spend. GLM is a competitive budget option. DeepSeek’s clearest advantage is speed and inexpensive cached context. Qwen’s higher coding score does not translate into low task cost in this particular test.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_mimo",
+        "aa_sol_medium",
+        "aa_glm",
+        "aa_deepseek",
+        "aa_qwen"
+      ]
+    }
+  },
+  "caveats": [
+    {
+      "text": "Sol’s official context limit is 1.05 million tokens. Above 272,000 input tokens, input/cache rates double and output rates increase 50% for the entire request. Cache writes cost $2.50/M.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "sol_pricing"
+      ],
+      "model_ids": [
+        "sol_medium",
+        "sol_max"
+      ]
+    },
+    {
+      "text": "DeepSeek off-peak prices are $0.15 input / $0.60 output / $0.003 cached input per million. Max changes reasoning effort, not the per-token tariff; extra reasoning increases billed output.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "deepseek_pricing",
+        "deepseek_thinking"
+      ],
+      "model_ids": [
+        "deepseek"
+      ]
+    },
+    {
+      "text": "MiniMax M3’s listed rates double above 512,000 input tokens. Priority serving costs 1.5× standard. Official passive caching has no additional write fee.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "minimax_pricing",
+        "minimax_cache"
+      ],
+      "model_ids": [
+        "minimax"
+      ]
+    },
+    {
+      "text": "Qwen prices are Singapore/international 0902 rates with implicit caching. Explicit caching lists $2.50/M writes and $0.17/M reads.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "qwen_pricing"
+      ],
+      "model_ids": [
+        "qwen"
+      ]
+    },
+    {
+      "text": "Opus cache writes cost $5/M for five minutes or $8/M for one hour. Kimi’s corresponding prices are $3/M and $6/M.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "opus_pricing",
+        "kimi_cache"
+      ],
+      "model_ids": [
+        "opus",
+        "kimi"
+      ]
+    },
+    {
+      "text": "AA’s Opus configuration permits fallback. Treat it as the evaluated configuration, rather than a guaranteed pure-model run.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_opus",
+        "aa_agents"
+      ],
+      "model_ids": [
+        "opus"
+      ]
+    },
+    {
+      "text": "AA lists GLM cached input at $0.026/M, versus Z.ai’s $0.03/M. Benchmark costs retain AA’s reported snapshot; monthly calculations use official prices.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_glm",
+        "zai_pricing"
+      ],
+      "model_ids": [
+        "glm"
+      ],
+      "conflict": true
+    },
+    {
+      "text": "AA’s MiniMax cache-write entry conflicts with current M3 documentation. The AA benchmark attempt cost is retained unchanged.",
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_minimax",
+        "minimax_cache"
+      ],
+      "model_ids": [
+        "minimax"
+      ],
+      "conflict": true
+    }
+  ],
+  "repository_agents": [
+    {
+      "model": "GPT-6.1 Sol medium",
+      "harness": "Codex",
+      "deepswe_percent": 72.0,
+      "api_usd_per_task": 0.7,
+      "minutes_per_task": 10.9,
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_agent_method"
+      ]
+    },
+    {
+      "model": "Claude Opus 5.5 max",
+      "harness": "Claude Code, with fallback",
+      "deepswe_percent": 68.4,
+      "api_usd_per_task": 13.04,
+      "minutes_per_task": 64.5,
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_agent_method"
+      ]
+    },
+    {
+      "model": "Kimi K3",
+      "harness": "Kimi Code CLI",
+      "deepswe_percent": 68.4,
+      "api_usd_per_task": 5.05,
+      "minutes_per_task": 61.5,
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_agent_method"
+      ]
+    },
+    {
+      "model": "Qwen3.8 Max",
+      "harness": "Claude Code",
+      "deepswe_percent": 51.0,
+      "api_usd_per_task": 3.48,
+      "minutes_per_task": 63.1,
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_agent_method"
+      ]
+    },
+    {
+      "model": "Full GLM 5.3 max",
+      "harness": "OpenCode",
+      "deepswe_percent": 61.4,
+      "api_usd_per_task": 4.24,
+      "minutes_per_task": 48.1,
+      "type": "verified",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_agent_method"
+      ]
+    }
+  ],
+  "repository_agent_note": {
+    "text": "DeepSWE v1.1 solved is repository-coding evidence. Cost and time average across AA’s three coding-agent suites, rather than DeepSWE alone. Full GLM results must not be attributed to GLM Flash. AA does not provide an equivalent current agent row for either requested Flash/native-harness pairing.",
+    "type": "verified",
+    "date": "2026-10-05",
+    "source_ids": [
+      "aa_agents",
+      "aa_agent_method"
+    ]
+  },
+  "long_task_note": {
+    "text": "No matched independent study was found establishing unattended multi-hour completion rates, recovery reliability or failure frequency for GLM Flash versus DeepSeek Flash in their native harnesses.",
+    "type": "missing",
+    "date": "2026-10-05",
+    "source_ids": [
+      "aa_agents",
+      "aa_method",
+      "deepseek_harness"
+    ]
+  },
+  "harness": {
+    "glm": {
+      "official": {
+        "text": "Z.ai’s first-party option is ZCode, described by the vendor as optimized for GLM. Goals supports continuous planning, execution and verification. Claude Code is also an explicitly documented Z.ai integration.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zcode",
+          "zai_claude"
+        ]
+      },
+      "recommendation": {
+        "text": "Your existing Claude Code setup is reasonable, particularly if you already use its workflow. For a fresh setup centered on long autonomous Goals, try ZCode alongside it. No controlled Flash-specific comparison proves one is consistently better.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zcode",
+          "zai_claude",
+          "aa_agents"
+        ]
+      },
+      "config": {
+        "env": {
+          "ANTHROPIC_AUTH_TOKEN": "YOUR_ZAI_CODING_PLAN_API_KEY",
+          "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
+          "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5.3-flash[1m]",
+          "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5.3-flash[1m]",
+          "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.3-flash[1m]",
+          "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1000000"
+        }
+      },
+      "configCode": "{\n  \"env\": {\n    \"ANTHROPIC_AUTH_TOKEN\": \"YOUR_ZAI_CODING_PLAN_API_KEY\",\n    \"ANTHROPIC_BASE_URL\": \"https://api.z.ai/api/anthropic\",\n    \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"glm-5.3-flash[1m]\",\n    \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"glm-5.3-flash[1m]\",\n    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"glm-5.3-flash[1m]\",\n    \"CLAUDE_CODE_AUTO_COMPACT_WINDOW\": \"1000000\"\n  }\n}",
+      "configPath": "%USERPROFILE%\\.claude\\settings.json",
+      "configProvenance": {
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_claude",
+          "zai_models"
+        ]
+      },
+      "steps": [
+        {
+          "text": "Obtain your Z.ai Coding Plan API key. This configuration applies to a Z.ai Coding Plan account.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_claude"
+          ]
+        },
+        {
+          "text": "Merge the configuration into %USERPROFILE%\\.claude\\settings.json, preserving existing settings.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_claude",
+            "zai_models"
+          ]
+        },
+        {
+          "text": "Map Haiku, Sonnet and Opus aliases to glm-5.3-flash[1m] and use the one-million-token compaction setting shown.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_models"
+          ]
+        },
+        {
+          "text": "Start a new Claude Code session, select /effort max, then check /status.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_models"
+          ]
+        }
+      ],
+      "compatibility": [
+        {
+          "text": "Map all aliases to Flash. Z.ai’s general example contains full GLM mappings, which can consume approximately three times the plan credits.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_models",
+            "zai_quotas"
+          ]
+        },
+        {
+          "text": "Update Claude Code if it rejects the [1m] suffix. GLM supports low/high/max effort; intermediate Claude effort settings are translated.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_models"
+          ]
+        },
+        {
+          "text": "This is Z.ai-supported compatibility. Anthropic says non-Claude models through gateways are not officially supported by Anthropic. External-key requests do not require a Claude subscription.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "anthropic_gateway"
+          ]
+        },
+        {
+          "text": "There is no automatic API-balance fallback when plan quota runs out. Normal GLM PAYG uses https://api.z.ai/api/paas/v4. Anthropic-route PAYG requires a never-subscribed, manually allowlisted account; previously subscribed accounts remain subject to the route restriction.",
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zcode_config",
+            "zai_faq"
+          ]
+        }
+      ]
+    },
+    "deepseek": {
+      "recommendation": {
+        "text": "Use native Standard mode for working projects. Minimal’s strong vendor benchmark does not establish that it is best for overnight development; the Minimal SDK profile omits several workspace and context-management features.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_harness",
+          "deepseek_card"
+        ]
+      },
+      "rows": [
+        {
+          "harness": "Claude Code",
+          "deepswe_percent": 69.8,
+          "tb21_percent": 88.0,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "deepseek_card"
+          ]
+        },
+        {
+          "harness": "OpenCode",
+          "deepswe_percent": 65.5,
+          "tb21_percent": 85.0,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "deepseek_card"
+          ]
+        },
+        {
+          "harness": "mini-swe-agent",
+          "deepswe_percent": 74.2,
+          "tb21_percent": 90.3,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "deepseek_card"
+          ]
+        },
+        {
+          "harness": "DeepSeek Harness Minimal",
+          "deepswe_percent": 72.6,
+          "tb21_percent": 90.6,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "deepseek_card"
+          ]
+        },
+        {
+          "harness": "DeepSeek Harness Standard",
+          "deepswe_percent": 70.5,
+          "tb21_percent": 85.8,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "deepseek_card"
+          ]
+        }
+      ],
+      "benchmarkNote": {
+        "text": "These are vendor-run, same-model results, not directly comparable to AA Terminal-Bench 4.0. The headline DeepSWE result uses mini-swe-agent, not the native harness.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_card"
+        ]
+      },
+      "setup": {
+        "text": "Use the direct DeepSeek provider. Add your API key under Settings → Models, choose deepseek-flash, and select max effort for difficult work.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_providers"
+        ]
+      },
+      "limitations": {
+        "text": "The harness is a developer preview, with experimental features and expected breaking changes.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_harness"
+        ]
+      },
+      "interpretation": {
+        "text": "Strengths: fast generation, inexpensive cached context and good vendor-reported tool use. Limitations: weaker AA common-harness coding results, sensitivity to harness configuration and limited independent evidence for long unattended sessions.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "aa_deepseek",
+          "deepseek_card",
+          "deepseek_harness"
+        ]
+      }
+    }
+  },
+  "subscriptions": {
+    "zai": {
+      "individual": [
+        {
+          "name": "Lite",
+          "monthly_usd": 18,
+          "quarterly_upfront_usd": 43.2,
+          "annual_upfront_usd": 151.2,
+          "credits_per_five_hours": 2000,
+          "credits_per_week": 10000,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_subscribe",
+            "zai_quotas"
+          ]
+        },
+        {
+          "name": "Pro",
+          "monthly_usd": 80,
+          "quarterly_upfront_usd": 192.0,
+          "annual_upfront_usd": 672.0,
+          "credits_per_five_hours": 12000,
+          "credits_per_week": 60000,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_subscribe",
+            "zai_quotas"
+          ]
+        },
+        {
+          "name": "Max",
+          "monthly_usd": 168,
+          "quarterly_upfront_usd": 403.2,
+          "annual_upfront_usd": 1411.2,
+          "credits_per_five_hours": 28000,
+          "credits_per_week": 140000,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_subscribe",
+            "zai_quotas"
+          ]
+        }
+      ],
+      "team": [
+        {
+          "name": "Team Standard",
+          "monthly_usd_per_seat": 88,
+          "quarterly_upfront_usd": null,
+          "annual_initial_invoice_usd": 1056,
+          "annual_renewal_usd": 950.4,
+          "advertised_annual_effective_monthly_usd": 79.2,
+          "credits_per_five_hours": 15000,
+          "credits_per_week": 66000,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_team",
+            "zai_team_billing"
+          ]
+        },
+        {
+          "name": "Team Premium",
+          "monthly_usd_per_seat": 188,
+          "quarterly_upfront_usd": null,
+          "annual_initial_invoice_usd": 2256,
+          "annual_renewal_usd": 2030.4,
+          "advertised_annual_effective_monthly_usd": 169.2,
+          "credits_per_five_hours": 35000,
+          "credits_per_week": 155000,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "zai_team",
+            "zai_team_billing"
+          ]
+        }
+      ],
+      "billingNote": {
+        "text": "Individual quarterly and annual prices are paid upfront.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_subscribe"
+        ]
+      },
+      "annualConflict": {
+        "text": "Team annual pricing is ambiguous: advertised effective monthly prices are $79.20/$169.20, but public billing data lists initial annual invoices of $1,056/$2,256 and discounted renewals of $950.40/$2,030.40. Team requires at least two seats.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_team",
+          "zai_team_billing"
+        ],
+        "conflict": true
+      },
+      "supportedTools": {
+        "text": "Plans support ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline and other documented clients.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_tools"
+        ]
+      },
+      "rateLimits": {
+        "text": "Z.ai does not publish a fixed RPM/TPM or concurrency guarantee for these tiers; serving limits are dynamic.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_limits"
+        ]
+      },
+      "creditFormula": {
+        "text": "(uncached input tokens × 2.3 + cached input tokens × 0.56 + output tokens × 8) / 10,000",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_quotas"
+        ]
+      },
+      "offpeak": {
+        "text": "Ordinary off-peak usage consumes half the credits.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_quotas"
+        ]
+      },
+      "exhaustion": {
+        "text": "Individual-plan exhaustion does not automatically bill API balance. Team can enable paid overage.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_faq",
+          "zai_team"
+        ]
+      },
+      "campaign": {
+        "text": "The current half-credit promotion and nighttime Flash campaign end 7 October 2026. The nighttime window is 23:00–09:00 Singapore, or 02:00–12:00 Sydney AEDT. Eligible ZCode/AutoClaw usage consumes no quota; other agents receive increased quota. Conditions include restrictions when existing quotas are exhausted. Temporary offers are excluded from ongoing cost estimates.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "zai_quotas",
+          "zai_campaign"
+        ],
+        "temporary": true
+      }
+    },
+    "deepseek": {
+      "billing": {
+        "text": "No verified official flat-fee coding subscription was found. Harness software is free; inference uses prepaid API balance.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_terms",
+          "deepseek_pricing"
+        ]
+      },
+      "rateLimits": {
+        "text": "Flash has an account-level concurrency limit of 2,500. This is not a throughput guarantee.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_limits"
+        ]
+      },
+      "peakWindows": {
+        "text": "Peak windows are weekdays 01:00–04:00 and 06:00–10:00 UTC, excluding Chinese public holidays: 12:00–15:00 and 17:00–21:00 Sydney AEDT. Other hours receive the lower tariff.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "deepseek_pricing"
+        ]
+      }
+    },
+    "go": {
+      "plans": [
+        {
+          "name": "Go",
+          "monthly_usd": 10,
+          "glm_flash_allowance_usd_equivalent": 60,
+          "deepseek_flash_allowance_usd_equivalent": 60,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "opencode_go"
+          ]
+        },
+        {
+          "name": "Go Plus",
+          "monthly_usd": 40,
+          "glm_flash_allowance_usd_equivalent": 180,
+          "deepseek_flash_allowance_usd_equivalent": 120,
+          "type": "verified",
+          "date": "2026-10-05",
+          "source_ids": [
+            "opencode_go"
+          ]
+        }
+      ],
+      "limits": {
+        "text": "Allowances are normalized and shared, not additive pools or cash API credits. Limits: 20% per five hours, 50% per week and 100% per month.",
+        "type": "verified",
+        "date": "2026-10-05",
+        "source_ids": [
+          "opencode_go"
+        ]
+      },
+      "compatibility": {
+        "text": "Claude Code and ZCode integrations are documented. DeepSeek Harness has a known adapter-header compatibility issue; prefer direct API billing for its native harness. Go uses its own integration configuration; the Z.ai JSON applies to Z.ai accounts.",
+        "type": "inference",
+        "date": "2026-10-05",
+        "source_ids": [
+          "opencode_go"
+        ]
+      }
+    }
+  },
+  "monthly_costs": [
+    {
+      "label": "Light",
+      "uncached_input_millions": 1,
+      "cached_input_millions": 19,
+      "output_millions": 1,
+      "glm_api_usd": 1.22,
+      "deepseek_offpeak_usd": 0.807,
+      "deepseek_peak_usd": 1.614,
+      "glm_credits_peak": 2094.0,
+      "glm_credits_offpeak": 1047.0,
+      "glm_offpeak_plan": "Lite",
+      "glm_offpeak_plan_usd": 18,
+      "glm_peak_plan": "Lite",
+      "glm_peak_plan_usd": 18,
+      "go_glm_plan": "Go",
+      "go_glm_plan_usd": 10,
+      "snapshot_date": "2026-10-05",
+      "assumptions_source": "Illustrative scenario; quota/pricing URLs in data.json",
+      "type": "calculated",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_pricing",
+        "zai_quotas",
+        "deepseek_pricing",
+        "opencode_go"
+      ]
+    },
+    {
+      "label": "Medium",
+      "uncached_input_millions": 20,
+      "cached_input_millions": 380,
+      "output_millions": 20,
+      "glm_api_usd": 24.4,
+      "deepseek_offpeak_usd": 16.14,
+      "deepseek_peak_usd": 32.28,
+      "glm_credits_peak": 41880.0,
+      "glm_credits_offpeak": 20940.0,
+      "glm_offpeak_plan": "Lite",
+      "glm_offpeak_plan_usd": 18,
+      "glm_peak_plan": "Pro",
+      "glm_peak_plan_usd": 80,
+      "go_glm_plan": "Go",
+      "go_glm_plan_usd": 10,
+      "snapshot_date": "2026-10-05",
+      "assumptions_source": "Illustrative scenario; quota/pricing URLs in data.json",
+      "type": "calculated",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_pricing",
+        "zai_quotas",
+        "deepseek_pricing",
+        "opencode_go"
+      ]
+    },
+    {
+      "label": "Heavy",
+      "uncached_input_millions": 100,
+      "cached_input_millions": 1900,
+      "output_millions": 100,
+      "glm_api_usd": 122.0,
+      "deepseek_offpeak_usd": 80.7,
+      "deepseek_peak_usd": 161.4,
+      "glm_credits_peak": 209400.0,
+      "glm_credits_offpeak": 104700.0,
+      "glm_offpeak_plan": "Pro",
+      "glm_offpeak_plan_usd": 80,
+      "glm_peak_plan": "Pro",
+      "glm_peak_plan_usd": 80,
+      "go_glm_plan": "Go Plus",
+      "go_glm_plan_usd": 40,
+      "snapshot_date": "2026-10-05",
+      "assumptions_source": "Illustrative scenario; quota/pricing URLs in data.json",
+      "type": "calculated",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_pricing",
+        "zai_quotas",
+        "deepseek_pricing",
+        "opencode_go"
+      ]
+    }
+  ],
+  "workload_notes": [
+    {
+      "text": "These are transparent planning scenarios, not measured developer averages. Heavy represents aggregate parallel agents; quota eligibility does not guarantee sufficient serving capacity.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_limits",
+        "zai_quotas"
+      ]
+    },
+    {
+      "text": "The medium scenario fits Lite at off-peak credit rates, but exceeds Lite’s five-hour and weekly allowances if all usage receives peak rates.",
+      "type": "calculated",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_quotas"
+      ]
+    },
+    {
+      "text": "Calculations hold token volumes constant. Actual completed-task costs differ because models generate different amounts of reasoning, retry differently and succeed at different rates.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_method"
+      ]
+    }
+  ],
+  "chart_estimates": {
+    "deepseek_offpeak": {
+      "model_id": "deepseek",
+      "tb4_api_usd_per_attempt": 0.578014,
+      "tb4_percent": 26.7677,
+      "note": "Half peak tariff, with unchanged tokens/cache behavior. Arithmetic estimate, not an off-peak benchmark rerun.",
+      "type": "calculated",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_deepseek",
+        "deepseek_pricing"
+      ]
+    }
+  },
+  "final_recommendations": [
+    {
+      "text": "Best balanced primary agent: Sol medium in Codex. It has the strongest combination here of independent repository-coding results, task cost and turnaround time. Use higher effort selectively.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_sol_medium"
+      ],
+      "model_ids": [
+        "sol_medium"
+      ]
+    },
+    {
+      "text": "Best budget subscription candidate: GLM Flash in your existing Claude Code workflow. Consider Go Plus for price, or Z.ai Pro for direct vendor service and ZCode access. Choose using measured quota consumption.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "zai_claude",
+        "zai_quotas",
+        "opencode_go",
+        "zcode"
+      ],
+      "model_ids": [
+        "glm"
+      ]
+    },
+    {
+      "text": "Best fast, cached API option: DeepSeek Flash with native Standard Harness. Direct API billing avoids subscription reset windows and the Go compatibility issue. Schedule flexible work off-peak.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_deepseek",
+        "deepseek_harness",
+        "deepseek_pricing",
+        "opencode_go"
+      ],
+      "model_ids": [
+        "deepseek"
+      ]
+    },
+    {
+      "text": "Best additional Chinese API trial: MiMo V2.6 Pro. Its common-harness results justify testing it on your repositories before committing to GLM or DeepSeek alone.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_mimo"
+      ],
+      "model_ids": [
+        "mimo"
+      ]
+    },
+    {
+      "text": "Premium escalation option: Opus 5.5. Its stronger common-harness score supports selective use on difficult work; its evaluated max configuration has substantially higher cost and latency.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_opus"
+      ],
+      "model_ids": [
+        "opus"
+      ]
+    },
+    {
+      "text": "Use Kimi with its native CLI. Qwen merits consideration within an existing Alibaba workflow. MiniMax would not be the first choice for autonomous coding based on this specific benchmark.",
+      "type": "inference",
+      "date": "2026-10-05",
+      "source_ids": [
+        "aa_agents",
+        "aa_kimi",
+        "aa_qwen",
+        "aa_minimax"
+      ],
+      "model_ids": [
+        "kimi",
+        "qwen",
+        "minimax"
+      ]
+    }
+  ],
+  "final_note": {
+    "text": "For unattended sessions, the unresolved question is successful completion on your own repositories. Record completed tasks, total spend, elapsed time and required interventions; token price alone will miss the largest differences.",
+    "type": "inference",
+    "date": "2026-10-05",
+    "source_ids": [
+      "aa_method",
+      "aa_agents"
+    ]
+  }
+}
