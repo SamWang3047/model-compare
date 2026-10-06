@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Chinese AI Companies Overview — Model Compare</title>
+  <meta name="description" content="A sourced overview of Z.ai, DeepSeek, MiniMax, Kimi, StepFun and ByteDance Seedance. Compare model intelligence, coding, API prices, subscriptions and video quality.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chinese AI Companies Overview — Model Compare">
+  <meta property="og:description" content="Six Chinese AI companies. Dated evidence, transparent prices, and separate comparisons for LLMs and creative video.">
+  <meta property="og:url" content="https://model-compare-delta.vercel.app/companies.html">
+  <meta property="og:image" content="https://model-compare-delta.vercel.app/og.png">
+  <meta property="og:image:alt" content="Model Compare: AI models, coding first. Price, performance and harnesses.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://model-compare-delta.vercel.app/companies.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/companies.css">
+  <link rel="stylesheet" href="/companies-charts.css">
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('model-compare-theme') || 'system'; } catch { document.documentElement.dataset.theme = 'system'; }</script>
+  <script type="module" src="/companies.js"></script>
+</head>
+<body class="companies-page">
+  <a class="skip-link" href="#main">Skip to overview</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Model Compare home"><img src="/favicon.svg" alt="" width="30" height="30"><span>model<span class="brand-secondary">compare</span></span></a>
+    <div class="header-actions"><span class="header-date">Last updated <time id="last-updated" datetime="2026-10-06">6 Oct 2026</time></span><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Change color theme"><span aria-hidden="true">◐</span><span id="theme-label">System</span></button></div>
+  </header>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <nav id="toc" aria-label="Overview sections">
+        <p class="nav-label">COMPANIES OVERVIEW</p>
+        <a class="active" href="#overview"><span>01</span>The overview</a>
+        <a href="#comparison"><span>02</span>Compare flagships</a>
+        <a href="#profiles"><span>03</span>Six companies</a>
+        <a href="#scenarios"><span>04</span>Choose by task</a>
+        <a href="#limits"><span>05</span>Data limits</a>
+        <a class="sources-nav" href="#sources">Sources &amp; data ↗</a>
+        <a href="/"><span>↗</span>Original coding report</a>
+      </nav>
+      <div class="sidebar-note"><span class="small-label">A SEPARATE SNAPSHOT</span><p>LLM intelligence and video quality use different scales.</p><a href="/companies.json" download>Download the overview data ↓</a></div>
+    </aside>
+    <main id="main">
+      <section id="overview" class="hero report-section" aria-labelledby="overview-heading">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> AI MODEL RESEARCH <span class="eyebrow-divider">/</span> SIX COMPANIES</div>
+        <h1 id="overview-heading">Chinese AI<br><span>Companies Overview</span></h1>
+        <p class="hero-intro">Current flagships, inexpensive options, and the work they suit.</p>
+        <div class="conclusion-block" id="overview-text"></div>
+        <p class="snapshot-note">Research accessed 6 October 2026. The <a href="/">original coding report</a> retains its earlier snapshot.</p>
+        <a class="primary-link" href="#comparison">Compare the flagships <span aria-hidden="true">↓</span></a>
+      </section>
+      <section id="comparison" class="report-section" aria-labelledby="comparison-heading">
+        <div class="section-heading"><span class="section-number">02</span><div><h2 id="comparison-heading">Compare the flagships</h2><p>Use the LLM tab for intelligence and coding. Use the video tab for audiovisual generation.</p></div></div>
+        <div class="comparison-toolbar"><div id="mode-toggle" class="filter-tabs" role="group" aria-label="Model comparison category"><button type="button" class="selected" data-mode="llm" aria-pressed="true">LLMs</button><button type="button" data-mode="video" aria-pressed="false">Video</button></div><span class="toolbar-hint">Click a heading to sort · Scroll sideways</span></div>
+        <div class="table-scroll" role="region" aria-label="Sortable flagship model comparison" tabindex="0"><table id="company-table"><caption>Loading sourced comparison…</caption><thead></thead><tbody></tbody></table></div>
+        <p class="table-key">Highlighted rows are comparison baselines. API prices are USD; gaps use rounded displayed scores.</p>
+        <details class="accordion"><summary>How to read the comparison <span class="summary-meta">Effort, global rank, price mix and coding harness</span></summary><div id="method-notes" class="detail-body"></div></details>
+        <div class="chart-panel" data-kind-panel="llm"><div class="panel-heading"><span class="small-label">LLM INTELLIGENCE / PRICE</span><h3>What does intelligence cost?</h3><p>A transparent token-price mix on a logarithmic price axis. This is not cost per successful task.</p></div><div id="llm-value-chart"></div></div>
+        <div class="chart-panel" data-kind-panel="video" hidden><div class="panel-heading"><span class="small-label">VIDEO QUALITY / PRICE</span><h3>Creative video, on its own scale</h3><p>Human preference in the audio text-to-video arena. Higher score and lower price are preferable.</p></div><div id="video-value-chart"></div></div>
+        <details class="accordion"><summary>Flagships and inexpensive companions <span class="summary-meta">Coding benchmarks, cache, context, weights and limitations</span></summary><div id="model-details" class="detail-body"></div></details>
+      </section>
+      <section id="profiles" class="report-section" aria-labelledby="profiles-heading">
+        <div class="section-heading"><span class="section-number">03</span><div><h2 id="profiles-heading">Six companies, at a glance</h2><p>Each brief uses the same template. Recommendations are analyst inference.</p></div></div>
+        <div id="company-cards" class="companies-grid"></div>
+        <div class="chart-panel"><div class="panel-heading"><span class="small-label">POSITIONING MAP</span><h3>Where each company fits</h3><p>Qualitative positioning, with evidence labels. These categories are not numerical performance ratings.</p></div><div id="positioning-chart"></div></div>
+        <details class="accordion"><summary>Subscriptions and API credit plans <span class="summary-meta">Regular monthly prices, allowances and model aliases</span></summary><div id="plan-details" class="detail-body"></div></details>
+      </section>
+      <section id="scenarios" class="report-section" aria-labelledby="scenarios-heading">
+        <div class="section-heading"><span class="section-number">04</span><div><h2 id="scenarios-heading">Choose by the task</h2><p>Start with a small evaluation on your own work, then decide where a baseline is worth its price.</p></div></div>
+        <div id="scenario-guide" class="recommendation-grid"></div>
+      </section>
+      <section id="limits" class="report-section" aria-labelledby="limits-heading">
+        <div class="section-heading"><span class="section-number">05</span><div><h2 id="limits-heading">Read the limits</h2><p>Missing figures stay missing. Conflicting prices and changing plans remain visible.</p></div></div>
+        <div id="data-limits"></div>
+      </section>
+      <footer id="sources" class="report-footer"><div class="section-heading"><div><h2>Sources &amp; data</h2><p>Source access dates are shown beside every point. Evaluation dates are disclosed separately when available.</p></div></div><div id="source-list" class="source-grid"></div><div class="footer-bottom"><a class="brand" href="/">model<span class="brand-secondary">compare</span></a><div><a href="/companies.json" download>Download companies.json</a><a href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p>Overview last updated 6 October 2026 · Original report preserved.</p></div></footer>
+    </main>
+  </div>
+  <noscript><p class="noscript-note">The sourced overview is available in <a href="/companies.json">companies.json</a>. Interactive comparisons need JavaScript.</p></noscript>
+</body>
+</html>

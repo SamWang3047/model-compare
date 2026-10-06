@@ -1,0 +1,4217 @@
+{
+  "snapshot_date": "2026-10-06",
+  "title": "Chinese AI Companies Overview",
+  "overview": {
+    "type": "inference",
+    "date": "2026-10-06",
+    "source_ids": [
+      "s18",
+      "s44"
+    ],
+    "text": "Chinese models can cut costs for reviewed coding and agents, but the tested Western flagships still lead difficult terminal tasks. Seedance is a strong creative-video option; compare it on video quality, never LLM intelligence."
+  },
+  "methods": [
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s18"
+      ],
+      "text": "AA names include tested effort: GPT-6.1 Sol (max), Claude Opus 5.5 (max with fallback), Kimi K3 (Max), and Dreamina Seedance 2.5. Short names in charts refer to these configurations.",
+      "title": "Exact names, tested configurations"
+    },
+    {
+      "type": "calculated",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s18",
+        "s2"
+      ],
+      "text": "Intelligence Index v4.3.2 is rounded for display. Global ranks are calculated from unrounded scores among 259 scored variants in 263 current default leaderboard rows; estimates and effort variants count. Model-page class ranks are different.",
+      "title": "A common rank universe"
+    },
+    {
+      "type": "calculated",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s3",
+        "s16"
+      ],
+      "text": "Blended price = (3 × uncached input + output) / 4, USD per million total tokens. This illustrative mix excludes cache and long-context uplifts; AA’s own default blend uses a different cached mix.",
+      "title": "A transparent price mix"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s2"
+      ],
+      "text": "Terminal-Bench 4.0 uses AA’s common mini-swe-agent harness without compaction. SciCode is scientific coding and is marked under review by AA. Neither measures overnight completion reliability.",
+      "title": "Coding tests and harnesses"
+    }
+  ],
+  "models": [
+    {
+      "id": "glm-5-3",
+      "companyId": "zai",
+      "company": "Zhipu AI (Z.ai)",
+      "name": "GLM-5.3 (max)",
+      "role": "flagship",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 44.777392385614,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ]
+        },
+        "rank": {
+          "value": 29,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s1",
+            "s28"
+          ],
+          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ]
+        },
+        "tb4": {
+          "value": 41.9191919191919,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ]
+        },
+        "agent": {
+          "value": 62.202864996264196,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ],
+          "note": "AA AutomationBench, SaaS workflows; distinct from coding-only benchmark"
+        },
+        "input": {
+          "value": 1.4,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "output": {
+          "value": 4.4,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "cache": {
+          "value": 0.26,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — GLM-5.3 License",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s29",
+            "s28"
+          ]
+        },
+        "modalities": {
+          "value": "text input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ]
+        },
+        "blended": {
+          "value": 2.15,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -7,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.44000000000000006,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -13,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.22000000000000003,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [],
+      "chartLabel": "GLM-5.3"
+    },
+    {
+      "id": "glm-5-3-flash",
+      "companyId": "zai",
+      "company": "Zhipu AI (Z.ai)",
+      "name": "GLM-5.3-Flash",
+      "role": "companion",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 41.807466113455,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ]
+        },
+        "rank": {
+          "value": 36,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s1",
+            "s30"
+          ],
+          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ]
+        },
+        "tb4": {
+          "value": 32.8282828282828,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ]
+        },
+        "agent": {
+          "value": 60.36862782167782,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ],
+          "note": "AA AutomationBench, SaaS workflows; distinct from coding-only benchmark"
+        },
+        "input": {
+          "value": 0.15,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "output": {
+          "value": 0.5,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "cache": {
+          "value": 0.03,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — MIT",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s31",
+            "s30"
+          ]
+        },
+        "modalities": {
+          "value": "text, image input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ]
+        },
+        "blended": {
+          "value": 0.2375,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -10,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.05,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -16,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.025,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [],
+      "chartLabel": "GLM Flash"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "companyId": "deepseek",
+      "company": "DeepSeek",
+      "name": "DeepSeek V4 Pro 0813 (max)",
+      "role": "companion",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 35.9967791278402,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ]
+        },
+        "rank": {
+          "value": 46,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s1",
+            "s32"
+          ],
+          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ]
+        },
+        "tb4": {
+          "value": 14.1414141414141,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ]
+        },
+        "agent": {
+          "value": 56.711655463440025,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ],
+          "note": "AA AutomationBench, SaaS workflows; distinct from coding-only benchmark"
+        },
+        "input": {
+          "value": 1.32,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "output": {
+          "value": 3.96,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "cache": {
+          "value": 0.044,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — MIT",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s31",
+            "s32"
+          ]
+        },
+        "modalities": {
+          "value": "text input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ]
+        },
+        "blended": {
+          "value": 1.98,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -16,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.396,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -22,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.198,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ],
+          "text": "Off-peak input/output/cache: $0.66/$1.98/$0.022 per million tokens. Main table uses peak tariffs."
+        }
+      ],
+      "chartLabel": "DeepSeek Pro"
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "companyId": "deepseek",
+      "company": "DeepSeek",
+      "name": "DeepSeek V4.1 Flash (max)",
+      "role": "flagship",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 39.456167472527,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33"
+          ]
+        },
+        "rank": {
+          "value": 42,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s1",
+            "s33"
+          ],
+          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33"
+          ]
+        },
+        "tb4": {
+          "value": 26.7676767676768,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33"
+          ]
+        },
+        "agent": {
+          "value": 68.89097769674058,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33"
+          ],
+          "note": "AA AutomationBench, SaaS workflows; distinct from coding-only benchmark"
+        },
+        "input": {
+          "value": 0.3,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "output": {
+          "value": 1.2,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "cache": {
+          "value": 0.006,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — MIT",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s31",
+            "s33"
+          ]
+        },
+        "modalities": {
+          "value": "text, image input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33"
+          ]
+        },
+        "blended": {
+          "value": 0.5249999999999999,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -13,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.12,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -19,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s33",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.06,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ],
+          "text": "Off-peak input/output/cache: $0.15/$0.6/$0.003 per million tokens. Main table uses peak tariffs."
+        }
+      ],
+      "chartLabel": "DeepSeek Flash"
+    },
+    {
+      "id": "gpt-6-1-sol",
+      "companyId": "openai",
+      "company": "OpenAI",
+      "name": "GPT-6.1 Sol (max)",
+      "role": "baseline",
+      "kind": "llm",
+      "baseline": true,
+      "metrics": {
+        "weights": {
+          "value": "proprietary",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24"
+          ]
+        },
+        "context": {
+          "value": 1050000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ]
+        },
+        "ii": {
+          "value": 51.8332597011541,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24"
+          ]
+        },
+        "rank": {
+          "value": 11,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "259 scored entries among 263 current default leaderboard model/effort rows; includes estimates; excludes deprecated catalog entries; rank 1 + count strictly higher unrounded index"
+        },
+        "input": {
+          "value": 2,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ]
+        },
+        "output": {
+          "value": 10,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ]
+        },
+        "cache": {
+          "value": 0.1,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ]
+        },
+        "tb4": {
+          "value": 56.0606060606061,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24"
+          ],
+          "note": "Common mini-swe-agent harness; no compaction"
+        },
+        "sciCode": {
+          "value": 54.1666666666667,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24"
+          ],
+          "note": "Coding benchmark; AA currently marks evaluation under review"
+        },
+        "lcr": {
+          "value": 83.0,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24"
+          ]
+        },
+        "blended": {
+          "value": 4.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": 0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 1.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -6,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s24",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.5,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s16"
+          ],
+          "text": "Standard short-context rate. Above 272K input tokens: input/cache rates double and output rate is 1.5x for the full request."
+        }
+      ],
+      "chartLabel": "Sol max"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "companyId": "anthropic",
+      "company": "Anthropic",
+      "name": "Claude Opus 5.5 (max with fallback)",
+      "role": "baseline",
+      "kind": "llm",
+      "baseline": true,
+      "metrics": {
+        "weights": {
+          "value": "proprietary",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25"
+          ]
+        },
+        "ii": {
+          "value": 57.6223698102963,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25"
+          ]
+        },
+        "rank": {
+          "value": 1,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "259 scored entries among 263 current default leaderboard model/effort rows; includes estimates; excludes deprecated catalog entries; rank 1 + count strictly higher unrounded index"
+        },
+        "input": {
+          "value": 4,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17"
+          ]
+        },
+        "output": {
+          "value": 20,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17"
+          ]
+        },
+        "cache": {
+          "value": 0.2,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17"
+          ]
+        },
+        "tb4": {
+          "value": 59.5959595959596,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25"
+          ],
+          "note": "Common mini-swe-agent harness; no compaction"
+        },
+        "sciCode": {
+          "value": 66.8981481481482,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25"
+          ],
+          "note": "Coding benchmark; AA currently marks evaluation under review"
+        },
+        "lcr": {
+          "value": 84.6666666666667,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25"
+          ]
+        },
+        "blended": {
+          "value": 8.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": 6,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 2.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": 0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s25",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 1.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s17"
+          ],
+          "text": "Standard API pricing. AA pairing permits default fallback; do not describe as pure Opus-only evaluation."
+        }
+      ],
+      "chartLabel": "Opus max"
+    },
+    {
+      "id": "step-5",
+      "companyId": "stepfun",
+      "company": "StepFun (阶跃星辰)",
+      "name": "Step 5 Preview",
+      "role": "flagship",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "weights": {
+          "value": "proprietary",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ]
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s21"
+          ]
+        },
+        "ii": {
+          "value": 43.7343049141614,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ]
+        },
+        "rank": {
+          "value": 30,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "259 scored entries among 263 current default leaderboard model/effort rows; includes estimates; excludes deprecated catalog entries; rank 1 + count strictly higher unrounded index"
+        },
+        "input": {
+          "value": 1,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "output": {
+          "value": 2.7,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "cache": {
+          "value": 0.05,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "tb4": {
+          "value": 33.3333333333333,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ],
+          "note": "Common mini-swe-agent harness; no compaction"
+        },
+        "sciCode": {
+          "value": 58.912037037037,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ],
+          "note": "Coding benchmark; AA currently marks evaluation under review"
+        },
+        "lcr": {
+          "value": 88.3333333333333,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ]
+        },
+        "modalities": {
+          "value": "text, image, video input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s21"
+          ]
+        },
+        "blended": {
+          "value": 1.425,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -8,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.27,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -14,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.135,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ],
+          "text": "Cache-miss input rate includes cache writes. Output includes reasoning and final answer."
+        }
+      ],
+      "chartLabel": "Step 5"
+    },
+    {
+      "id": "step-3-7-flash",
+      "companyId": "stepfun",
+      "company": "StepFun (阶跃星辰)",
+      "name": "Step 3.7 Flash",
+      "role": "companion",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "weights": {
+          "value": "open weights — Apache 2.0",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s23"
+          ]
+        },
+        "context": {
+          "value": 256000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s22"
+          ]
+        },
+        "ii": {
+          "value": 19.4812572685302,
+          "type": "estimate",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27"
+          ]
+        },
+        "rank": {
+          "value": null,
+          "type": "missing",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "Not found on current default leaderboard; AA marks deprecated"
+        },
+        "input": {
+          "value": 0.2,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "output": {
+          "value": 1.15,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "cache": {
+          "value": 0.04,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ]
+        },
+        "tb4": {
+          "value": null,
+          "type": "missing",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27"
+          ],
+          "note": "Common mini-swe-agent harness; no compaction"
+        },
+        "sciCode": {
+          "value": 43.8657407407407,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27"
+          ],
+          "note": "Coding benchmark; AA currently marks evaluation under review"
+        },
+        "lcr": {
+          "value": 73.6666666666667,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27"
+          ]
+        },
+        "modalities": {
+          "value": "text, image, video input; text output",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s22"
+          ]
+        },
+        "blended": {
+          "value": 0.4375,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -33,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.11499999999999999,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -39,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s27",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.057499999999999996,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s22",
+            "s27"
+          ],
+          "text": "Still explicitly supported in current official model/pricing/Step Plan documentation. AA marks deprecated in favor of Step 5 Preview, with estimated II; do not call it the latest release or assign a current global rank."
+        }
+      ],
+      "chartLabel": "Step 3.7*"
+    },
+    {
+      "id": "minimax-m3",
+      "companyId": "minimax",
+      "company": "MiniMax",
+      "name": "MiniMax-M3",
+      "role": "flagship",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 29.2202932236316,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ]
+        },
+        "rank": {
+          "value": 64,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "Derived rank: strictly higher unrounded score among 259 scored rows in the current default all-weights leaderboard; includes estimates and effort variants; 263 total rows, 4 unscored."
+        },
+        "context": {
+          "value": 1000000,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s35"
+          ]
+        },
+        "input": {
+          "value": 0.3,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36"
+          ]
+        },
+        "output": {
+          "value": 1.2,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36"
+          ]
+        },
+        "cache": {
+          "value": 0.06,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — MINIMAX COMMUNITY LICENSE",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s37"
+          ]
+        },
+        "tb4": {
+          "value": 2.02020202020202,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ]
+        },
+        "sciCode": {
+          "value": 47.1064814814815,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ]
+        },
+        "lcr": {
+          "value": 83.0,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ],
+          "note": "AA-LCR v1.1 percentage; not unattended multi-hour reliability."
+        },
+        "blended": {
+          "value": 0.5249999999999999,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -23,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.12,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -29,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.06,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [
+        {
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36",
+            "s38"
+          ],
+          "text": "Main tariff applies at input ≤512k. Above 512k, input/output/cache double to $0.60/$2.40/$0.12 per million. Passive caching has no extra cache-write charge; AA’s cache-write entry conflicts with the official documentation."
+        }
+      ],
+      "chartLabel": "MiniMax-M3"
+    },
+    {
+      "id": "kimi-k3",
+      "companyId": "kimi",
+      "company": "Kimi (Moonshot AI)",
+      "name": "Kimi K3 (Max)",
+      "role": "flagship",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 43.5938229518782,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ]
+        },
+        "rank": {
+          "value": 31,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "Derived rank: strictly higher unrounded score among 259 scored rows in the current default all-weights leaderboard; includes estimates and effort variants; 263 total rows, 4 unscored."
+        },
+        "context": {
+          "value": 1048576,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "input": {
+          "value": 3,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "output": {
+          "value": 15,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "cache": {
+          "value": 0.3,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — Kimi K3 License",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s41"
+          ]
+        },
+        "tb4": {
+          "value": 12.6262626262626,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ]
+        },
+        "lcr": {
+          "value": 88.6666666666667,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ],
+          "note": "AA-LCR v1.1 percentage; not unattended multi-hour reliability."
+        },
+        "blended": {
+          "value": 6.0,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -8,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 1.5,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -14,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.75,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [],
+      "chartLabel": "Kimi K3"
+    },
+    {
+      "id": "kimi-k2-7-code",
+      "companyId": "kimi",
+      "company": "Kimi (Moonshot AI)",
+      "name": "Kimi K2.7 Code",
+      "role": "cost-efficient",
+      "kind": "llm",
+      "baseline": false,
+      "metrics": {
+        "ii": {
+          "value": 25.8121062401836,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42"
+          ]
+        },
+        "rank": {
+          "value": 73,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s18"
+          ],
+          "note": "Derived rank: strictly higher unrounded score among 259 scored rows in the current default all-weights leaderboard; includes estimates and effort variants; 263 total rows, 4 unscored."
+        },
+        "context": {
+          "value": 262144,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "input": {
+          "value": 0.95,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "output": {
+          "value": 4,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "cache": {
+          "value": 0.19,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ]
+        },
+        "weights": {
+          "value": "Open weights — Modified MIT License",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s43"
+          ]
+        },
+        "tb4": {
+          "value": 1.01010101010101,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42"
+          ]
+        },
+        "sciCode": {
+          "value": 47.8009259259259,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42"
+          ]
+        },
+        "lcr": {
+          "value": 79.3333333333333,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42"
+          ],
+          "note": "AA-LCR v1.1 percentage; not unattended multi-hour reliability."
+        },
+        "blended": {
+          "value": 1.7125,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40"
+          ],
+          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
+        },
+        "gapSol": {
+          "value": -26,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42",
+            "s24"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioSol": {
+          "value": 0.4,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40",
+            "s16"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "gapOpus": {
+          "value": -32,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s42",
+            "s25"
+          ],
+          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+        },
+        "outputRatioOpus": {
+          "value": 0.2,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40",
+            "s17"
+          ],
+          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        }
+      },
+      "notes": [],
+      "chartLabel": "K2.7 Code"
+    },
+    {
+      "id": "seedance-2-5",
+      "companyId": "bytedance",
+      "company": "ByteDance",
+      "name": "Dreamina Seedance 2.5",
+      "role": "flagship",
+      "kind": "video",
+      "baseline": false,
+      "chartLabel": "Seedance 2.5",
+      "metrics": {
+        "elo": {
+          "value": 1142,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "rank": {
+          "value": 3,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciLow": {
+          "value": 1133,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciHigh": {
+          "value": 1151,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceMinute": {
+          "value": 34.12,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceSecond": {
+          "value": 0.5686666666666667,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "note": "AA creator-API price per minute / 60; T2V with audio, default settings."
+        },
+        "resolution": {
+          "value": "1080p maximum",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s47"
+          ]
+        },
+        "duration": {
+          "value": "4–30 seconds",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s47"
+          ]
+        },
+        "modalities": {
+          "value": "Text-to-video, image-to-video, multimodal references, edit/extend; native audio",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s47"
+          ]
+        },
+        "weights": {
+          "value": "Proprietary",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "wan-3",
+      "companyId": "wan",
+      "company": "Alibaba",
+      "name": "Wan 3.0",
+      "role": "baseline",
+      "kind": "video",
+      "baseline": true,
+      "chartLabel": "Wan 3.0",
+      "metrics": {
+        "elo": {
+          "value": 1156,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "rank": {
+          "value": 1,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciLow": {
+          "value": 1147,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciHigh": {
+          "value": 1165,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceMinute": {
+          "value": 12,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceSecond": {
+          "value": 0.2,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "note": "AA creator-API price per minute / 60; T2V with audio, default settings."
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "kling-3-omni",
+      "companyId": "kling",
+      "company": "KlingAI",
+      "name": "Kling 3.0 Omni 1080p (Pro)",
+      "role": "baseline",
+      "kind": "video",
+      "baseline": true,
+      "chartLabel": "Kling Omni",
+      "metrics": {
+        "elo": {
+          "value": 1017,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "rank": {
+          "value": 15,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciLow": {
+          "value": 1007,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciHigh": {
+          "value": 1027,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceMinute": {
+          "value": 8.4,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceSecond": {
+          "value": 0.14,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "note": "AA creator-API price per minute / 60; T2V with audio, default settings."
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "veo-3-1",
+      "companyId": "veo",
+      "company": "Google",
+      "name": "Veo 3.1",
+      "role": "baseline",
+      "kind": "video",
+      "baseline": true,
+      "chartLabel": "Veo 3.1",
+      "metrics": {
+        "elo": {
+          "value": 966,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "rank": {
+          "value": 18,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciLow": {
+          "value": 956,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "ciHigh": {
+          "value": 976,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceMinute": {
+          "value": 24,
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceSecond": {
+          "value": 0.4,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "note": "AA creator-API price per minute / 60; T2V with audio, default settings."
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "seedance-2-mini",
+      "companyId": "bytedance",
+      "company": "ByteDance",
+      "name": "Dreamina Seedance 2.0 Mini",
+      "role": "companion",
+      "kind": "video",
+      "baseline": false,
+      "chartLabel": "Seedance Mini",
+      "metrics": {
+        "elo": {
+          "value": null,
+          "type": "missing",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "note": "Not found on the current AA video arena."
+        },
+        "rank": {
+          "value": null,
+          "type": "missing",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ]
+        },
+        "priceSecond": {
+          "value": 0.076,
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s46"
+          ],
+          "note": "Standard list-price $0.38 / 5 seconds at 720p, 16:9, no input video; vendor rounds to $0.08/sec. Not charted against 1080p arena prices."
+        },
+        "resolution": {
+          "value": "720p maximum",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s49"
+          ]
+        },
+        "duration": {
+          "value": "4–15 seconds",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s49"
+          ]
+        },
+        "modalities": {
+          "value": "Text-to-video / image-to-video / references; audio",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s49"
+          ]
+        },
+        "weights": {
+          "value": "Proprietary",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s46"
+          ]
+        }
+      },
+      "notes": []
+    }
+  ],
+  "companies": [
+    {
+      "id": "zai",
+      "name": "Zhipu AI (Z.ai)",
+      "flagshipId": "glm-5-3",
+      "modelIds": [
+        "glm-5-3",
+        "glm-5-3-flash"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ],
+          "text": "Coding-focused open weights with capped subscriptions."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28",
+            "s30"
+          ],
+          "text": "GLM-5.3 (max); cheaper GLM-5.3-Flash."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28",
+            "s30"
+          ],
+          "text": "45, rank 29; Flash 42, rank 36."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s3"
+          ],
+          "text": "Flagship $1.40/$4.40 input/output; Flash $0.15/$0.50 per million."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28",
+            "s30",
+            "s3",
+            "s24",
+            "s25",
+            "s16",
+            "s17"
+          ],
+          "text": "−7/−13 points vs Sol/Opus; output 0.44×/0.22× their price."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ],
+          "text": "Repository changes; screenshot-aware Flash development; ZCode workflows."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s28"
+          ],
+          "text": "Hard unattended coding without evaluation."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s28",
+          "s30",
+          "s3",
+          "s24",
+          "s25",
+          "s16",
+          "s17"
+        ],
+        "text": "−7/−13 points vs Sol/Opus"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s28",
+          "s30"
+        ],
+        "text": "GLM shares large-context agent integration with the baselines, but trails both on overall intelligence and common-harness terminal coding."
+      }
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "flagshipId": "deepseek-v4-1-flash",
+      "modelIds": [
+        "deepseek-v4-1-flash",
+        "deepseek-v4-pro"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ],
+          "text": "Low-priced cached-context agents; newer Flash exceeds served Pro."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32",
+            "s33"
+          ],
+          "text": "DeepSeek V4.1 Flash (max); V4 Pro 0813 (max)."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32",
+            "s33"
+          ],
+          "text": "Flash 39, rank 42; Pro 36, rank 46."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s12"
+          ],
+          "text": "Flash $0.30/$1.20; Pro $1.32/$3.96 per million, peak."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32",
+            "s33",
+            "s12",
+            "s24",
+            "s25",
+            "s16",
+            "s17"
+          ],
+          "text": "Flash −13/−19 points; output 0.12×/0.06× Sol/Opus."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ],
+          "text": "Cached repository agents; high-volume tools; document reasoning."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s32"
+          ],
+          "text": "Choosing Pro because its name sounds stronger."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s32",
+          "s33",
+          "s12",
+          "s24",
+          "s25",
+          "s16",
+          "s17"
+        ],
+        "text": "Flash −13/−19 points"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s32",
+          "s33"
+        ],
+        "text": "Flash supports large contexts and image-grounded tools at lower tariffs; both baselines still solve more AA terminal tasks."
+      }
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "flagshipId": "minimax-m3",
+      "modelIds": [
+        "minimax-m3"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ],
+          "text": "Low-priced multimodal open weights and interactive agents."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34",
+            "s50"
+          ],
+          "text": "MiniMax-M3; M Plan serves M3.1 Flash Preview."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ],
+          "text": "M3 29, rank 64; preview score Not found."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s36",
+            "s51"
+          ],
+          "text": "M3 $0.30/$1.20 per million at ≤512k; plans $22/$55/$132 monthly."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34",
+            "s36",
+            "s24",
+            "s25",
+            "s16",
+            "s17"
+          ],
+          "text": "−23/−29 points; output 0.12×/0.06× Sol/Opus."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ],
+          "text": "Visual documents; long-context prototypes; interactive agents."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s34"
+          ],
+          "text": "Premium coding replacement without repository tests."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s34",
+          "s36",
+          "s24",
+          "s25",
+          "s16",
+          "s17"
+        ],
+        "text": "−23/−29 points"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s34"
+        ],
+        "text": "M3 offers large-context multimodal input, but its weak result in AA’s minimal terminal harness argues against assuming equivalent autonomous coding."
+      }
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi (Moonshot AI)",
+      "flagshipId": "kimi-k3",
+      "modelIds": [
+        "kimi-k3",
+        "kimi-k2-7-code"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ],
+          "text": "Open-weight reasoning with a native coding workflow."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39",
+            "s42"
+          ],
+          "text": "Kimi K3 (Max); cheaper Kimi K2.7 Code."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39",
+            "s42"
+          ],
+          "text": "K3 44, rank 31; Code 26, rank 73."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s40",
+            "s52"
+          ],
+          "text": "K3 $3/$15; Code $0.95/$4 per million; memberships from $19 monthly."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39",
+            "s42",
+            "s40",
+            "s24",
+            "s25",
+            "s16",
+            "s17"
+          ],
+          "text": "−8/−14 points; output 1.50×/0.75× Sol/Opus."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ],
+          "text": "Native CLI coding; large-codebase analysis; multimodal agents."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s39"
+          ],
+          "text": "Assuming identical results across harnesses or aliases."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s39",
+          "s42",
+          "s40",
+          "s24",
+          "s25",
+          "s16",
+          "s17"
+        ],
+        "text": "−8/−14 points"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s39",
+          "s42"
+        ],
+        "text": "K3 supports long-context native coding; its API output is more expensive than Sol while its overall AA score and common-harness coding remain lower."
+      }
+    },
+    {
+      "id": "stepfun",
+      "name": "StepFun (阶跃星辰)",
+      "flagshipId": "step-5",
+      "modelIds": [
+        "step-5",
+        "step-3-7-flash"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ],
+          "text": "Multimodal models for documents, coding and tool-driven agents."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26",
+            "s27"
+          ],
+          "text": "Step 5 Preview; cheaper Step 3.7 Flash."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26",
+            "s27"
+          ],
+          "text": "Flagship 44, rank 30; Flash 19 estimated, deprecated at AA."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s19",
+            "s20"
+          ],
+          "text": "Flagship $1/$2.70; Flash $0.20/$1.15 per million; plans from $6.99 monthly."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26",
+            "s27",
+            "s19",
+            "s24",
+            "s25",
+            "s16",
+            "s17"
+          ],
+          "text": "−8/−14 points; output 0.27×/0.135× Sol/Opus."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ],
+          "text": "Document-plus-code workflows; screenshot agents; API trials."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s26"
+          ],
+          "text": "Difficult unattended coding without validation."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s26",
+          "s27",
+          "s19",
+          "s24",
+          "s25",
+          "s16",
+          "s17"
+        ],
+        "text": "−8/−14 points"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s26",
+          "s27"
+        ],
+        "text": "Step 5 supports multimodal tools and large contexts, but trails both baselines on intelligence and common-harness terminal coding."
+      }
+    },
+    {
+      "id": "bytedance",
+      "name": "ByteDance Seedance",
+      "flagshipId": "seedance-2-5",
+      "modelIds": [
+        "seedance-2-5",
+        "seedance-2-mini"
+      ],
+      "profile": [
+        {
+          "label": "Positioning",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "Reference-driven creative video with native audio."
+        },
+        {
+          "label": "Key models",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "Dreamina Seedance 2.5; cheaper 2.0 Mini."
+        },
+        {
+          "label": "Intelligence",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "T2V: Elo 1142, rank 3; no LLM Intelligence Index."
+        },
+        {
+          "label": "Price",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44",
+            "s46",
+            "s46"
+          ],
+          "text": "About $0.569/sec at 1080p; Mini $0.38/5 seconds at 720p."
+        },
+        {
+          "label": "Gap",
+          "type": "calculated",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "Seedance/Veo: +176 Elo, 1.42× price; Wan: −14 Elo, 2.84× price."
+        },
+        {
+          "label": "Best for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "Product films; reference-led storytelling; audiovisual edits."
+        },
+        {
+          "label": "Not for",
+          "type": "inference",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s44"
+          ],
+          "text": "Choosing video models for coding."
+        }
+      ],
+      "gapBadge": {
+        "type": "calculated",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s44"
+        ],
+        "text": "Seedance/Veo: +176 Elo, 1.42× price"
+      },
+      "match": {
+        "type": "inference",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s44"
+        ],
+        "text": "Seedance outperforms Veo and Kling on this audio T2V arena, but costs more and trails Wan; this does not establish superiority on every motion or prompt task."
+      }
+    }
+  ],
+  "plans": [
+    {
+      "companyId": "zai",
+      "name": "Lite",
+      "price": {
+        "value": 18,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s5"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s6"
+        ],
+        "text": "2,000 credits / five hours; 10,000 / week."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s9"
+        ],
+        "text": "ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline, and other supported agents"
+      },
+      "notes": []
+    },
+    {
+      "companyId": "zai",
+      "name": "Pro",
+      "price": {
+        "value": 80,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s5"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s6"
+        ],
+        "text": "12,000 credits / five hours; 60,000 / week."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s9"
+        ],
+        "text": "ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline, and other supported agents"
+      },
+      "notes": []
+    },
+    {
+      "companyId": "zai",
+      "name": "Max",
+      "price": {
+        "value": 168,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s5"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s6"
+        ],
+        "text": "28,000 credits / five hours; 140,000 / week."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s9"
+        ],
+        "text": "ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline, and other supported agents"
+      },
+      "notes": []
+    },
+    {
+      "companyId": "zai",
+      "name": "Team Standard per seat",
+      "price": {
+        "value": 88,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s8"
+        ]
+      },
+      "priceUnit": "USD/month/seat",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s7"
+        ],
+        "text": "15,000 credits / five hours; 66,000 / week. Minimum 2 seats."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s9"
+        ],
+        "text": "ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline, and other supported agents"
+      },
+      "notes": []
+    },
+    {
+      "companyId": "zai",
+      "name": "Team Premium per seat",
+      "price": {
+        "value": 188,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s8"
+        ]
+      },
+      "priceUnit": "USD/month/seat",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s7"
+        ],
+        "text": "35,000 credits / five hours; 155,000 / week. Minimum 2 seats."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s9"
+        ],
+        "text": "ZCode, Claude Code, Codex, OpenCode, Pi, Cursor, Cline, and other supported agents"
+      },
+      "notes": []
+    },
+    {
+      "companyId": "deepseek",
+      "name": "Pay as you go",
+      "price": {
+        "value": null,
+        "type": "missing",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s12"
+        ],
+        "note": "Official flat-fee coding plan Not found."
+      },
+      "priceUnit": "No verified subscription",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s12"
+        ],
+        "text": "Paid API balance; Flash concurrency 2,500, Pro 500 per account. Off-peak tariffs halve peak rates."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s13"
+        ],
+        "text": "DeepSeek Standard Harness or compatible external coding agents."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "minimax",
+      "name": "Go",
+      "price": {
+        "value": 22,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s51"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s50"
+        ],
+        "text": "1× Go usage; absolute quota Not found; five-hour and weekly shared caps."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s53"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "minimax",
+      "name": "Explore",
+      "price": {
+        "value": 55,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s51"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s50"
+        ],
+        "text": "3× Go usage; absolute quota Not found; five-hour and weekly shared caps."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s53"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "minimax",
+      "name": "Build",
+      "price": {
+        "value": 132,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s51"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s50"
+        ],
+        "text": "7.5× Go usage; absolute quota Not found; five-hour and weekly shared caps."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s53"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kimi",
+      "name": "Plus",
+      "price": {
+        "value": 19,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s52"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "K3 up to256k; K2.8 Preview; five-hour and monthly caps; exact token quota Not found."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kimi",
+      "name": "Pro",
+      "price": {
+        "value": 39,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s52"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "K3 up to1M; K2.8 Preview; K2.7 Code HighSpeed; five-hour and monthly caps; exact token quota Not found."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kimi",
+      "name": "Max",
+      "price": {
+        "value": 99,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s52"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "K3 up to1M; K2.8 Preview; K2.7 Code HighSpeed; five-hour and monthly caps; exact token quota Not found."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kimi",
+      "name": "Ultra",
+      "price": {
+        "value": 199,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s52"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "K3 up to1M; K2.8 Preview; K2.7 Code HighSpeed; five-hour and monthly caps; exact token quota Not found."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "Native coding tools and supported Claude Code / Codex / OpenCode integrations."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "stepfun",
+      "name": "Flash Mini",
+      "price": {
+        "value": 6.99,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "400 million monthly credits; no five-hour windows or request-frequency limits; expires monthly."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "Claude Code, OpenClaw and compatible coding tools; subscription billing channel."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "stepfun",
+      "name": "Flash Plus",
+      "price": {
+        "value": 9.99,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "1,600 million monthly credits; no five-hour windows or request-frequency limits; expires monthly."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "Claude Code, OpenClaw and compatible coding tools; subscription billing channel."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "stepfun",
+      "name": "Flash Pro",
+      "price": {
+        "value": 29,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "8,000 million monthly credits; no five-hour windows or request-frequency limits; expires monthly."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "Claude Code, OpenClaw and compatible coding tools; subscription billing channel."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "stepfun",
+      "name": "Flash Max",
+      "price": {
+        "value": 99,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ]
+      },
+      "priceUnit": "USD/month",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "40,000 million monthly credits; no five-hour windows or request-frequency limits; expires monthly."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s20"
+        ],
+        "text": "Claude Code, OpenClaw and compatible coding tools; subscription billing channel."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "bytedance",
+      "name": "Seedance 2.5 API resource packs",
+      "price": {
+        "value": 32,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s48"
+        ]
+      },
+      "priceUnit": "USD/prepaid pack, not monthly",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s48"
+        ],
+        "text": "5M-token $32, 10M-token $64, 100M-token $640; expire after 90 days. Resolution and video input change token deductions."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s55"
+        ],
+        "text": "BytePlus ModelArk API. Credit balance or eligible resource/Savings Plan activates access."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kimi",
+      "name": "Go (non-coding tier)",
+      "price": {
+        "value": null,
+        "type": "missing",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "note": "Overseas monthly price Not found in the public checkout."
+      },
+      "priceUnit": "Monthly price Not found",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "Mentioned in membership documentation without coding quota; not present in the verified overseas paid-coding checkout."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s54"
+        ],
+        "text": "No coding quota in this tier."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "bytedance",
+      "name": "Seedance 2.0 Mini API packs",
+      "price": {
+        "value": 29.4,
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s48"
+        ]
+      },
+      "priceUnit": "USD/prepaid pack, not monthly",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s48"
+        ],
+        "text": "14M tokens $29.40; 10M tokens $21 with minimum two packs; 100M tokens $210. Packs expire after 90 days."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s48"
+        ],
+        "text": "BytePlus ModelArk API."
+      },
+      "notes": []
+    },
+    {
+      "companyId": "kling",
+      "name": "Kling consumer memberships — dated reference",
+      "price": {
+        "value": null,
+        "type": "missing",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s56"
+        ],
+        "note": "Current checkout confirmation Not found; dated official reference below."
+      },
+      "priceUnit": "Consumer credits, separate from API",
+      "usage": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s56"
+        ],
+        "text": "Official 28 July article: Standard/Pro/Premier/Ultra renew at $8.80/$32.56/$80.96/$159.99 monthly with 660/3,000/8,000/26,000 credits. Current checkout Not found; API prices are separate."
+      },
+      "tools": {
+        "type": "verified",
+        "date": "2026-10-06",
+        "source_ids": [
+          "s56"
+        ],
+        "text": "Kling web/app; not API tokens."
+      },
+      "notes": []
+    }
+  ],
+  "scenarios": [
+    {
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s18",
+        "s2"
+      ],
+      "text": "For difficult repository changes, start with GLM-5.3 among these Chinese flagships; retain Sol or Opus for failures and high-stakes review. Lower tariffs do not erase their measured coding advantage.",
+      "title": "Coding"
+    },
+    {
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s13",
+        "s11",
+        "s18"
+      ],
+      "text": "For inexpensive tool loops, try DeepSeek V4.1 Flash with Standard Harness, or GLM Flash with ZCode/Claude Code. Validate your repository before running multi-hour autonomous work.",
+      "title": "Agents and tool use"
+    },
+    {
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s21",
+        "s40",
+        "s2"
+      ],
+      "text": "For document-plus-code or video-grounded reasoning, test Step 5 Preview or Kimi K3. Large context is useful but does not guarantee reliable retrieval or sustained task completion.",
+      "title": "Long context"
+    },
+    {
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s3",
+        "s12"
+      ],
+      "text": "For the lowest uncached text tariff in this set, choose GLM-5.3-Flash. For cache-heavy workloads, compare DeepSeek Flash’s peak and off-peak cache rates. A cheap model can still cost more after retries.",
+      "title": "Lowest cost"
+    },
+    {
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s44",
+        "s47"
+      ],
+      "text": "For reference-led audiovisual storytelling, test Seedance 2.5. Wan 3.0 ranks higher and costs less on this T2V board; Veo and Kling remain workflow alternatives, not automatic quality upgrades.",
+      "title": "Creative video"
+    }
+  ],
+  "limits": [
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s18",
+        "s2"
+      ],
+      "text": "All access dates are 6 October 2026. Individual benchmark-run dates and matched multi-hour autonomous failure rates: Not found. This overview is a dated snapshot; the original report remains its 5 October snapshot.",
+      "title": "Snapshot, not a live ranking"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s50",
+        "s57",
+        "s18"
+      ],
+      "text": "M3.1 Flash Preview (MiniMax M Plan) and K2.8 Preview (Kimi coding alias) have no verified AA listing/score/rank or standalone API price here. MiniMax preview weights: Not found. Do not transfer M3 or K3 API scores to them.",
+      "title": "Subscription models differ from API flagships"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s58",
+        "s54",
+        "s10",
+        "s12"
+      ],
+      "text": "MiniMax absolute plan quotas and fixed RPM/TPM; Kimi absolute coding token quotas and fixed subscription RPM/TPM; Z.ai fixed RPM/TPM; an official DeepSeek flat-fee coding subscription: Not found.",
+      "title": "Unknown subscription capacity"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s22",
+        "s27"
+      ],
+      "text": "Step 3.7 Flash is officially served but AA marks its estimated index deprecated. Its current global rank and Terminal-Bench 4.0 score: Not found. The scatter marks the estimated score separately.",
+      "title": "Available does not mean currently ranked"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s3",
+        "s30",
+        "s38"
+      ],
+      "text": "GLM Flash cache: AA shows $0.026/M, official tariff $0.03/M; this page uses official pricing. MiniMax passive caching has no extra write charge despite AA’s different cache-write field. The old report’s numbers remain unchanged.",
+      "title": "Price conflicts"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s16",
+        "s36"
+      ],
+      "text": "Sol standard rates apply up to 272k input tokens; above this, input/cache double and output is 1.5× for the full request. MiniMax-M3 tariffs double above 512k input. Output ratios are token tariffs, not task-cost estimates.",
+      "title": "Context and reasoning change the bill"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s54",
+        "s59",
+        "s51"
+      ],
+      "text": "New Kimi Plus/Pro/Max/Ultra use five-hour and monthly limits; legacy plans retain weekly rules. MiniMax legacy Token plans are not sold to new buyers. M Plan’s first-month half-price offer ends 14 October 2026; regular prices are shown.",
+      "title": "Current plans, legacy documentation"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s6",
+        "s20"
+      ],
+      "text": "Z.ai has five-hour and weekly credit limits; consumption depends on model and token type. Regular off-peak half-credit rules differ from promotions ending 7 October 2026. Step Plan has monthly credits without time windows; approximately $1 API usage equals 7M credits.",
+      "title": "Credits are not interchangeable token quotas"
+    },
+    {
+      "type": "calculated",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s44",
+        "s46"
+      ],
+      "text": "Video chart: only AA-Video-T2V v2.0 with audio. Prices are AA creator-API default prices divided by 60. Resolution, references and audio settings affect bills. Elo intervals overlap; preference scores do not prove perfect motion or prompt following.",
+      "title": "One video arena and one pricing basis"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s45"
+      ],
+      "text": "Seedance 2.5 current I2V score/rank: Not found. AA’s separate I2V v1.0 board lists Dreamina Seedance 2.0 720p at 1176 ±7, rank 4; this is a different model and scale and is not charted.",
+      "title": "Do not transfer image-to-video scores"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s44",
+        "s49",
+        "s46"
+      ],
+      "text": "Seedance 2.0 Mini’s AA score/rank: Not found. API parameters give 720p maximum and 4–15 seconds. Its standard 720p five-second price is $0.38; the temporary 60%-off offer ends 7 October 2026 at 14:00 UTC+8.",
+      "title": "The inexpensive video option is unranked"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s47",
+        "s46",
+        "s60",
+        "s61"
+      ],
+      "text": "Seedance 2.5 API docs and pricing support 1080p and 4–30 seconds. An older offer FAQ says 720p maximum; this page follows current API documentation. Motion/reference control claims are vendor statements; separate independent motion or prompt-following subscores: Not found.",
+      "title": "Seedance capability conflict"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s62"
+      ],
+      "text": "OpenAI retired the Sora 2 / Sora 2 Pro Videos API on 24 September 2026. Current available-model arena ranks and API prices: Not found; retired Sora is excluded from the chart.",
+      "title": "Sora is not a current API alternative"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s44",
+        "s63",
+        "s64",
+        "s65"
+      ],
+      "text": "Wan 3.0 official 1080p price is $0.20/sec; Veo 3.1 audio 720p/1080p is $0.40/sec, matching AA. Kling’s exact current first-party API rate card and checkout could not be read reliably; the comparison uses AA’s sourced tariff and marks consumer plans as dated references.",
+      "title": "Video price cross-checks and missing checkout"
+    },
+    {
+      "type": "missing",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s64",
+        "s63"
+      ],
+      "text": "Consumer Veo/Wan subscriptions and current video-generation credit quotas: Not found in the verified model API pricing used here. Consumer credits are not interchangeable with API seconds.",
+      "title": "Other video subscriptions"
+    },
+    {
+      "type": "verified",
+      "date": "2026-10-06",
+      "source_ids": [
+        "s66",
+        "s18"
+      ],
+      "text": "ByteDance’s main LLM family is Seed/Doubao, sold internationally under names such as Dola-Seed. Seedance is its separate video line and receives no LLM Intelligence Index here. Open weights describe availability, not an unrestricted open-source license.",
+      "title": "ByteDance LLM note and license terminology"
+    }
+  ],
+  "positioning": {
+    "columns": [
+      "Coding / agents",
+      "Low cost",
+      "Multimodal",
+      "Open weights"
+    ],
+    "rows": [
+      {
+        "company": "Zhipu AI (Z.ai)",
+        "cells": [
+          {
+            "value": "Repository candidate",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s28"
+            ],
+            "text": "Repository candidate"
+          },
+          {
+            "value": "Flash tariff",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s3"
+            ],
+            "text": "Flash tariff"
+          },
+          {
+            "value": "Images in Flash",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s28",
+              "s30"
+            ],
+            "text": "Images in Flash"
+          },
+          {
+            "value": "Flagship + Flash",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s29",
+              "s28",
+              "s31",
+              "s30"
+            ],
+            "text": "Flagship + Flash"
+          }
+        ]
+      },
+      {
+        "company": "DeepSeek",
+        "cells": [
+          {
+            "value": "Tool-loop candidate",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s32"
+            ],
+            "text": "Tool-loop candidate"
+          },
+          {
+            "value": "Cache / off-peak",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s12"
+            ],
+            "text": "Cache / off-peak"
+          },
+          {
+            "value": "Images in Flash",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s32",
+              "s33"
+            ],
+            "text": "Images in Flash"
+          },
+          {
+            "value": "Both served tiers",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s31",
+              "s32",
+              "s33"
+            ],
+            "text": "Both served tiers"
+          }
+        ]
+      },
+      {
+        "company": "MiniMax",
+        "cells": [
+          {
+            "value": "Test harness fit",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s34"
+            ],
+            "text": "Test harness fit"
+          },
+          {
+            "value": "Low API tariff",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s36",
+              "s51"
+            ],
+            "text": "Low API tariff"
+          },
+          {
+            "value": "Visual inputs",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s34"
+            ],
+            "text": "Visual inputs"
+          },
+          {
+            "value": "M3, license terms",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s37"
+            ],
+            "text": "M3, license terms"
+          }
+        ]
+      },
+      {
+        "company": "Kimi (Moonshot AI)",
+        "cells": [
+          {
+            "value": "Native CLI candidate",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s39"
+            ],
+            "text": "Native CLI candidate"
+          },
+          {
+            "value": "Cheaper Code tier",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s40",
+              "s52"
+            ],
+            "text": "Cheaper Code tier"
+          },
+          {
+            "value": "K3 visual inputs",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s39",
+              "s42"
+            ],
+            "text": "K3 visual inputs"
+          },
+          {
+            "value": "K3 + Code",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s41",
+              "s43"
+            ],
+            "text": "K3 + Code"
+          }
+        ]
+      },
+      {
+        "company": "StepFun (阶跃星辰)",
+        "cells": [
+          {
+            "value": "Document-plus-code",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s26"
+            ],
+            "text": "Document-plus-code"
+          },
+          {
+            "value": "Flash / monthly plan",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s19",
+              "s20"
+            ],
+            "text": "Flash / monthly plan"
+          },
+          {
+            "value": "Images and video",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s26",
+              "s21",
+              "s27",
+              "s22"
+            ],
+            "text": "Images and video"
+          },
+          {
+            "value": "Flash, not Step 5",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s26",
+              "s23"
+            ],
+            "text": "Flash, not Step 5"
+          }
+        ]
+      },
+      {
+        "company": "ByteDance Seedance",
+        "cells": [
+          {
+            "value": "Not a coding model",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s44"
+            ],
+            "text": "Not a coding model"
+          },
+          {
+            "value": "Mini option",
+            "type": "inference",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s44",
+              "s46",
+              "s46"
+            ],
+            "text": "Mini option"
+          },
+          {
+            "value": "Audiovisual creation",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s47",
+              "s49"
+            ],
+            "text": "Audiovisual creation"
+          },
+          {
+            "value": "Proprietary",
+            "type": "verified",
+            "date": "2026-10-06",
+            "source_ids": [
+              "s44",
+              "s46"
+            ],
+            "text": "Proprietary"
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://artificialanalysis.ai/leaderboards/models",
+      "title": "aaLeaderboard",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s2",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "title": "aaMethodology",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s3",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "title": "zaiPricing",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s4",
+      "url": "https://z.ai/subscribe",
+      "title": "zaiPlans",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s5",
+      "url": "https://static.bigmodel.cn/z-ai-website/_next/static/chunks/38aiay3p71_3a.js",
+      "title": "zaiPlanConfig",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s6",
+      "url": "https://docs.z.ai/devpack/overview",
+      "title": "zaiCredits",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s7",
+      "url": "https://docs.z.ai/devpack/teamplan",
+      "title": "zaiTeam",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s8",
+      "url": "https://api.z.ai/api/biz/overseas/team/subscribe/product/public_pricing",
+      "title": "zaiTeamPricing",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s9",
+      "url": "https://docs.z.ai/devpack/tool/others",
+      "title": "zaiTools",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s10",
+      "url": "https://docs.z.ai/devpack/usage-policy",
+      "title": "zaiPolicy",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s11",
+      "url": "https://zcode.z.ai/en",
+      "title": "zcode",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s12",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "title": "deepseekPricing",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s13",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "title": "deepseekHarness",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s14",
+      "url": "https://deepseek.com/en/harness/terms-of-use/",
+      "title": "deepseekHarnessTerms",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s15",
+      "url": "https://api-docs.deepseek.com/quick_start/rate_limit/",
+      "title": "deepseekRates",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s16",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "title": "baselineSol",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s17",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "title": "baselineOpus",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s18",
+      "url": "https://artificialanalysis.ai/models",
+      "title": "Artificial Analysis current default model leaderboard",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s19",
+      "url": "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+      "title": "StepFun pricing and rate limits",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s20",
+      "url": "https://platform.stepfun.ai/docs/en/step-plan/overview",
+      "title": "Step Plan overview",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s21",
+      "url": "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview",
+      "title": "Step 5 Preview official model documentation",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s22",
+      "url": "https://platform.stepfun.ai/docs/en/guides/models/step-3.7-flash",
+      "title": "Step 3.7 Flash official model documentation",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s23",
+      "url": "https://huggingface.co/stepfun-ai/Step-3.7-Flash",
+      "title": "Official Step 3.7 Flash open weights and license",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s24",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "title": "GPT-6.1 Sol (max) Artificial Analysis model page",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s25",
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "title": "Claude Opus 5.5 (max with fallback) Artificial Analysis model page",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s26",
+      "url": "https://artificialanalysis.ai/models/step-5",
+      "title": "Step 5 Preview Artificial Analysis model page",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s27",
+      "url": "https://artificialanalysis.ai/models/step-3-7-flash",
+      "title": "Step 3.7 Flash Artificial Analysis model page",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s28",
+      "url": "https://artificialanalysis.ai/models/glm-5-3",
+      "title": "artificialanalysis.ai — glm 5 3",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s29",
+      "url": "https://huggingface.co/zai-org/GLM-5.3/blob/main/LICENSE",
+      "title": "huggingface.co — LICENSE",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s30",
+      "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "title": "artificialanalysis.ai — glm 5 3 flash",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s31",
+      "url": "https://opensource.org/license/mit",
+      "title": "opensource.org — mit",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s32",
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+      "title": "artificialanalysis.ai — deepseek v4 pro",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s33",
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+      "title": "artificialanalysis.ai — deepseek v4 1 flash",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s34",
+      "url": "https://artificialanalysis.ai/models/minimax-m3",
+      "title": "artificialanalysis.ai — minimax m3",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s35",
+      "url": "https://www.minimax.io/models/text/m3",
+      "title": "www.minimax.io — m3",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s36",
+      "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "title": "platform.minimax.io — pricing paygo",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s37",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE",
+      "title": "huggingface.co — LICENSE",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s38",
+      "url": "https://platform.minimax.io/docs/api-reference/text-prompt-caching",
+      "title": "platform.minimax.io — text prompt caching",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s39",
+      "url": "https://artificialanalysis.ai/models/kimi-k3",
+      "title": "artificialanalysis.ai — kimi k3",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s40",
+      "url": "https://platform.kimi.ai/docs/pricing/chat",
+      "title": "platform.kimi.ai — chat",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s41",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE",
+      "title": "huggingface.co — LICENSE",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s42",
+      "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+      "title": "artificialanalysis.ai — kimi k2 7 code",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s43",
+      "url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE",
+      "title": "huggingface.co — LICENSE",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s44",
+      "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+      "title": "AA-Video-T2V v2.0 — with audio",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s45",
+      "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+      "title": "AA-Video-I2V v1.0 — with audio",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s46",
+      "url": "https://docs.byteplus.com/id/docs/modelark/model-pricing",
+      "title": "BytePlus official video pricing (updated 28 Sep 2026)",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s47",
+      "url": "https://docs.byteplus.com/zh-TW/docs/modelark/seedance-2-5",
+      "title": "Seedance 2.5 official API capabilities",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s48",
+      "url": "https://docs.byteplus.com/zh-CN/docs/modelark/seedance-2-0-model-resource-pack-rules?redirect=1",
+      "title": "Seedance API resource packs",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s49",
+      "url": "https://docs.byteplus.com/ja/docs/modelark/video-generation-tutorial",
+      "title": "Seedance video generation parameters",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s50",
+      "url": "https://platform.minimax.io/docs/m-plan/intro",
+      "title": "platform.minimax.io — intro",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s51",
+      "url": "https://platform.minimax.io/docs/m-plan/monthly-offer",
+      "title": "platform.minimax.io — monthly offer",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s52",
+      "url": "https://www.kimi.ai/apiv2/kimi.gateway.order.v1.GoodsService/ListGoods",
+      "title": "www.kimi.ai — ListGoods",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s53",
+      "url": "https://platform.minimax.io/docs/m-plan/faq",
+      "title": "platform.minimax.io — faq",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s54",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/membership.html",
+      "title": "www.kimi.com — membership.html",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s55",
+      "url": "https://docs.byteplus.com/pt/docs/ModelArk/seedance-model-activation-usage-and-refund",
+      "title": "docs.byteplus.com — seedance model activation usage and refund",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s56",
+      "url": "https://kling.ai/blog/kling-video-3-0-credit-cost-guide?tab=all",
+      "title": "kling.ai — kling video 3 0 credit cost guide?tab=all",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s57",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/models.html",
+      "title": "www.kimi.com — models.html",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s58",
+      "url": "https://platform.minimax.io/docs/m-plan/usage-rules",
+      "title": "platform.minimax.io — usage rules",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s59",
+      "url": "https://platform.minimax.io/docs/m-plan/token-plan-notice",
+      "title": "platform.minimax.io — token plan notice",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s60",
+      "url": "https://ai.byteplus.com/en/activity/offers",
+      "title": "ai.byteplus.com — offers",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s61",
+      "url": "https://seed.bytedance.com/en/seedance2_5",
+      "title": "seed.bytedance.com — seedance2_5",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s62",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "title": "developers.openai.com — deprecations",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s63",
+      "url": "https://modelstudio.alibabacloud.com/intl/blog/wan3-ai-video-generation-model/",
+      "title": "modelstudio.alibabacloud.com — wan3 ai video generation model",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s64",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "title": "ai.google.dev — pricing",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s65",
+      "url": "https://kling.ai/document-api/pricing/base/video",
+      "title": "kling.ai — video",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "s66",
+      "url": "https://docs.byteplus.com/en/docs/byteplus-platform/AI_Savings_Plans",
+      "title": "docs.byteplus.com — AI_Savings_Plans",
+      "date": "2026-10-06"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+/* Page-specific additions: the original report's design tokens stay shared. */
+[hidden]{display:none!important}
+.cmp-content{min-width:0}
+.cmp-content p{overflow-wrap:anywhere}
+.cmp-content+.cmp-content{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.cmp-label{font-size:9px;letter-spacing:.03em;line-height:1.5}
+.cmp-provenance{font-size:10px;margin-top:6px;gap:3px 8px;line-height:1.5}
+.cmp-source-disclosure{min-width:0;max-width:100%}
+.cmp-source-disclosure summary{cursor:pointer;color:var(--accent);font-weight:550}
+.cmp-source-disclosure>div{display:flex;flex-direction:column;gap:5px;padding:8px 0;max-width:30em;overflow-wrap:anywhere}
+.cmp-fact{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.cmp-fact .cmp-label{margin:0}
+.cmp-fact-value{font-variant-numeric:tabular-nums;font-size:15px;line-height:1.4;letter-spacing:-.015em;overflow-wrap:anywhere}
+.cmp-fact .provenance{margin:0}
+.cmp-metric-note{display:block;font-size:10px;color:var(--muted);line-height:1.55;font-weight:400;white-space:normal;max-width:27em}
+.cmp-muted{font-size:12px;color:var(--muted)}
+.cmp-role{display:block;margin-top:6px;text-transform:capitalize;color:var(--muted)}
+.cmp-baseline-tag{display:inline-block;font-size:9px;line-height:1.5;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:2px 5px;margin-top:8px;background:var(--surface)}
+#company-table{min-width:1200px}
+#company-table td{vertical-align:top;white-space:normal;min-width:110px}
+#company-table th{white-space:nowrap}
+#company-table td:first-child{min-width:115px;max-width:150px}
+#company-table td:nth-child(2){min-width:180px;max-width:235px}
+#company-table td:nth-child(4){min-width:185px}
+#company-table td:last-child{min-width:225px;max-width:275px}
+#company-table .cmp-content p{font-size:12px;line-height:1.65;margin:7px 0}
+#company-table .cmp-metric-note{display:none}
+#company-table .cmp-baseline-row td{background:var(--surface-alt);border-bottom-color:var(--line)}
+#company-table .cmp-baseline-row td:first-child{border-left:3px solid var(--accent);padding-left:11px}
+#company-table td.best,#company-table .cmp-baseline-row td.best{background:var(--accent-soft);box-shadow:inset 0 2px var(--accent)}
+#company-table .cmp-rank{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+#company-table .cmp-rank .cmp-fact-value{font-size:12px}
+.cmp-gap-line{font-size:11px;color:var(--muted)}
+.cmp-gap-line+.cmp-gap-line{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.cmp-gap-line>span{display:block;margin-bottom:5px}
+.cmp-gap-line .cmp-fact-value{color:var(--text);font-size:12px}
+.cmp-ci{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;border-top:1px solid var(--line);padding-top:8px}
+.cmp-ci>span{grid-column:1/-1;font-size:10px;color:var(--muted)}
+.cmp-ci .cmp-fact-value{font-size:12px}
+.companies-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.company-card{display:flex;flex-direction:column;min-width:0;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.cmp-card-head h3{font-size:27px;margin:12px 0 10px}
+.cmp-card-head>p{font-size:14px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.cmp-gap-badge{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:22px}
+.cmp-gap-badge .cmp-content p{font-size:12px;line-height:1.65;margin:6px 0}
+.cmp-gap-badge .cmp-label{font-size:8px}
+.cmp-card-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.cmp-card-metrics dt{font-size:10px;color:var(--muted);line-height:1.4;margin-bottom:7px}
+.cmp-card-metrics dd{margin:0}
+.cmp-card-metrics .cmp-fact-value{font-size:22px}
+.cmp-card-metrics .cmp-provenance{font-size:9px}
+.cmp-profile{margin:0}
+.cmp-profile-line{margin-bottom:17px}
+.cmp-profile-line:last-child{margin-bottom:0}
+.cmp-profile-line dt{font-size:12px;font-weight:700;line-height:1.5;margin-bottom:5px}
+.cmp-profile-line dd{margin:0;font-size:13px;line-height:1.75}
+.cmp-profile-line dd>p{margin-bottom:6px;color:var(--muted)}
+.cmp-profile-line dd>.cmp-label{font-size:8px}
+.cmp-profile-line dd>.cmp-provenance{margin-top:5px}
+.cmp-match{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
+.cmp-match h4{font-size:14px}
+.cmp-match p{font-size:13px;color:var(--muted);line-height:1.75}
+.cmp-detail-link{display:block;border-top:1px solid var(--line);padding-top:20px;margin-top:22px;font-size:12px;font-weight:650}
+.cmp-model-detail summary{scroll-margin-top:120px}
+.cmp-detail-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:0 0 24px}
+.cmp-detail-metrics>div{border-bottom:1px solid var(--line);padding-bottom:16px;min-width:0}
+.cmp-detail-metrics dt{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:7px}
+.cmp-detail-metrics dd{margin:0}
+.cmp-detail-metrics .cmp-fact-value{font-size:18px}
+.cmp-plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.cmp-plan{border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
+.cmp-plan h4{font-size:19px;margin-bottom:12px}
+.cmp-plan-price{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+.cmp-plan-price .cmp-fact-value{font-size:24px}
+.cmp-price-unit{display:block;font-size:10px;color:var(--muted);margin-top:7px}
+.cmp-plan .cmp-content h4{font-size:13px}
+.cmp-plan .cmp-content p{font-size:12px;color:var(--muted);line-height:1.7}
+.cmp-scenario h4{font-size:19px;margin-bottom:14px}
+.cmp-scenario p{font-size:14px;color:var(--muted);line-height:1.75}
+.cmp-scenario .cmp-label{font-size:9px}
+#data-limits .cmp-content p{font-size:13px}
+#method-notes .cmp-content h4{font-size:16px}
+#method-notes .cmp-content p{font-size:13px}
+#mode-toggle{max-width:100%}
+@media(max-width:1150px){.company-card{padding:22px}.cmp-card-head h3{font-size:24px}.cmp-card-metrics{gap:10px}.cmp-card-metrics .cmp-fact-value{font-size:20px}.cmp-detail-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.company-card{padding:24px}.cmp-detail-metrics{gap:18px}.cmp-plan-grid{gap:14px}}
+@media(max-width:620px){.companies-grid{grid-template-columns:1fr;gap:16px}.company-card{padding:22px}.cmp-card-head h3{font-size:25px}.cmp-card-metrics .cmp-fact-value{font-size:22px}.cmp-card-metrics{gap:12px}.cmp-profile-line dd{font-size:13px}.cmp-gap-badge{margin-bottom:20px}.cmp-detail-metrics{gap:16px 12px}.cmp-detail-metrics .cmp-fact-value{font-size:15px}.cmp-plan-grid{grid-template-columns:1fr}.cmp-plan{padding:18px}.cmp-metric-note{font-size:10px}.cmp-provenance{font-size:9px}.cmp-model-detail summary{scroll-margin-top:155px}.cmp-ci{grid-template-columns:1fr}.cmp-ci>span{grid-column:auto}.cmp-scenario h4{font-size:18px}}
+@media(max-width:360px){.company-card{padding:18px}.cmp-card-metrics{grid-template-columns:1fr 1fr}.cmp-detail-metrics{grid-template-columns:1fr}}

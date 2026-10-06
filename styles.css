@@ -12,3 +12,4 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]):not([data-theme=dark]){--on-accent:#0e1725}}
 .chart-mark:focus-visible{outline:3px solid var(--text);outline-offset:4px}.chart-sources{font-size:11px;color:var(--muted);margin-top:10px}.chart-sources summary{cursor:pointer;font-weight:600;padding:8px 0}.chart-sources ul{margin:8px 0;padding-left:20px}.chart-sources li{padding:3px 0}.harness-card .content-item+.content-item,.billing-card .content-item+.content-item{margin-top:20px}.table-scroll small{font-size:9px;color:var(--muted)}.model-note p{margin-top:8px}
 .metric-link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.snapshot-note a{text-decoration:underline;text-underline-offset:3px}

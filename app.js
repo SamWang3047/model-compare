@@ -208,6 +208,16 @@ async function start() {
     data = await response.json();
     sourceMap = new Map(data.sources.map(source => [source.id, source]));
     renderIntro(); renderModels(); renderHarness(); renderSubscriptions(); renderRecommendations(); renderCharts(data); initInteractions();
+    try {
+      const overviewResponse = await fetch('./companies.json');
+      if (overviewResponse.ok) {
+        const overview = await overviewResponse.json();
+        const siteUpdated = [data.metadata.lastUpdated, overview.snapshot_date].sort().at(-1);
+        $('#last-updated').textContent = dateText(siteUpdated);
+        $('#last-updated').dateTime = siteUpdated;
+        $('#last-updated').title = `Site updated ${dateText(siteUpdated)}; original report data ${dateText(data.metadata.lastUpdated)}`;
+      }
+    } catch { /* The original report remains available if overview metadata is unavailable. */ }
     document.documentElement.dataset.ready = 'true';
   } catch (error) {
     $('#conclusion-text').textContent = 'The report could not load. Please refresh or download data.json from the footer.';
