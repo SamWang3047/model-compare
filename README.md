@@ -4,13 +4,13 @@ A readable, interactive static website comparing Chinese coding models with GPT-
 
 **[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
 
-**[Chinese AI Companies Overview](https://model-compare-delta.vercel.app/companies.html)** covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun and ByteDance Seedance. The new page has six concise company profiles, separate LLM/video comparisons, sourced pricing and plan limits, a scenario guide, and interactive intelligence/price, qualitative positioning, and video quality/price charts.
+**[Chinese AI Companies Overview](https://model-compare-delta.vercel.app/companies.html)** covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun and ByteDance Seedance. The overview has six concise company profiles, separate LLM/video comparisons, compact sortable table previews with accessible full-table dialogs, sourced pricing and plan limits, a scenario guide, and interactive intelligence/price, qualitative positioning, and video quality/price charts. The intelligence/price plot uses direct model labels and a configurable value zone.
 
 Vercel is connected to this repository. Pushes to `main` automatically deploy to production.
 
-**Data snapshot / last updated: 5 October 2026.** The original report was prepared on **6 October 2026**. Benchmark evaluation dates are not consistently disclosed by Artificial Analysis. The website preserves the report's figures and conclusions; it does not claim that the snapshot is live pricing.
+**Original coding-report snapshot: 5 October 2026.** The original report was prepared on **6 October 2026**. Benchmark evaluation dates are not consistently disclosed by Artificial Analysis. The website preserves the report's figures and conclusions; it does not claim that the snapshot is live pricing.
 
-**Overview and site updated: 6 October 2026.** The original `data.json` remains unchanged. New evidence is stored separately in `companies.json`; the overview does not silently replace the original report's snapshot.
+**Site updated: 6 October 2026.** Zhipu’s overview now uses only **GLM 5.3 Flash**, refreshed directly from Artificial Analysis and official Z.ai pricing. Its tested effort is **max**; AA’s model page uses spaces while its leaderboard/API name is **GLM-5.3-Flash**. Other models’ figures remain unchanged; the larger-model native-agent row was removed rather than relabelled as Flash.
 
 ## Run locally
 
@@ -47,15 +47,15 @@ To check external source links, run `npm run check:links`. The checker separates
 
 ## Update the report
 
-Edit **`data.json`** without changing the layout. Model rows preserve the original full-precision values; the interface rounds values only for display. Monthly scenarios are illustrative calculations, not measured developer averages.
+Edit **`data.json`** without changing the layout. Model rows preserve full-precision values; the interface rounds values only for display. The comparison uses one GLM Flash entry. Adjust `chart_settings.value_zone.intelligence_min` and `chart_settings.value_zone.blended_price_max` in `data.json` to change the chart’s shaded screening region (defaults: Intelligence Index ≥40 and blended price ≤$2/M); the rule is analyst inference, not cost per successful task. Monthly scenarios are illustrative calculations, not measured developer averages.
 
 To update the new overview, edit **`companies.json`**. Each metric has `value`, `type`, `date`, `source_ids` and optional `note`; prose has the same evidence fields with `text`. Null means **Not found**, never zero. Keep company profile text below 100 words and the overview below 40 words. Flagships, companions and comparison baselines are explicit roles. Source dates are access dates; unavailable benchmark-run dates are disclosed.
 
-Overview ranks use 259 scored model/effort variants among 263 entries in AA's current default leaderboard, including estimates. They are calculated from unrounded scores, not copied from model-page price-class ranks. Displayed gaps subtract rounded Intelligence Index values. Blended price uses an illustrative **3:1 uncached input:output** mix, not AA's default cached mix. Output-price ratios are tariff comparisons, not costs per successful task. The video chart uses only **AA-Video-T2V v2.0 with audio**, retaining its confidence intervals and AA's creator-API minute prices divided by 60; I2V results are kept separate. The positioning map contains qualitative statements, not invented numeric scores.
+GLM Flash’s refreshed global rank is 36 among 260 scored model/effort variants in 264 current default leaderboard entries. Other models retain ranks from the earlier 259-scored/263-entry snapshot. Ranks use unrounded scores, including estimates, rather than model-page price-class ranks. Intelligence Index displays use one decimal. Flash gaps subtract raw scores and display one decimal; other models retain their original integer-rounded gap values, with that convention disclosed. Blended price uses an illustrative **3:1 uncached input:output** mix, not AA's default cached mix. Output-price ratios are tariff comparisons, not costs per successful task. The video chart uses only **AA-Video-T2V v2.0 with audio**, retaining its confidence intervals and AA's creator-API minute prices divided by 60; I2V results are kept separate. The positioning map contains qualitative statements, not invented numeric scores.
 
 Each sourced row or paragraph has a `type`, `date` and `source_ids`. The source IDs resolve to the `sources` array, whose records include the title, URL and access date. Model rows also contain `metric_sources`, so prices and benchmark results can point to different sources. Keep source references and dates current when changing a number.
 
-Evidence labels distinguish verified source statements, analyst inference, arithmetic calculations and missing evidence. Do not compare vendor Terminal-Bench 2.1 figures directly with AA Terminal-Bench 4.0, substitute full GLM figures for GLM Flash, or interpret a long-context score as proof of unattended multi-hour reliability.
+Evidence labels distinguish verified source statements, analyst inference, arithmetic calculations and missing evidence. Do not compare vendor Terminal-Bench 2.1 figures directly with AA Terminal-Bench 4.0, substitute a larger model’s figures for GLM Flash, or interpret a long-context score as proof of unattended multi-hour reliability.
 
 ## Deploy to Vercel
 
@@ -101,4 +101,4 @@ The new overview also reads the [AA model leaderboard](https://artificialanalysi
 - [Seedance API pricing](https://docs.byteplus.com/id/docs/modelark/model-pricing), [Seedance 2.5 capabilities](https://docs.byteplus.com/zh-TW/docs/modelark/seedance-2-5), [prepaid resource packs](https://docs.byteplus.com/zh-CN/docs/modelark/seedance-2-0-model-resource-pack-rules?redirect=1), [Veo API pricing](https://ai.google.dev/gemini-api/docs/pricing) and [Wan 3.0 official prices](https://modelstudio.alibabacloud.com/intl/blog/wan3-ai-video-generation-model/).
 - [OpenAI deprecations](https://developers.openai.com/api/docs/deprecations): the retired Sora Videos API is excluded from current comparisons.
 
-Missing scores for subscription previews, unpublished quotas, deprecated AA entries and unreadable current video checkouts are disclosed on the overview. Run `npm run check` to validate both datasets, arithmetic and source references; `node scripts/check-companies.mjs --original .qa/original-data.json` additionally verifies exact preservation against a supplied original snapshot.
+Missing scores for subscription previews, unpublished quotas, deprecated AA entries and unreadable current video checkouts are disclosed on the overview. Run `npm run check` to validate both datasets, arithmetic and source references; `node scripts/check-companies.mjs --preserve-against 750a2b6` additionally verifies preservation of all non-GLM numeric data against the preceding release.

@@ -3,9 +3,10 @@ import { renderCompanyCharts } from './companies-charts.js';
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const number = (value, digits = 1) => Number(value).toLocaleString('en-US', { maximumFractionDigits: digits });
+const intelligence = value => Number(value).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const money = value => `$${number(value, 4)}`;
 const percent = value => `${number(value)}%`;
-const points = value => `${value > 0 ? '+' : ''}${number(value)} points`;
+const points = value => `${value > 0 ? '+' : ''}${intelligence(value)} points`;
 const dateText = date => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) return 'Date not found';
   return new Date(`${date}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -15,6 +16,10 @@ let data;
 let sourceMap = new Map();
 let mode = 'llm';
 let sort = { key: 'ii', direction: -1 };
+let infoEntries = new Map();
+let infoTrigger = null;
+let dialogTrigger = null;
+let scrollPosition = 0;
 
 function sourceLink(source, label = source.title) {
   let url;
@@ -67,12 +72,23 @@ function chooseRows() {
   const flagshipIds = new Set(data.companies.map(company => company.flagshipId));
   return data.models.filter(model => model.kind === mode && (model.baseline || model.role === 'flagship' || flagshipIds.has(model.id)));
 }
-function bestFor(model) {
+function bestForFact(model) {
   const company = companyFor(model);
   const entry = company?.profile?.find(item => /^best\s+for/i.test(item.label || ''));
-  if (entry) return content(entry, '', true);
-  if (model.bestFor) return content(model.bestFor, '', true);
+  return entry || model.bestFor;
+}
+function bestFor(model, expanded = false) {
+  const item = bestForFact(model);
+  if (item) return expanded ? content(item, '', true) : `<div class="cmp-preview-text"><span class="cmp-best-summary">${esc(item.text ?? item.value)}</span>${infoButton(model, 'bestFor', item, 'Best for')}</div>`;
   return model.baseline ? '<span class="cmp-muted">Reference baseline</span>' : '<span class="cmp-muted">See company profile</span>';
+}
+function infoButton(model, key, item, label, formatter) {
+  const id = `${model.id}:${key}`;
+  infoEntries.set(id, { model, item: fact(item), label, formatter });
+  return `<button type="button" class="cmp-info-button" data-metric-info="${esc(id)}" aria-label="Evidence for ${esc(label)}: ${esc(model.name)}" aria-controls="table-info-popover" aria-expanded="false"><span aria-hidden="true">i</span></button>`;
+}
+function previewMetric(model, key, label, formatter) {
+  return `<div class="cmp-preview-value"><strong>${esc(displayValue(model.metrics?.[key], formatter))}</strong>${infoButton(model, key, model.metrics?.[key], label, formatter)}</div>`;
 }
 function gapCell(model) {
   if (model.baseline) return '<span class="cmp-baseline-tag">Reference baseline</span>';
@@ -80,7 +96,7 @@ function gapCell(model) {
   return `<div class="cmp-gap-line"><span>vs. Sol max</span>${metric(metrics.gapSol, points)}</div><div class="cmp-gap-line"><span>vs. Opus max</span>${metric(metrics.gapOpus, points)}</div>`;
 }
 function intelligenceCell(model) {
-  return `${metric(model.metrics?.ii, value => number(value, 0))}<div class="cmp-rank">${metric(model.metrics?.rank, value => `Rank #${number(value, 0)}`)}</div>`;
+  return metric(model.metrics?.ii, intelligence);
 }
 function confidenceCell(model) {
   const low = model.metrics?.ciLow;
@@ -88,29 +104,45 @@ function confidenceCell(model) {
   if (!low || !high || valueFor(model, 'ciLow') == null || valueFor(model, 'ciHigh') == null) return '';
   return `<div class="cmp-ci"><span>95% confidence interval</span>${metric(low, value => number(value, 0))}${metric(high, value => number(value, 0))}</div>`;
 }
-function tableColumns() {
+function effortLabel(model) {
+  return model.metrics?.effort ? `<small class="cmp-role">Tested effort: ${esc(displayValue(model.metrics.effort))}</small>` : '';
+}
+function tableColumns(expanded = false) {
   const common = [
     { key: 'company', label: 'Company', direction: 1, render: model => `<strong>${esc(model.company || companyFor(model)?.name || '')}</strong>${model.baseline ? '<span class="cmp-baseline-tag">Baseline</span>' : ''}` },
-    { key: 'name', label: 'Model / effort', direction: 1, render: model => `<strong>${esc(model.name)}</strong><small class="cmp-role">${esc(model.role || '')}</small>` }
+    { key: 'name', label: 'Model / effort', direction: 1, render: model => `<strong>${esc(model.name)}</strong>${effortLabel(model)}` }
   ];
-  return mode === 'llm' ? [...common,
+  if (!expanded) return mode === 'llm' ? [...common,
+    { key: 'ii', label: 'Intelligence ↑', direction: -1, render: model => previewMetric(model, 'ii', 'Intelligence Index', intelligence) },
+    { key: 'input', label: 'Input $/M ↓', direction: 1, render: model => previewMetric(model, 'input', 'Input $/M', money) },
+    { key: 'output', label: 'Output $/M ↓', direction: 1, render: model => previewMetric(model, 'output', 'Output $/M', money) },
+    { key: 'bestFor', label: 'Best for', render: model => bestFor(model) }
+  ] : [...common,
+    { key: 'elo', label: 'Video score ↑', direction: -1, render: model => previewMetric(model, 'elo', 'Video arena score', value => number(value, 0)) },
+    { key: 'rank', label: 'Arena rank ↓', direction: 1, render: model => previewMetric(model, 'rank', 'Arena rank', value => `#${number(value, 0)}`) },
+    { key: 'priceSecond', label: 'Price $/second ↓', direction: 1, render: model => previewMetric(model, 'priceSecond', 'Price per second', money) },
+    { key: 'bestFor', label: 'Best for', render: model => bestFor(model) }
+  ];
+  const identity = { key: 'name', label: 'Company / model', direction: 1, render: model => `<div class="cmp-full-identity"><span>${esc(model.company || companyFor(model)?.name || '')}</span><strong>${esc(model.name)}</strong>${effortLabel(model)}${model.baseline ? '<span class="cmp-baseline-tag">Reference baseline</span>' : `<small class="cmp-role">${esc(model.role || '')}</small>`}</div>` };
+  return mode === 'llm' ? [identity,
     { key: 'ii', label: 'Intelligence ↑', direction: -1, render: intelligenceCell },
+    { key: 'rank', label: 'Global rank ↓', direction: 1, render: model => metric(model.metrics?.rank, value => `#${number(value, 0)}`) },
     { key: 'gap', label: 'Gap to baselines', render: gapCell },
     { key: 'input', label: 'Input $/M ↓', direction: 1, render: model => metric(model.metrics?.input, money) },
     { key: 'output', label: 'Output $/M ↓', direction: 1, render: model => metric(model.metrics?.output, money) },
     { key: 'cache', label: 'Cache $/M ↓', direction: 1, render: model => metric(model.metrics?.cache, money) },
-    { key: 'bestFor', label: 'Best for', render: bestFor }
-  ] : [...common,
+    { key: 'bestFor', label: 'Best for', render: model => bestFor(model, true) }
+  ] : [identity,
     { key: 'elo', label: 'Video arena score ↑', direction: -1, render: model => metric(model.metrics?.elo, value => number(value, 0)) + confidenceCell(model) },
     { key: 'rank', label: 'Arena rank ↓', direction: 1, render: model => metric(model.metrics?.rank, value => `#${number(value, 0)}`) },
     { key: 'priceSecond', label: 'Price $/second ↓', direction: 1, render: model => metric(model.metrics?.priceSecond, money) },
-    { key: 'bestFor', label: 'Best for', render: bestFor }
+    { key: 'priceMinute', label: 'Price $/minute ↓', direction: 1, render: model => metric(model.metrics?.priceMinute, money) },
+    { key: 'bestFor', label: 'Best for', render: model => bestFor(model, true) }
   ];
 }
 function renderComparison() {
-  const target = $('#company-table');
-  if (!target) return;
-  const columns = tableColumns();
+  closeInfo();
+  infoEntries = new Map();
   const rows = chooseRows().sort((a, b) => {
     const av = valueFor(a, sort.key), bv = valueFor(b, sort.key);
     if (av == null && bv == null) return a.name.localeCompare(b.name);
@@ -118,12 +150,26 @@ function renderComparison() {
     if (bv == null) return -1;
     return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * sort.direction;
   });
-  const best = new Map(columns.filter(column => ['ii', 'input', 'output', 'cache', 'elo', 'priceSecond'].includes(column.key)).map(column => {
+  renderTable($('#company-table'), rows, false);
+  renderTable($('#expanded-company-table'), rows, true);
+  const heading = $('#comparison-dialog-title');
+  if (heading) heading.textContent = mode === 'llm' ? 'Full LLM comparison' : 'Full video comparison';
+  document.querySelectorAll('#dialog-mode-toggle [data-mode]').forEach(button => {
+    const active = button.dataset.mode === mode;
+    button.classList.toggle('selected', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+}
+function renderTable(target, rows, expanded) {
+  if (!target) return;
+  const columns = tableColumns(expanded);
+  const best = new Map(columns.filter(column => ['ii', 'input', 'output', 'cache', 'elo', 'priceSecond', 'priceMinute'].includes(column.key)).map(column => {
     const values = rows.map(model => valueFor(model, column.key)).filter(value => typeof value === 'number');
     return [column.key, values.length ? Math[column.direction === 1 ? 'min' : 'max'](...values) : null];
   }));
   const caption = target.querySelector('caption') || target.createCaption();
-  caption.textContent = mode === 'llm' ? `Current flagship LLMs + reference baselines · ${dateText(data.snapshot_date)} · USD per million tokens · Prices subject to context/cache conditions` : `Video arena comparisons · ${dateText(data.snapshot_date)} · Video scores are separate from the LLM Intelligence Index · Format and pricing conditions apply`;
+  caption.textContent = mode === 'llm' ? `Flagship LLMs + baselines · ${dateText(data.snapshot_date)} · USD / million tokens` : `Video arena + baselines · ${dateText(data.snapshot_date)} · USD / second`;
+  if (expanded) caption.textContent += ' · Sources, dates and pricing conditions included';
   const head = target.tHead || target.createTHead();
   head.innerHTML = `<tr>${columns.map(column => `<th scope="col"${column.direction ? ` aria-sort="${column.key === sort.key ? (sort.direction === 1 ? 'ascending' : 'descending') : 'none'}"` : ''}>${column.direction ? `<button type="button" data-company-sort="${esc(column.key)}">${esc(column.label)}<span class="sort-indicator" aria-hidden="true">${column.key === sort.key ? (sort.direction === 1 ? '↑' : '↓') : '↕'}</span></button>` : esc(column.label)}</th>`).join('')}</tr>`;
   const body = target.tBodies[0] || target.createTBody();
@@ -137,14 +183,14 @@ function renderCompanyCards() {
     const model = modelFor(company.flagshipId);
     if (!model) return '';
     const metrics = model.metrics || {};
-    const headline = model.kind === 'video' ? cardMetric('Video arena score', metrics.elo, value => number(value, 0)) + cardMetric('API $/second', metrics.priceSecond, money) : cardMetric('Intelligence Index', metrics.ii, value => number(value, 0)) + cardMetric('API input, $/M', metrics.input, money) + cardMetric('API output, $/M', metrics.output, money);
+    const headline = model.kind === 'video' ? cardMetric('Video arena score', metrics.elo, value => number(value, 0)) + cardMetric('API $/second', metrics.priceSecond, money) : cardMetric('Intelligence Index', metrics.ii, intelligence) + cardMetric('API input, $/M', metrics.input, money) + cardMetric('API output, $/M', metrics.output, money);
     const profile = (company.profile || []).map(item => `<div class="cmp-profile-line"><dt>${esc(item.label)}</dt><dd><p>${esc(item.text)}</p>${badge(item)}${provenance(item, true)}</dd></div>`).join('');
     return `<article class="company-card" id="company-${esc(company.id)}"><div class="cmp-card-head"><span class="small-label">${model.kind === 'video' ? 'VIDEO COMPANY' : 'LLM COMPANY'}</span><h3>${esc(company.name)}</h3><p>${esc(model.name)}</p></div>${company.gapBadge ? `<div class="cmp-gap-badge">${content(company.gapBadge, '', true)}</div>` : ''}<dl class="cmp-card-metrics">${headline}</dl><dl class="cmp-profile">${profile}</dl>${company.match ? `<div class="cmp-match">${content(company.match, 'How it compares', true)}</div>` : ''}<a class="cmp-detail-link" href="#model-${esc(model.id)}" data-open-model="${esc(model.id)}">Sources, prices &amp; model details →</a></article>`;
   }).join(''));
   $('#company-cards')?.classList.add('companies-grid');
 }
 const detailMetrics = [
-  ['ii', 'Intelligence Index'], ['rank', 'Current leaderboard rank'], ['input', 'API input, $/M', money], ['output', 'API output, $/M', money], ['cache', 'Cached input, $/M', money], ['blended', 'Blended API price, $/M', money],
+  ['ii', 'Intelligence Index', intelligence], ['rank', 'Current leaderboard rank'], ['input', 'API input, $/M', money], ['output', 'API output, $/M', money], ['cache', 'Cached input, $/M', money], ['blended', 'Blended API price, $/M', money],
   ['tb4', 'Terminal-Bench 4.0', percent], ['sciCode', 'SciCode (under review)', percent], ['agent', 'AutomationBench (SaaS workflows)', percent], ['context', 'Context tokens', value => number(value, 0)], ['weights', 'Weight availability'], ['modalities', 'Input / output modalities'],
   ['gapSol', 'II gap vs. Sol max', points], ['gapOpus', 'II gap vs. Opus max', points], ['outputRatioSol', 'Output-price ratio to Sol', value => `${number(value, 4)}×`], ['outputRatioOpus', 'Output-price ratio to Opus', value => `${number(value, 4)}×`],
   ['elo', 'Video arena score', value => number(value, 0)], ['ciLow', '95% interval lower bound', value => number(value, 0)], ['ciHigh', '95% interval upper bound', value => number(value, 0)], ['priceMinute', 'Price per minute', money], ['priceSecond', 'Price per second', money], ['modes', 'Generation modes'], ['resolution', 'Maximum resolution'], ['duration', 'Maximum duration']
@@ -192,6 +238,8 @@ function setMode(nextMode) {
     panel.hidden = kind !== mode;
   });
   renderComparison();
+  const fullScroll = $('#comparison-dialog .cmp-dialog-scroll');
+  if (fullScroll) { fullScroll.scrollTop = 0; fullScroll.scrollLeft = 0; }
   renderModelDetails();
   document.dispatchEvent(new CustomEvent('companies:mode', { detail: { mode } }));
 }
@@ -216,6 +264,83 @@ function initTheme() {
   });
   refresh();
 }
+function closeInfo() {
+  const panel = $('#table-info-popover');
+  if (panel?.matches(':popover-open')) panel.hidePopover();
+  if (infoTrigger) infoTrigger.setAttribute('aria-expanded', 'false');
+  infoTrigger = null;
+}
+function showInfo(button) {
+  const entry = infoEntries.get(button.dataset.metricInfo);
+  const panel = $('#table-info-popover');
+  if (!entry || !panel) return;
+  if (infoTrigger === button && panel.matches(':popover-open')) { closeInfo(); return; }
+  closeInfo();
+  panel.innerHTML = `<div class="cmp-info-heading"><h4>${esc(entry.label)}</h4><button type="button" class="cmp-info-close" data-close-info aria-label="Close evidence">×</button></div><p class="cmp-info-model">${esc(entry.model.name)}</p>${entry.item.text != null ? content(entry.item) : metric(entry.item, entry.formatter, false)}`;
+  infoTrigger = button;
+  button.setAttribute('aria-expanded', 'true');
+  panel.showPopover();
+  const anchor = button.getBoundingClientRect();
+  const margin = 12;
+  const size = panel.getBoundingClientRect();
+  const left = Math.max(margin, Math.min(anchor.left - 12, window.innerWidth - size.width - margin));
+  const below = anchor.bottom + 8;
+  const top = below + size.height <= window.innerHeight - margin ? below : Math.max(margin, anchor.top - size.height - 8);
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+  panel.querySelector('[data-close-info]')?.focus({ preventScroll: true });
+}
+function initComparisonDialog() {
+  const dialog = $('#comparison-dialog');
+  const expand = $('#expand-comparison');
+  if (!dialog || !expand) return;
+  let previousBodyStyle = '';
+  expand.addEventListener('click', () => {
+    closeInfo();
+    dialogTrigger = expand;
+    scrollPosition = window.scrollY;
+    previousBodyStyle = document.body.getAttribute('style') || '';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    const tableScroll = dialog.querySelector('.cmp-dialog-scroll');
+    if (tableScroll) { tableScroll.scrollTop = 0; tableScroll.scrollLeft = 0; }
+    $('#close-comparison')?.focus({ preventScroll: true });
+  });
+  $('#close-comparison')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    document.body.setAttribute('style', previousBodyStyle);
+    window.scrollTo(0, scrollPosition);
+    dialogTrigger?.focus({ preventScroll: true });
+    dialogTrigger = null;
+  });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const focusable = [...dialog.querySelectorAll('button:not([disabled]), a[href], summary, [tabindex]:not([tabindex="-1"])')].filter(element => element.getClientRects().length);
+    const first = focusable[0], last = focusable.at(-1);
+    if (!first) { event.preventDefault(); return; }
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  $('#table-info-popover')?.addEventListener('toggle', event => {
+    if (event.newState === 'closed') {
+      infoTrigger?.setAttribute('aria-expanded', 'false');
+      infoTrigger = null;
+    }
+  });
+  window.addEventListener('resize', closeInfo);
+  document.addEventListener('scroll', event => {
+    if (!$('#table-info-popover')?.contains(event.target)) closeInfo();
+  }, true);
+}
 function initNavigation() {
   const revealModel = detail => {
     if (!detail) return;
@@ -224,15 +349,21 @@ function initNavigation() {
     while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
   };
   document.addEventListener('click', event => {
-    const toggle = event.target.closest('#mode-toggle [data-mode]');
+    const toggle = event.target.closest('#mode-toggle [data-mode], #dialog-mode-toggle [data-mode]');
     if (toggle) setMode(toggle.dataset.mode);
     const sorter = event.target.closest('[data-company-sort]');
     if (sorter) {
       const key = sorter.dataset.companySort;
-      sort = { key, direction: sort.key === key ? -sort.direction : tableColumns().find(column => column.key === key)?.direction || 1 };
+      const table = sorter.closest('table');
+      const expanded = table?.id === 'expanded-company-table';
+      sort = { key, direction: sort.key === key ? -sort.direction : tableColumns(expanded).find(column => column.key === key)?.direction || 1 };
       renderComparison();
-      $(`[data-company-sort="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
+      table?.querySelector(`[data-company-sort="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
     }
+    const info = event.target.closest('[data-metric-info]');
+    if (info) showInfo(info);
+    const close = event.target.closest('[data-close-info]');
+    if (close) { const trigger = infoTrigger; closeInfo(); trigger?.focus({ preventScroll: true }); }
     const detailLink = event.target.closest('[data-open-model]');
     if (detailLink) {
       const model = modelFor(detailLink.dataset.openModel);
@@ -265,12 +396,16 @@ function initNavigation() {
 async function start() {
   initTheme();
   try {
-    const response = await fetch('./companies.json');
+    const [response, reportResponse] = await Promise.all([fetch('./companies.json'), fetch('./data.json')]);
     if (!response.ok) throw new Error(`Company dataset returned ${response.status}`);
+    if (!reportResponse.ok) throw new Error(`Chart settings returned ${reportResponse.status}`);
     data = await response.json();
+    const reportData = await reportResponse.json();
+    data.value_zone = reportData.chart_settings?.value_zone;
     sourceMap = new Map((data.sources || []).map(source => [source.id, source]));
     renderOverview(); renderCompanyCards(); renderPlans(); setMode('llm');
     renderCompanyCharts(data);
+    initComparisonDialog();
     initNavigation();
     document.documentElement.dataset.ready = 'true';
   } catch (error) {

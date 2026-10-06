@@ -15,9 +15,10 @@
       "type": "verified",
       "date": "2026-10-06",
       "source_ids": [
-        "s18"
+        "s18",
+        "s30"
       ],
-      "text": "AA names include tested effort: GPT-6.1 Sol (max), Claude Opus 5.5 (max with fallback), Kimi K3 (Max), and Dreamina Seedance 2.5. Short names in charts refer to these configurations.",
+      "text": "AA names include tested configurations: GLM 5.3 Flash (tested max effort, no name suffix), GPT-6.1 Sol (max), Claude Opus 5.5 (max with fallback), Kimi K3 (Max), and Dreamina Seedance 2.5. Short chart labels refer to these configurations.",
       "title": "Exact names, tested configurations"
     },
     {
@@ -25,10 +26,12 @@
       "date": "2026-10-06",
       "source_ids": [
         "s18",
-        "s2"
+        "s2",
+        "s1",
+        "s30"
       ],
-      "text": "Intelligence Index v4.3.2 is rounded for display. Global ranks are calculated from unrounded scores among 259 scored variants in 263 current default leaderboard rows; estimates and effort variants count. Model-page class ranks are different.",
-      "title": "A common rank universe"
+      "text": "Intelligence Index v4.3.2 is shown to one decimal. Other models retain ranks from 259 scored variants among 263 original snapshot entries. Refreshed GLM Flash ranks 36 among 260 scored variants in 264 current entries. Ranks use unrounded scores and include estimates/effort variants; class ranks differ.",
+      "title": "Rank universe and the Flash refresh"
     },
     {
       "type": "calculated",
@@ -52,157 +55,11 @@
   ],
   "models": [
     {
-      "id": "glm-5-3",
-      "companyId": "zai",
-      "company": "Zhipu AI (Z.ai)",
-      "name": "GLM-5.3 (max)",
-      "role": "flagship",
-      "kind": "llm",
-      "baseline": false,
-      "metrics": {
-        "ii": {
-          "value": 44.777392385614,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28"
-          ]
-        },
-        "rank": {
-          "value": 29,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s1",
-            "s28"
-          ],
-          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
-        },
-        "context": {
-          "value": 1000000,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28"
-          ]
-        },
-        "tb4": {
-          "value": 41.9191919191919,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28"
-          ]
-        },
-        "agent": {
-          "value": 62.202864996264196,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28"
-          ],
-          "note": "AA AutomationBench, SaaS workflows; distinct from coding-only benchmark"
-        },
-        "input": {
-          "value": 1.4,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3"
-          ]
-        },
-        "output": {
-          "value": 4.4,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3"
-          ]
-        },
-        "cache": {
-          "value": 0.26,
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3"
-          ]
-        },
-        "weights": {
-          "value": "Open weights — GLM-5.3 License",
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s29",
-            "s28"
-          ]
-        },
-        "modalities": {
-          "value": "text input; text output",
-          "type": "verified",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28"
-          ]
-        },
-        "blended": {
-          "value": 2.15,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3"
-          ],
-          "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
-        },
-        "gapSol": {
-          "value": -7,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28",
-            "s24"
-          ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
-        },
-        "outputRatioSol": {
-          "value": 0.44000000000000006,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3",
-            "s16"
-          ],
-          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
-        },
-        "gapOpus": {
-          "value": -13,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s28",
-            "s25"
-          ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
-        },
-        "outputRatioOpus": {
-          "value": 0.22000000000000003,
-          "type": "calculated",
-          "date": "2026-10-06",
-          "source_ids": [
-            "s3",
-            "s17"
-          ],
-          "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
-        }
-      },
-      "notes": [],
-      "chartLabel": "GLM-5.3"
-    },
-    {
       "id": "glm-5-3-flash",
       "companyId": "zai",
       "company": "Zhipu AI (Z.ai)",
-      "name": "GLM-5.3-Flash",
-      "role": "companion",
+      "name": "GLM 5.3 Flash",
+      "role": "flagship",
       "kind": "llm",
       "baseline": false,
       "metrics": {
@@ -222,7 +79,7 @@
             "s1",
             "s30"
           ],
-          "note": "1 + count(current scored model/effort rows with strictly higher unrounded Intelligence Index)"
+          "note": "1 + count(current default scored model/effort rows with strictly higher unrounded Intelligence Index): 260 scored variants among 264 entries, accessed 6 October 2026."
         },
         "context": {
           "value": 1000000,
@@ -270,8 +127,10 @@
           "type": "verified",
           "date": "2026-10-06",
           "source_ids": [
-            "s3"
-          ]
+            "s3",
+            "s30"
+          ],
+          "note": "Official Z.ai cached-input tariff is $0.03/M and is used here. AA currently lists $0.026/M; the discrepancy or normalization basis is unclear, so the two source values are disclosed rather than silently treated as identical."
         },
         "weights": {
           "value": "Open weights — MIT",
@@ -300,14 +159,14 @@
           "note": "(3 × uncached input + output) / 4. Illustrative token mix; no cache, tier uplift, retries or tool fees. This is not AA’s default cached blend."
         },
         "gapSol": {
-          "value": -10,
+          "value": -10.025793587699098,
           "type": "calculated",
           "date": "2026-10-06",
           "source_ids": [
             "s30",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Unrounded model Intelligence Index minus unrounded baseline Intelligence Index, displayed to one decimal. Other models retain the original integer-rounded gap convention."
         },
         "outputRatioSol": {
           "value": 0.05,
@@ -320,14 +179,14 @@
           "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
         },
         "gapOpus": {
-          "value": -16,
+          "value": -15.814903696841299,
           "type": "calculated",
           "date": "2026-10-06",
           "source_ids": [
             "s30",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Unrounded model Intelligence Index minus unrounded baseline Intelligence Index, displayed to one decimal. Other models retain the original integer-rounded gap convention."
         },
         "outputRatioOpus": {
           "value": 0.025,
@@ -338,9 +197,29 @@
             "s17"
           ],
           "note": "Model output tariff divided by baseline output tariff; standard context, DeepSeek peak. Not completed-task cost."
+        },
+        "effort": {
+          "value": "max",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30"
+          ],
+          "note": "AA names this model GLM 5.3 Flash without an effort suffix; its tested configuration is max."
         }
       },
-      "notes": [],
+      "notes": [
+        {
+          "text": "AA’s current model-page name is GLM 5.3 Flash; its leaderboard and Z.ai API use GLM-5.3-Flash. AA tests max reasoning effort; the API identifier remains glm-5.3-flash.",
+          "type": "verified",
+          "date": "2026-10-06",
+          "source_ids": [
+            "s30",
+            "s1",
+            "s3"
+          ]
+        }
+      ],
       "chartLabel": "GLM Flash"
     },
     {
@@ -453,7 +332,7 @@
             "s32",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.396,
@@ -473,7 +352,7 @@
             "s32",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.198,
@@ -608,7 +487,7 @@
             "s33",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.12,
@@ -628,7 +507,7 @@
             "s33",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.06,
@@ -762,7 +641,7 @@
             "s24",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 1.0,
@@ -782,7 +661,7 @@
             "s24",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.5,
@@ -908,7 +787,7 @@
             "s25",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 2.0,
@@ -928,7 +807,7 @@
             "s25",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 1.0,
@@ -1070,7 +949,7 @@
             "s26",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.27,
@@ -1090,7 +969,7 @@
             "s26",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.135,
@@ -1232,7 +1111,7 @@
             "s27",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.11499999999999999,
@@ -1252,7 +1131,7 @@
             "s27",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.057499999999999996,
@@ -1386,7 +1265,7 @@
             "s34",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.12,
@@ -1406,7 +1285,7 @@
             "s34",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.06,
@@ -1532,7 +1411,7 @@
             "s39",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 1.5,
@@ -1552,7 +1431,7 @@
             "s39",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.75,
@@ -1676,7 +1555,7 @@
             "s42",
             "s24"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioSol": {
           "value": 0.4,
@@ -1696,7 +1575,7 @@
             "s42",
             "s25"
           ],
-          "note": "Difference between displayed rounded Intelligence Index scores, not raw-score subtraction."
+          "note": "Preserved original snapshot gap: each raw Intelligence Index is rounded to the nearest integer before subtraction. The current Intelligence Index display uses one decimal; this retained gap does not subtract those displayed decimals."
         },
         "outputRatioOpus": {
           "value": 0.2,
@@ -2068,106 +1947,102 @@
     {
       "id": "zai",
       "name": "Zhipu AI (Z.ai)",
-      "flagshipId": "glm-5-3",
+      "flagshipId": "glm-5-3-flash",
       "modelIds": [
-        "glm-5-3",
         "glm-5-3-flash"
       ],
       "profile": [
         {
           "label": "Positioning",
+          "text": "Budget coding and visual-input agents; capped subscriptions.",
           "type": "inference",
           "date": "2026-10-06",
           "source_ids": [
-            "s28"
-          ],
-          "text": "Coding-focused open weights with capped subscriptions."
+            "s30",
+            "s6"
+          ]
         },
         {
           "label": "Key models",
+          "text": "GLM 5.3 Flash, tested at max effort.",
           "type": "verified",
           "date": "2026-10-06",
           "source_ids": [
-            "s28",
             "s30"
-          ],
-          "text": "GLM-5.3 (max); cheaper GLM-5.3-Flash."
+          ]
         },
         {
           "label": "Intelligence",
-          "type": "verified",
+          "text": "41.8, current global rank 36.",
+          "type": "calculated",
           "date": "2026-10-06",
           "source_ids": [
-            "s28",
-            "s30"
-          ],
-          "text": "45, rank 29; Flash 42, rank 36."
+            "s30",
+            "s1"
+          ]
         },
         {
           "label": "Price",
+          "text": "$0.15/$0.50 input/output; $0.03 cached input per million.",
           "type": "verified",
           "date": "2026-10-06",
           "source_ids": [
             "s3"
-          ],
-          "text": "Flagship $1.40/$4.40 input/output; Flash $0.15/$0.50 per million."
+          ]
         },
         {
           "label": "Gap",
+          "text": "-10.0/-15.8 points vs Sol/Opus; output 0.05×/0.025× their price.",
           "type": "calculated",
           "date": "2026-10-06",
           "source_ids": [
-            "s28",
             "s30",
-            "s3",
             "s24",
             "s25",
+            "s3",
             "s16",
             "s17"
-          ],
-          "text": "−7/−13 points vs Sol/Opus; output 0.44×/0.22× their price."
+          ]
         },
         {
           "label": "Best for",
+          "text": "Reviewed repository work; screenshot-aware development; ZCode or Claude Code.",
           "type": "inference",
           "date": "2026-10-06",
           "source_ids": [
-            "s28"
-          ],
-          "text": "Repository changes; screenshot-aware Flash development; ZCode workflows."
+            "s30",
+            "s11"
+          ]
         },
         {
           "label": "Not for",
+          "text": "Hard unattended coding without evaluation.",
           "type": "inference",
           "date": "2026-10-06",
           "source_ids": [
-            "s28"
-          ],
-          "text": "Hard unattended coding without evaluation."
+            "s30"
+          ]
         }
       ],
       "gapBadge": {
+        "text": "-10.0/-15.8 points vs Sol/Opus",
         "type": "calculated",
         "date": "2026-10-06",
         "source_ids": [
-          "s28",
           "s30",
-          "s3",
           "s24",
-          "s25",
-          "s16",
-          "s17"
-        ],
-        "text": "−7/−13 points vs Sol/Opus"
+          "s25"
+        ]
       },
       "match": {
+        "text": "Flash offers visual inputs and inexpensive agent integration, but trails both baselines on overall intelligence and common-harness terminal coding.",
         "type": "inference",
         "date": "2026-10-06",
         "source_ids": [
-          "s28",
-          "s30"
-        ],
-        "text": "GLM shares large-context agent integration with the baselines, but trails both on overall intelligence and common-harness terminal coding."
+          "s30",
+          "s24",
+          "s25"
+        ]
       }
     },
     {
@@ -2206,7 +2081,7 @@
             "s32",
             "s33"
           ],
-          "text": "Flash 39, rank 42; Pro 36, rank 46."
+          "text": "Flash 39.5, rank 42; Pro 36.0, rank 46."
         },
         {
           "label": "Price",
@@ -2309,7 +2184,7 @@
           "source_ids": [
             "s34"
           ],
-          "text": "M3 29, rank 64; preview score Not found."
+          "text": "M3 29.2, rank 64; preview score Not found."
         },
         {
           "label": "Price",
@@ -2412,7 +2287,7 @@
             "s39",
             "s42"
           ],
-          "text": "K3 44, rank 31; Code 26, rank 73."
+          "text": "K3 43.6, rank 31; Code 25.8, rank 73."
         },
         {
           "label": "Price",
@@ -2518,7 +2393,7 @@
             "s26",
             "s27"
           ],
-          "text": "Flagship 44, rank 30; Flash 19 estimated, deprecated at AA."
+          "text": "Flagship 43.7, rank 30; Flash 19.5 estimated, deprecated at AA."
         },
         {
           "label": "Price",
@@ -3321,10 +3196,12 @@
       "type": "inference",
       "date": "2026-10-06",
       "source_ids": [
-        "s18",
-        "s2"
+        "s30",
+        "s24",
+        "s25",
+        "s3"
       ],
-      "text": "For difficult repository changes, start with GLM-5.3 among these Chinese flagships; retain Sol or Opus for failures and high-stakes review. Lower tariffs do not erase their measured coding advantage.",
+      "text": "For reviewed repository work on a budget, test GLM 5.3 Flash; retain Sol or Opus for difficult failures and high-stakes review. Flash’s lower tariff does not erase their measured coding advantage.",
       "title": "Coding"
     },
     {
@@ -3356,7 +3233,7 @@
         "s3",
         "s12"
       ],
-      "text": "For the lowest uncached text tariff in this set, choose GLM-5.3-Flash. For cache-heavy workloads, compare DeepSeek Flash’s peak and off-peak cache rates. A cheap model can still cost more after retries.",
+      "text": "For the lowest uncached text tariff in this set, choose GLM 5.3 Flash. For cache-heavy workloads, compare DeepSeek Flash’s peak and off-peak cache rates. A cheap model can still cost more after retries.",
       "title": "Lowest cost"
     },
     {
@@ -3378,7 +3255,7 @@
         "s18",
         "s2"
       ],
-      "text": "All access dates are 6 October 2026. Individual benchmark-run dates and matched multi-hour autonomous failure rates: Not found. This overview is a dated snapshot; the original report remains its 5 October snapshot.",
+      "text": "Access dates are 6 October 2026. Individual benchmark-run dates and matched multi-hour autonomous failure rates: Not found. Only GLM Flash was refreshed for this update; other overview figures retain their existing snapshot, and the original report retains its 5 October figures.",
       "title": "Snapshot, not a live ranking"
     },
     {
@@ -3552,44 +3429,41 @@
         "company": "Zhipu AI (Z.ai)",
         "cells": [
           {
-            "value": "Repository candidate",
+            "value": "Reviewed coding",
+            "text": "Reviewed coding",
             "type": "inference",
             "date": "2026-10-06",
             "source_ids": [
-              "s28"
-            ],
-            "text": "Repository candidate"
+              "s30"
+            ]
           },
           {
             "value": "Flash tariff",
+            "text": "Flash tariff",
             "type": "inference",
             "date": "2026-10-06",
             "source_ids": [
               "s3"
-            ],
-            "text": "Flash tariff"
+            ]
           },
           {
-            "value": "Images in Flash",
+            "value": "Image inputs",
+            "text": "Image inputs",
             "type": "verified",
             "date": "2026-10-06",
             "source_ids": [
-              "s28",
               "s30"
-            ],
-            "text": "Images in Flash"
+            ]
           },
           {
-            "value": "Flagship + Flash",
+            "value": "Flash, MIT",
+            "text": "Flash, MIT",
             "type": "verified",
             "date": "2026-10-06",
             "source_ids": [
-              "s29",
-              "s28",
               "s31",
               "s30"
-            ],
-            "text": "Flagship + Flash"
+            ]
           }
         ]
       },
@@ -3820,7 +3694,7 @@
     {
       "id": "s1",
       "url": "https://artificialanalysis.ai/leaderboards/models",
-      "title": "aaLeaderboard",
+      "title": "Artificial Analysis current default model leaderboard",
       "date": "2026-10-06"
     },
     {
@@ -3980,21 +3854,9 @@
       "date": "2026-10-06"
     },
     {
-      "id": "s28",
-      "url": "https://artificialanalysis.ai/models/glm-5-3",
-      "title": "artificialanalysis.ai — glm 5 3",
-      "date": "2026-10-06"
-    },
-    {
-      "id": "s29",
-      "url": "https://huggingface.co/zai-org/GLM-5.3/blob/main/LICENSE",
-      "title": "huggingface.co — LICENSE",
-      "date": "2026-10-06"
-    },
-    {
       "id": "s30",
       "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
-      "title": "artificialanalysis.ai — glm 5 3 flash",
+      "title": "GLM 5.3 Flash — current Artificial Analysis model page (max tested effort)",
       "date": "2026-10-06"
     },
     {

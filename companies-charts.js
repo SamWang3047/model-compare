@@ -2,10 +2,9 @@
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const activeCharts = new WeakMap();
 let chartNumber = 0;
-const number = value => Number(value).toLocaleString('en-US', { maximumFractionDigits: 8 });
-const money = value => `$${number(value)}`;
-const exactNumber = value => String(value);
-const exactMoney = value => `$${String(value)}`;
+const number = value => Number(value).toLocaleString('en-US', { maximumFractionDigits: 4 });
+const intelligence = value => Number(value).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const money = value => `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 })}`;
 const isNumber = value => typeof value === 'number' && Number.isFinite(value);
 const dateLabel = value => {
   if (!value) return 'Date not found';
@@ -79,15 +78,16 @@ function tooltip(host, data) {
   const box = element('div', 'company-chart-tooltip');
   box.setAttribute('aria-live', 'polite');
   box.setAttribute('aria-atomic', 'true');
-  box.append(element('p', '', 'Hover, focus or tap a point, or use a model button below, to inspect exact values, dates and sources.'));
+  box.append(element('p', '', 'Hover, focus or tap a labelled point to inspect its values, dates and sources.'));
   host.append(box);
   return (model, fields) => {
-    box.replaceChildren(element('strong', 'company-chart-tooltip-title', model.name || model.company));
+    box.replaceChildren(element('strong', 'company-chart-tooltip-title', model.chartLabel || model.name || model.company));
+    if (model.chartLabel && model.chartLabel !== model.name) box.append(element('span', 'company-chart-full-name', model.name));
     fields.forEach(field => box.append(metricRow(data, field.label, field.metric, field.format)));
   };
 }
 function caption(host, data, text, metrics) {
-  host.append(element('p', 'chart-note company-chart-note', `${text} Snapshot: ${dateLabel(snapshot(data))}. Exact values, observation dates and sources are available for each point.`));
+  host.append(element('p', 'chart-note company-chart-note', `${text} Snapshot: ${dateLabel(snapshot(data))}. Display values are rounded; source precision is retained in the JSON data.`));
   const ids = [...new Set(metrics.flatMap(metric => metric?.source_ids || []))];
   const details = element('details', 'company-chart-source-details');
   details.append(element('summary', '', 'Chart sources and dates'));
@@ -139,25 +139,21 @@ function responsive(plot, draw) {
   window.addEventListener('resize', repaint);
   return () => window.removeEventListener('resize', repaint);
 }
-function legend(host, points, select) {
-  const group = element('div', 'company-chart-model-buttons');
-  group.setAttribute('role', 'group');
-  group.setAttribute('aria-label', 'Inspect model chart data');
-  points.forEach(point => {
-    const button = element('button', `company-chart-model-button${point.baseline ? ' company-chart-baseline' : ''}`);
-    button.type = 'button';
-    button.append(element('span', 'company-chart-point-key', point.key), element('span', '', point.chartLabel || point.name));
-    if (point.baseline) button.append(element('span', 'company-chart-reference', 'Reference'));
-    else if (point.metrics?.ii?.type === 'estimate' || point.metrics?.ii?.type === 'estimated') button.append(element('span', 'company-chart-reference', '* Estimate'));
-    button.addEventListener('click', () => select(point));
-    button.addEventListener('focus', () => select(point));
-    group.append(button);
+function legend(host) {
+  const list = element('ul', 'company-chart-symbols');
+  list.setAttribute('aria-label', 'Chart symbols');
+  [['', 'Measured model'], ['is-baseline', 'Reference baseline'], ['is-estimate', 'Estimate']].forEach(([className, label]) => {
+    const item = element('li');
+    const symbol = element('span', `company-chart-symbol ${className}`);
+    symbol.setAttribute('aria-hidden', 'true');
+    item.append(symbol, document.createTextNode(label));
+    list.append(item);
   });
-  host.append(group);
+  host.append(list);
 }
 function fallbackTable(host, data, points, fields, label) {
   const details = element('details', 'company-chart-data-details');
-  details.append(element('summary', '', 'Exact chart data in a table'));
+  details.append(element('summary', '', 'Chart data and sources in a table'));
   const scroller = element('div', 'table-scroll company-chart-table-scroll');
   scroller.setAttribute('role', 'region');
   scroller.setAttribute('aria-label', label);
@@ -211,89 +207,138 @@ function overlaps(a, b) {
 }
 function scatterChart(host, data, kind) {
   const isVideo = kind === 'video';
-  const xKey = isVideo ? 'priceSecond' : 'blended';
-  const yKey = isVideo ? 'elo' : 'ii';
-  const points = (data.models || []).filter(model => model.kind === kind && isNumber(model.metrics?.[xKey]?.value) && model.metrics[xKey].value > 0 && isNumber(model.metrics?.[yKey]?.value)).map((model, index) => ({ ...model, key: String(index + 1) }));
+  const xKey = isVideo ? 'priceSecond' : 'blended', yKey = isVideo ? 'elo' : 'ii';
+  const points = (data.models || []).filter(model => model.kind === kind && isNumber(model.metrics?.[xKey]?.value) && model.metrics[xKey].value > 0 && isNumber(model.metrics?.[yKey]?.value));
   const plot = element('div', 'company-chart-plot');
   host.append(plot);
   if (!points.length) {
-    host.append(element('p', 'chart-note', 'Not found: no comparable model entries have both a sourced score and a sourced price.'));
+    host.append(element('p', 'chart-note', 'Not found: no comparable entries have both a sourced score and a sourced price.'));
     return () => {};
   }
-  const show = tooltip(host, data);
   const fields = [
-    { key: yKey, label: isVideo ? 'Video Arena Elo' : 'Intelligence Index', format: exactNumber },
-    { key: xKey, label: isVideo ? 'USD per generated second' : 'Blended USD per 1M tokens', format: exactMoney }
+    { key: yKey, label: isVideo ? 'Video Arena Elo' : 'Intelligence Index', format: isVideo ? number : intelligence },
+    { key: xKey, label: isVideo ? 'USD per generated second' : 'Blended USD per 1M tokens', format: money }
   ];
+  const show = tooltip(host, data);
   const select = point => {
     const rows = fields.map(field => ({ label: field.label, metric: point.metrics[field.key], format: field.format }));
-    if (isVideo && isNumber(point.metrics.ciLow?.value) && isNumber(point.metrics.ciHigh?.value)) rows.push({ label: 'Lower 95% confidence bound', metric: point.metrics.ciLow, format: exactNumber }, { label: 'Upper 95% confidence bound', metric: point.metrics.ciHigh, format: exactNumber });
+    if (isVideo && isNumber(point.metrics.ciLow?.value) && isNumber(point.metrics.ciHigh?.value)) rows.push({ label: 'Lower 95% confidence bound', metric: point.metrics.ciLow, format: number }, { label: 'Upper 95% confidence bound', metric: point.metrics.ciHigh, format: number });
     show(point, rows);
   };
-  legend(host, points, select);
+  legend(host);
+  const settings = !isVideo && (data.value_zone || data.chart_settings?.value_zone);
+  const zone = settings && isNumber(settings.intelligence_min) && isNumber(settings.blended_price_max) && settings.blended_price_max > 0 ? settings : null;
+  const inZone = point => zone && point.metrics.ii.value >= zone.intelligence_min && point.metrics.blended.value <= zone.blended_price_max;
+  if (zone) {
+    const summary = element('div', 'company-value-zone-summary');
+    summary.append(element('p', '', `Value zone rule: Intelligence Index ≥ ${intelligence(zone.intelligence_min)} and blended price ≤ ${money(zone.blended_price_max)} per million tokens; these adjustable thresholds are an analyst screening rule, not a prediction of task success.`));
+    const members = points.filter(inZone);
+    const memberLine = element('p');
+    memberLine.append(element('strong', '', 'In the value zone: '), document.createTextNode(members.length ? members.map(point => point.chartLabel || point.name).join(', ') : 'None'));
+    summary.append(memberLine);
+    const note = element('p', 'company-chart-zone-note', `Analyst inference · ${dateLabel(zone.date || snapshot(data))}. `);
+    const link = element('a', '', 'Adjust the thresholds in data.json ↗');
+    link.href = '/data.json';
+    note.append(link);
+    summary.append(note);
+    if (zone.rule) {
+      const details = element('details', 'company-zone-rationale');
+      details.append(element('summary', '', 'Why these default thresholds?'), element('p', '', typeof zone.rule === 'string' ? zone.rule : zone.rule.text || 'An illustrative screening rule.'));
+      summary.append(details);
+    }
+    host.append(summary);
+  }
   const absent = (data.models || []).filter(model => model.kind === kind && !points.some(point => point.id === model.id));
   if (absent.length) host.append(element('p', 'company-chart-note', `Excluded where score or comparable price is not found: ${absent.map(model => model.name).join('; ')}.`));
-  const note = isVideo ? 'Text-to-video · Video Arena v2 · audio-enabled entries only. Higher Elo and lower price are preferable; the price axis is logarithmic. Confidence intervals, where available, appear as vertical lines. Arena preference is not an LLM intelligence score.' : 'LLMs only. Higher Intelligence Index and lower blended price are preferable; the price axis is logarithmic. Blend: 3 uncached-input : 1 output tokens, excluding cache and long-context uplifts. Blended price is a calculated token mix, not completed-task cost. Purple squares identify comparison baselines; hollow circles identify estimates.';
-  caption(host, data, note, points.flatMap(point => Object.values(point.metrics)));
+  caption(host, data, isVideo ? 'AA-Video-T2V v2.0 with audio only. Higher Elo and lower price are preferable; price is logarithmic. Vertical lines show confidence intervals. Video preference is separate from LLM intelligence.' : 'LLMs only. Higher Intelligence Index and lower blended price are preferable; price is logarithmic. Blend: 3 uncached-input : 1 output tokens, excluding cache and long-context uplifts. This illustrative token mix is not cost per successful task.', points.flatMap(point => Object.values(point.metrics)));
   fallbackTable(host, data, points, fields, isVideo ? 'Video quality and price' : 'LLM intelligence and blended price');
   return responsive(plot, width => {
     const narrow = width < 500;
-    const height = narrow ? 380 : 450;
-    const left = 53, right = 26, top = 37, bottom = 66;
-    const usableWidth = width - left - right;
-    const usableHeight = height - top - bottom;
-    const xValues = points.map(point => point.metrics[xKey].value);
-    const xRange = extent(xValues.map(Math.log10), 0.14);
+    const height = narrow ? (isVideo ? 440 : 580) : 450;
+    const left = narrow ? 42 : 53, right = narrow ? 14 : 26, top = 37, bottom = 66;
+    const usableWidth = width - left - right, usableHeight = height - top - bottom;
+    const xRange = extent(points.map(point => Math.log10(point.metrics[xKey].value)), 0.14);
     const minX = 10 ** xRange[0], maxX = 10 ** xRange[1];
     const yValues = points.flatMap(point => isVideo ? [point.metrics[yKey].value, point.metrics.ciLow?.value, point.metrics.ciHigh?.value].filter(isNumber) : [point.metrics[yKey].value]);
-    const yStep = isVideo ? 50 : 10;
-    const yRange = extent(yValues, isVideo ? 30 : 5);
-    const minY = isVideo ? Math.floor(yRange[0] / yStep) * yStep : 0;
-    const maxY = Math.ceil(yRange[1] / yStep) * yStep;
+    const yStep = isVideo ? 50 : 10, yRange = extent(yValues, isVideo ? 30 : 5);
+    const minY = isVideo ? Math.floor(yRange[0] / yStep) * yStep : 0, maxY = Math.ceil(yRange[1] / yStep) * yStep;
     const x = value => left + (Math.log10(value) - xRange[0]) / (xRange[1] - xRange[0]) * usableWidth;
     const y = value => top + (1 - (value - minY) / (maxY - minY)) * usableHeight;
-    const svg = svgRoot(width, height, isVideo ? 'Video quality versus price per generated second' : 'LLM intelligence versus blended token price', 'Exact coordinates come from the sourced dataset. Numbered labels match the model buttons. Points are keyboard accessible; an exact data table follows the chart.');
+    const svg = svgRoot(width, height, isVideo ? 'Video quality versus price per generated second' : 'LLM intelligence versus blended token price', 'Every point has a direct model-name label and supports keyboard, hover and touch inspection. A sourced data table follows.');
+    const occupied = [];
+    if (zone && zone.blended_price_max >= minX && zone.intelligence_min <= maxY) {
+      const zoneRight = Math.min(width - right, x(zone.blended_price_max));
+      const zoneBottom = Math.min(height - bottom, y(zone.intelligence_min));
+      if (zoneRight > left && zoneBottom > top) {
+        const rect = svgAdd(svg, 'rect', { x: left, y: top, width: zoneRight - left, height: zoneBottom - top, fill: 'var(--accent)', 'fill-opacity': '.07', stroke: 'var(--accent)', 'stroke-width': 1.2, 'stroke-dasharray': '6 4', class: 'company-value-zone' });
+        svgAdd(rect, 'title', {}, 'Value zone: high intelligence, low cost');
+        const lines = narrow ? ['Value zone:', 'high intelligence,', 'low cost'] : ['Value zone: high intelligence, low cost'];
+        lines.forEach((line, index) => svgText(svg, left + 10, top + 18 + index * 14, line, { fill: 'var(--accent)', 'font-size': narrow ? 10.5 : 12, 'font-weight': 650, class: 'company-zone-label' }));
+        occupied.push({ x: left + 8, y: top + 5, width: narrow ? 106 : 285, height: lines.length * 14 + 5 });
+      }
+    }
     let ticks = logTicks(minX, maxX);
     if (narrow && ticks.length > 5) ticks = ticks.filter((_, index) => index % 2 === 0);
     ticks.forEach(tick => {
       svgLine(svg, x(tick), top, x(tick), height - bottom);
-      svgText(svg, x(tick), height - bottom + 24, money(tick), { 'text-anchor': 'middle', 'font-size': narrow ? 11 : 12 });
+      svgText(svg, x(tick), height - bottom + 24, money(tick), { 'text-anchor': 'middle', 'font-size': narrow ? 10.5 : 12 });
     });
     for (let tick = minY; tick <= maxY; tick += yStep) {
       svgLine(svg, left, y(tick), width - right, y(tick));
-      svgText(svg, left - 9, y(tick) + 4, number(tick), { 'text-anchor': 'end' });
+      svgText(svg, left - 9, y(tick) + 4, number(tick), { 'text-anchor': 'end', 'font-size': narrow ? 11 : 12 });
     }
     svgText(svg, left, 19, isVideo ? 'Video Arena Elo ↑' : 'Intelligence Index ↑', { fill: 'var(--text)', 'font-size': narrow ? 12 : 13 });
     svgText(svg, left + usableWidth / 2, height - 14, isVideo ? 'USD / generated second · log scale' : 'Blended USD / 1M tokens · log scale', { 'text-anchor': 'middle', 'font-size': narrow ? 10.5 : 12 });
     const positions = points.map(point => ({ point, x: x(point.metrics[xKey].value), y: y(point.metrics[yKey].value) }));
-    const occupied = positions.map(position => ({ x: position.x - 7, y: position.y - 7, width: 14, height: 14 }));
-    positions.forEach(position => {
+    occupied.push(...positions.map(position => ({ x: position.x - 11, y: position.y - 11, width: 22, height: 22 })));
+    const canvas = document.createElement('canvas'), context = canvas.getContext('2d');
+    const fontSize = narrow ? 11 : 12;
+    if (context) context.font = `${fontSize}px ${getComputedStyle(plot).fontFamily}`;
+    positions.sort((a, b) => a.y - b.y || a.x - b.x).forEach(position => {
       const { point, x: cx, y: cy } = position;
       const color = point.baseline ? 'var(--company-chart-baseline)' : 'var(--accent)';
+      const estimated = ['estimate', 'estimated'].includes(point.metrics[yKey].type);
+      const labelText = (point.chartLabel || point.name).replace(/\*$/, '');
+      const lines = estimated ? [labelText, 'Estimate'] : [labelText];
+      const labelWidth = Math.ceil(Math.max(...lines.map(line => context ? context.measureText(line).width : line.length * fontSize * .57))) + 12;
+      const labelHeight = estimated ? 34 : 21;
+      const valid = candidate => candidate.x >= left + 2 && candidate.x + candidate.width <= width - right - 2 && candidate.y >= top + 2 && candidate.y + candidate.height <= height - bottom - 2 && !occupied.some(item => overlaps(candidate, item));
+      const candidates = [];
+      for (const offset of [-labelHeight - 10, 10, -labelHeight - 30, 30, -labelHeight - 55, 55, -labelHeight - 85, 85]) {
+        candidates.push({ x: cx + 13, y: cy + offset, width: labelWidth, height: labelHeight }, { x: cx - labelWidth - 13, y: cy + offset, width: labelWidth, height: labelHeight });
+      }
+      let label = candidates.find(valid);
+      if (!label) {
+        let distance = Infinity;
+        for (let ly = top + 3; ly + labelHeight <= height - bottom - 3; ly += 6) {
+          for (let lx = left + 3; lx + labelWidth <= width - right - 3; lx += 8) {
+            const candidate = { x: lx, y: ly, width: labelWidth, height: labelHeight };
+            const score = Math.abs(lx + labelWidth / 2 - cx) + Math.abs(ly + labelHeight / 2 - cy) * 1.25;
+            if (score < distance && valid(candidate)) { label = candidate; distance = score; }
+          }
+        }
+      }
+      if (!label) label = { x: Math.min(width - right - labelWidth, Math.max(left, cx - labelWidth / 2)), y: Math.min(height - bottom - labelHeight, Math.max(top, cy + 15)), width: labelWidth, height: labelHeight };
+      occupied.push(label);
       if (isVideo && isNumber(point.metrics.ciLow?.value) && isNumber(point.metrics.ciHigh?.value)) {
         const lower = y(point.metrics.ciLow.value), upper = y(point.metrics.ciHigh.value);
-        svgLine(svg, cx, upper, cx, lower, { stroke: color, 'stroke-width': 1.4, opacity: 0.7 });
+        svgLine(svg, cx, upper, cx, lower, { stroke: color, 'stroke-width': 1.4, opacity: .7 });
         svgLine(svg, cx - 4, upper, cx + 4, upper, { stroke: color });
         svgLine(svg, cx - 4, lower, cx + 4, lower, { stroke: color });
       }
-      const mark = svgAdd(svg, 'g');
+      svgLine(svg, cx, cy, Math.max(label.x, Math.min(label.x + label.width, cx)), Math.max(label.y, Math.min(label.y + label.height, cy)), { stroke: color, opacity: .65, 'stroke-width': 1 });
+      const mark = svgAdd(svg, 'g', { 'data-model-id': point.id });
       svgAdd(mark, 'circle', { cx, cy, r: 17, fill: 'transparent' });
-      const estimated = point.metrics[yKey].type === 'estimate' || point.metrics[yKey].type === 'estimated';
+      if (inZone(point)) svgAdd(mark, 'circle', { cx, cy, r: 11, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2, class: 'company-value-ring' });
       svgAdd(mark, point.baseline ? 'rect' : 'circle', point.baseline ? { x: cx - 6, y: cy - 6, width: 12, height: 12, rx: 1, fill: color, stroke: 'var(--surface)', 'stroke-width': 1.5 } : { cx, cy, r: 6.5, fill: estimated ? 'var(--surface)' : color, stroke: estimated ? color : 'var(--surface)', 'stroke-width': estimated ? 2 : 1.5 });
-      interact(mark, `${point.name}. ${fields[0].label}: ${number(point.metrics[yKey].value)}. ${fields[1].label}: ${money(point.metrics[xKey].value)}.`, () => select(point));
-      const labelWidth = point.key.length * 7 + 10;
-      const offsets = [[11, -23], [11, 7], [-labelWidth - 11, -23], [-labelWidth - 11, 7], [11, -43], [11, 27], [-labelWidth - 11, -43], [-labelWidth - 11, 27], [11, -63], [-labelWidth - 11, 47]];
-      const label = offsets.map(([dx, dy]) => ({ x: cx + dx, y: cy + dy, width: labelWidth, height: 18 })).find(candidate => candidate.x >= left && candidate.x + candidate.width <= width - right && candidate.y >= top && candidate.y + candidate.height <= height - bottom && !occupied.some(item => overlaps(candidate, item)));
-      if (label) {
-        occupied.push(label);
-        svgLine(svg, cx, cy, label.x + label.width / 2, label.y + label.height / 2, { stroke: color, opacity: 0.6 });
-        svgAdd(svg, 'rect', { x: label.x, y: label.y, width: label.width, height: label.height, rx: 4, fill: 'var(--surface)', stroke: color, 'stroke-width': 0.7, 'pointer-events': 'none' });
-        svgText(svg, label.x + label.width / 2, label.y + 13, point.key, { fill: 'var(--text)', 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 700, 'pointer-events': 'none' });
-      }
+      svgAdd(mark, 'rect', { x: label.x, y: label.y, width: label.width, height: label.height, rx: 4, fill: 'var(--surface)', 'fill-opacity': '.98', stroke: color, 'stroke-width': '.65', class: 'company-point-label-box' });
+      lines.forEach((line, index) => svgText(mark, label.x + 6, label.y + 15 + index * 13, line, { fill: 'var(--text)', 'font-size': index ? 10 : fontSize, 'font-weight': index ? 450 : 600, class: 'company-point-label' }));
+      interact(mark, `${point.name}. ${fields[0].label}: ${fields[0].format(point.metrics[yKey].value)}. ${fields[1].label}: ${money(point.metrics[xKey].value)}.${inZone(point) ? ' In the value zone.' : ''}`, () => select(point));
     });
     plot.replaceChildren(svg);
   });
 }
+
 function positioningChart(host, data) {
   const positioning = data.positioning;
   if (!positioning?.rows?.length || !positioning.columns?.length) {

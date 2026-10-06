@@ -4,7 +4,7 @@
   "models": [
     {
       "id": "glm",
-      "model": "GLM-5.3-Flash (max)",
+      "model": "GLM 5.3 Flash",
       "group": "China",
       "tb4_percent": 32.8283,
       "tb4_api_usd_per_attempt": 0.789999,
@@ -35,7 +35,7 @@
         "output_usd_per_million": "zai_pricing",
         "cache_read_usd_per_million": "zai_pricing"
       },
-      "display_name": "GLM 5.3-Flash",
+      "display_name": "GLM 5.3 Flash",
       "short_name": "GLM Flash",
       "card_description": {
         "text": "Competitive budget coding option. Claude Code is documented by Z.ai; ZCode is its first-party harness.",
@@ -46,7 +46,8 @@
           "zai_claude",
           "zcode"
         ]
-      }
+      },
+      "effort": "max"
     },
     {
       "id": "deepseek",
@@ -698,7 +699,7 @@
     },
     {
       "id": "aa_glm",
-      "title": "Artificial Analysis: GLM-5.3-Flash (max)",
+      "title": "Artificial Analysis: GLM 5.3 Flash (tested max effort)",
       "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
       "date": "2026-10-05",
       "dateMeaning": "Accessed in the original report snapshot"
@@ -764,11 +765,11 @@
     "title": "Chinese AI Coding Models: Price, Performance & Harnesses",
     "snapshotDate": "2026-10-05",
     "reportDate": "2026-10-06",
-    "lastUpdated": "2026-10-05",
+    "lastUpdated": "2026-10-06",
     "currency": "USD",
     "priceNote": "USD before tax",
     "timezone": "Australia/Sydney",
-    "dataPolicy": "All numbers and conclusions are preserved from the earlier report. No new research or model figures were added.",
+    "dataPolicy": "Original figures remain preserved except the explicitly requested GLM Flash refresh. The company overview uses one Flash entry; no larger-model benchmark is attributed to it. Other model snapshots are unchanged.",
     "evaluationDateNote": "Benchmark figures were observed on the snapshot date; evaluation-run dates are not consistently disclosed.",
     "description": "Compare GLM Flash, DeepSeek Flash, MiMo, Qwen, Kimi and MiniMax with GPT-6.1 Sol and Claude Opus. Explore coding evidence, API prices, harnesses and subscriptions."
   },
@@ -1010,25 +1011,12 @@
         "aa_agents",
         "aa_agent_method"
       ]
-    },
-    {
-      "model": "Full GLM 5.3 max",
-      "harness": "OpenCode",
-      "deepswe_percent": 61.4,
-      "api_usd_per_task": 4.24,
-      "minutes_per_task": 48.1,
-      "type": "verified",
-      "date": "2026-10-05",
-      "source_ids": [
-        "aa_agents",
-        "aa_agent_method"
-      ]
     }
   ],
   "repository_agent_note": {
-    "text": "DeepSWE v1.1 solved is repository-coding evidence. Cost and time average across AA’s three coding-agent suites, rather than DeepSWE alone. Full GLM results must not be attributed to GLM Flash. AA does not provide an equivalent current agent row for either requested Flash/native-harness pairing.",
+    "text": "DeepSWE v1.1 solved is repository-coding evidence. Cost and time average across AA’s three coding-agent suites, rather than DeepSWE alone. An equivalent current native-agent row for GLM 5.3 Flash or DeepSeek Flash: Not found; no larger GLM model result is substituted for Flash.",
     "type": "verified",
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "source_ids": [
       "aa_agents",
       "aa_agent_method"
@@ -1122,7 +1110,7 @@
       ],
       "compatibility": [
         {
-          "text": "Map all aliases to Flash. Z.ai’s general example contains full GLM mappings, which can consume approximately three times the plan credits.",
+          "text": "Map all aliases to Flash. Z.ai’s general example also maps larger model aliases, which can consume approximately three times the plan credits.",
           "type": "verified",
           "date": "2026-10-05",
           "source_ids": [
@@ -1687,5 +1675,19 @@
       "aa_method",
       "aa_agents"
     ]
+  },
+  "chart_settings": {
+    "value_zone": {
+      "intelligence_min": 40,
+      "blended_price_max": 2,
+      "type": "inference",
+      "date": "2026-10-06",
+      "source_ids": [
+        "aa_glm",
+        "aa_deepseek",
+        "aa_sol_max"
+      ],
+      "rule": "Value zone: Intelligence Index ≥40 and illustrative 3:1 uncached blended price ≤$2/M. Among the ten plotted models, the median Intelligence Index is 40.6, so 40 is a simple near-median screening cutoff; $2 is half Sol’s $4/M illustrative blend. These round thresholds are analyst inference and user-adjustable, not a measured benchmark, model ranking or cost per successful task."
+    }
   }
 }
