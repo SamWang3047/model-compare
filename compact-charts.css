@@ -1,0 +1,23 @@
+/* Chart-specific rules use the shared light/dark color tokens. */
+.compact-chart{min-width:0;font-size:13px;line-height:1.55}
+.compact-chart-svg{display:block;width:100%;height:auto;overflow:visible;font-family:inherit}
+.compact-chart-plot{min-width:0}
+.compact-chart-inspector{display:flex;flex-wrap:wrap;gap:4px 14px;min-height:24px;margin:8px 0;color:var(--muted);font-size:13px;line-height:1.5}
+.compact-chart-selection{color:var(--text);font-weight:650}
+.compact-chart-values{display:flex;flex-wrap:wrap;gap:4px 14px}
+.compact-chart-value{display:inline-flex;align-items:center;gap:6px;overflow-wrap:anywhere}
+.compact-chart-inspector-note{flex-basis:100%;overflow-wrap:anywhere}
+.compact-chart-caption{font-size:13px;line-height:1.6;color:var(--muted);margin:8px 0 0}
+.compact-status-dot{display:inline-block;flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:var(--accent);border:1px solid var(--accent)}
+.compact-status-calculated,.compact-status-estimate,.compact-status-estimated{background:var(--surface)}
+.compact-status-inference{background:var(--muted);border-color:var(--muted)}
+.compact-status-missing,.compact-status-not_found{background:transparent;border-color:var(--muted)}
+.compact-chart-mark{cursor:pointer;outline:none}
+.compact-chart-mark:focus .compact-chart-label-background{stroke:var(--accent);stroke-width:2}
+.compact-chart-mark:focus>rect:not(.compact-chart-label-background){stroke:var(--accent);stroke-width:2}
+.compact-chart-mark:hover .compact-chart-label{text-decoration:underline}
+.compact-chart-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.compact-chart-controls button{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:6px;padding:6px 14px;background:var(--surface);color:var(--text);cursor:pointer}
+.compact-chart-controls button[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.compact-chart-controls button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:550px){.compact-chart-inspector{gap:3px 8px}.compact-chart-values{gap:3px 9px}}

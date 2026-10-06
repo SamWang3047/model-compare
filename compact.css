@@ -1,0 +1,101 @@
+/* Presentation-only simplification; downloaded datasets are unchanged. */
+.compact-report{font-size:16px;--shadow:none}
+.compact-report main{min-width:0}
+.compact-report .report-section{padding:38px 0}
+.compact-report .hero{padding-top:42px;padding-bottom:32px}
+.compact-report .section-heading{margin-bottom:22px;align-items:center}
+.compact-report h2{font-size:28px;line-height:1.25}
+.compact-report h3{font-size:21px;line-height:1.35;margin-bottom:12px}
+.compact-report p{font-size:16px;line-height:1.65}
+.compact-report .conclusion-block{border:0;padding:0}
+.compact-report .compact-conclusion{font-size:25px;line-height:1.5;letter-spacing:-.025em;font-weight:650;max-width:42em;margin:0 0 20px}
+.compact-takeaways{margin:0;padding-left:21px;color:var(--muted);font-size:16px;line-height:1.65}
+.compact-takeaways li+li{margin-top:9px}
+.compact-report .primary-link{font-size:15px;margin-top:24px}
+.compact-report .sidebar{padding-top:40px}
+.compact-report #toc a{font-size:14px}
+.compact-report #toc a span,.compact-report main code,.compact-report .cmp-best-summary{font-size:13px}
+.compact-report .coding-missing{font-size:13px!important}
+.compact-report .nav-label,.compact-report .section-number,.compact-report .header-date,.compact-report .theme-toggle{font-size:13px}
+.compact-report .filter-tabs button{font-size:14px;padding:8px 15px}
+.compact-report .filter-tabs{margin-bottom:14px}
+.compact-report .comparison-toolbar{margin:12px 0 12px;gap:14px}
+.table-title{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:650}
+.table-actions{display:flex;gap:13px;align-items:center}
+.table-help{display:inline-grid;place-items:center;width:25px;height:25px;border:1px solid var(--muted);border-radius:50%;background:var(--surface);color:var(--text);font-size:13px}
+#comparison-help{display:none;position:absolute;top:32px;left:0;width:290px;max-width:calc(100vw - 45px);background:var(--surface);border:1px solid var(--line);padding:12px;border-radius:7px;z-index:8;font-size:13px;font-weight:400;line-height:1.6}
+.table-help:hover+#comparison-help,.table-help:focus+#comparison-help{display:block}
+.text-button{border:0;background:transparent;color:var(--accent);font-size:13px;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
+.compact-report .cmp-expand-button{font-size:13px;box-shadow:none}
+.compact-report .cmp-preview-table{table-layout:auto;min-width:820px}
+.compact-report .cmp-preview-table th,.compact-report .cmp-preview-table td{font-size:14px;line-height:1.5;padding:12px 13px;min-width:0;max-width:none;width:auto}
+.compact-report .cmp-preview-table th{font-size:13px}
+.compact-report .cmp-preview-table th button,.compact-report .sort-indicator{font-size:13px}
+.compact-report .cmp-preview-table th:first-child,.compact-report .cmp-preview-table td:first-child{width:230px;min-width:230px;max-width:280px}
+.compact-report .cmp-preview-table strong{font-size:14px}
+.compact-report .cmp-preview-table caption{font-size:13px;padding:12px 13px}
+.compact-report .cmp-preview-table .best{box-shadow:none}
+.compact-report .cmp-preview-value{gap:7px}
+.price-pair{display:flex;gap:8px;align-items:center;white-space:nowrap}
+.status-dot{display:inline-block;width:7px;height:7px;flex:0 0 7px;border:1px solid var(--accent);border-radius:50%;background:var(--accent);vertical-align:middle;margin-left:7px}
+.status-calculated,.status-estimate,.status-estimated,.status-illustrative{background:var(--surface)}
+.status-inference,.status-analyst_inference,.status-vendor_reported,.status-third_party{background:var(--muted);border-color:var(--muted)}
+.status-missing,.status-not_found{background:transparent;border-color:var(--muted)}
+.compact-report .chart-panel{padding:18px 0;margin:20px 0;border:0;border-radius:0;box-shadow:none;background:transparent}
+.compact-report .panel-heading{margin-bottom:12px}
+.compact-report .panel-heading p{font-size:13px;line-height:1.6;margin:0}
+.compact-report .panel-heading h3{font-size:21px;margin-bottom:7px}
+.compact-report .accordion{border-radius:8px;margin:16px 0 0;box-shadow:none}
+.compact-report .accordion>summary{font-size:15px;line-height:1.6;padding:14px 18px;padding-right:42px}
+.compact-report .accordion>summary::after{top:13px}
+.compact-report .summary-meta{font-size:13px;line-height:1.55}
+.compact-report .detail-body{padding:18px;font-size:15px}
+.compact-report .detail-body h3{font-size:19px;margin-top:24px}
+.compact-report .detail-body h3:first-child{margin-top:0}
+.compact-report .detail-body h4{font-size:16px;margin-top:20px}
+.compact-report .detail-body p{font-size:15px;margin-bottom:14px}
+.compact-report .detail-body li{font-size:15px;line-height:1.65;margin-bottom:9px}
+.compact-table table{min-width:550px;table-layout:auto}
+.compact-table caption,.compact-table th,.compact-table td{font-size:14px;line-height:1.5;padding:12px 14px}
+.compact-table caption{font-size:13px;color:var(--muted)}
+.compact-table th{font-size:13px}
+.compact-table td{white-space:normal;min-width:130px}
+#plan-table table{min-width:0;width:100%}
+#quick-picks table{min-width:600px}
+.compact-report #coding-table{min-width:790px}
+.compact-report #coding-table th,.compact-report #coding-table td{width:auto;min-width:0;max-width:none}
+.compact-report #coding-table td:first-child{width:245px;min-width:245px}
+.compact-report #coding-agent-references table{min-width:760px}
+.compact-report #coding-agent-references td,.compact-report #coding-agent-references th{font-size:14px;line-height:1.6;padding:12px 14px}
+.compact-report .code-block{margin:14px 0;box-shadow:none}
+.compact-report .code-toolbar,.compact-report .copy-button,.compact-report .code-block pre,.compact-report .code-block code{font-size:13px}
+.compact-report .code-block pre{line-height:1.7;overflow-x:auto}
+.compact-report .compact-campaign{font-size:13px;color:var(--muted);margin:9px 0 0}
+.compact-report #deepseek-line{font-size:15px;margin:22px 0 0}
+.compact-report #workflow{padding:38px 0}
+.compact-report .workflow-intro{font-size:15px;line-height:1.65;margin-bottom:20px}
+.compact-report .workflow-card{box-shadow:none;padding:18px}
+.compact-report .workflow-layer,.compact-report .workflow-layer-number,.compact-report .workflow-status,.compact-report .workflow-status-note{font-size:13px}
+.compact-report .workflow-card h3{font-size:18px}
+.compact-report .workflow-card p,.compact-report .workflow-card p strong,.compact-report .workflow-trials p strong{font-size:13px;line-height:1.65}
+.compact-report .workflow-flow>li,.compact-report .workflow-practices h4,.compact-report .workflow-practices p,.compact-report .workflow-footnote,.compact-report #workflow-comparison-link{font-size:13px;line-height:1.65}
+.compact-report #workflow-validation>summary,.compact-report #workflow-validation .detail-body{font-size:14px}
+.compact-report .report-footer{padding:35px 0 26px}
+.compact-data-notes{padding-left:20px;margin:0;line-height:1.65}
+.compact-data-notes li{font-size:14px;margin-bottom:10px}
+.compact-note-provenance{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+.compact-note-provenance a,.compact-report .cmp-comparison-dialog .provenance a{text-decoration:underline;text-underline-offset:3px}
+.compact-notes-list,.compact-metric-registry{padding-left:22px}
+.compact-report .source-item,.compact-report .source-item time,.compact-report .footer-bottom div,.compact-report .footer-bottom p{font-size:13px}
+.compact-report .footer-bottom{margin-top:26px}
+.compact-report .footer-bottom div{flex-wrap:wrap;gap:10px 18px}
+.compact-report .cmp-comparison-dialog,.compact-report .cmp-info-popover{box-shadow:none}
+.compact-report .cmp-comparison-dialog :is(.cmp-label,.cmp-provenance,.cmp-metric-note,.cmp-role,.cmp-baseline-tag,.coding-unit,.coding-precision,.coding-missing,.cmp-ci>span,.cmp-full-identity>span:first-child,.cmp-dialog-header p,.toolbar-hint,.cmp-full-table .cmp-content p){font-size:13px!important}
+.compact-report .cmp-full-table th,.compact-report .cmp-full-table td,.compact-report .cmp-full-table .cmp-fact-value{font-size:14px}
+.compact-report .cmp-full-table th button{font-size:13px}
+.compact-report .cmp-full-table td{min-width:160px}
+.compact-report .cmp-full-table .cmp-fact .status-dot{margin-left:0}
+.compact-report .cmp-comparison-dialog .filter-tabs{margin:0}
+.compact-report .table-scroll small,.compact-report .table-scroll caption{font-size:13px}
+@media(max-width:850px){.compact-report .report-section,.compact-report #workflow{padding:32px 0}.compact-report .hero{padding-top:32px}.compact-report .sidebar{padding:0}.compact-report #toc{padding:9px 18px}.compact-report #toc a{font-size:13px}.compact-report #toc .sources-nav{display:block}.compact-report .table-actions{gap:10px}.compact-report .compact-conclusion{font-size:23px}.compact-report .workflow-practices{grid-template-columns:1fr;gap:14px}.compact-report .source-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.compact-report h2{font-size:25px}.compact-report .section-heading{margin-bottom:18px;gap:10px}.compact-report .compact-conclusion{font-size:22px}.compact-report .compact-takeaways{font-size:15px}.compact-report .comparison-toolbar{align-items:flex-start;flex-wrap:wrap}.compact-report .table-actions{margin-left:auto}.compact-report .table-title{font-size:14px}.compact-report .cmp-expand-button{padding:8px 10px}.compact-report .chart-panel{margin:16px 0;padding:10px 0}.compact-report .detail-body{padding:16px}.compact-report .workflow-card-top{gap:8px}.compact-report .workflow-status-group{gap:5px}.compact-report .workflow-layer{max-width:65%}.compact-report .source-item{flex-wrap:wrap}.compact-report .workflow-bottom{gap:12px}.compact-report .header-actions{gap:0}.compact-report .theme-toggle{font-size:13px}.compact-report .code-toolbar{gap:8px}.compact-report .summary-meta{display:block}.compact-report .source-grid{gap:0}}

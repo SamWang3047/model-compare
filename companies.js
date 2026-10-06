@@ -1,5 +1,5 @@
-import { renderCompanyCharts } from './companies-charts.js';
-import { renderCodingSections } from './app.js';
+import { renderCompactCharts } from './compact-charts.js';
+import { renderCompactContent } from './compact-content.js';
 import { createUnifiedData } from './model-data.js';
 import { initTableDialog } from './table-dialog.js';
 import { renderCodingComparison } from './coding-comparison.js';
@@ -20,6 +20,8 @@ const typeLabels = { verified: 'Verified fact', inference: 'Analyst inference', 
 let data;
 let sourceMap = new Map();
 let mode = 'llm';
+let category = 'llm';
+let showAllModels = false;
 let sort = { key: 'tb4', direction: -1 };
 let infoEntries = new Map();
 let infoTrigger = null;
@@ -36,7 +38,7 @@ function fact(item, fallbackType = 'missing') {
 }
 function badge(item) {
   const type = item?.type || 'missing';
-  return `<span class="content-label cmp-label ${type === 'inference' || type === 'missing' || type === 'estimate' || type === 'estimated' ? 'inference' : type === 'calculated' ? 'calculated' : ''}">${esc(typeLabels[type] || type)}</span>`;
+  return `<span class="status-dot status-${esc(type)}" role="img" title="${esc(typeLabels[type] || type)}" aria-label="${esc(typeLabels[type] || type)}"></span>`;
 }
 function provenance(item, compact = false) {
   const refs = [...new Set(item?.source_ids || [])].map(id => sourceMap.get(id)).filter(Boolean);
@@ -72,6 +74,11 @@ function valueFor(model, key) {
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }
 function chooseRows(expanded = false) {
+  if (mode === 'llm' && !expanded && !showAllModels) {
+    const compactIds = new Set(['claude-opus-5-5', 'gpt-6-1-sol', 'gpt-6-1-sol-medium', 'glm-5-3-flash', 'deepseek-v4-1-flash', 'mimo-v2-6-pro', 'kimi-k3']);
+    return data.models.filter(model => compactIds.has(model.id));
+  }
+  if (mode === 'llm') return data.models.filter(model => model.kind === 'llm');
   const flagshipIds = new Set(data.companies.map(company => company.flagshipId));
   return data.models.filter(model => model.kind === mode && (expanded || model.baseline || model.role === 'flagship' || flagshipIds.has(model.id)));
 }
@@ -86,9 +93,7 @@ function bestFor(model, expanded = false) {
   return model.baseline ? '<span class="cmp-muted">Reference baseline</span>' : '<span class="cmp-muted">See company profile</span>';
 }
 function infoButton(model, key, item, label, formatter) {
-  const id = `${model.id}:${key}`;
-  infoEntries.set(id, { model, item: fact(item), label, formatter });
-  return `<button type="button" class="cmp-info-button" data-metric-info="${esc(id)}" aria-label="Evidence for ${esc(label)}: ${esc(model.name)}" aria-controls="table-info-popover" aria-expanded="false"><span aria-hidden="true">i</span></button>`;
+  return badge(fact(item));
 }
 function previewMetric(model, key, label, formatter) {
   return `<div class="cmp-preview-value"><strong>${esc(displayValue(model.metrics?.[key], formatter))}</strong>${infoButton(model, key, model.metrics?.[key], label, formatter)}</div>`;
@@ -115,12 +120,12 @@ function tableColumns(expanded = false) {
     { key: 'company', label: 'Company', direction: 1, render: model => `<strong>${esc(model.company || companyFor(model)?.name || '')}</strong>${model.baseline ? '<span class="cmp-baseline-tag">Baseline</span>' : ''}` },
     { key: 'name', label: 'Model / effort', direction: 1, render: model => `<strong>${esc(model.name)}</strong>${effortLabel(model)}` }
   ];
-  if (!expanded) return mode === 'llm' ? [...common,
-    { key: 'tb4', label: 'Coding TB4 ↑', direction: -1, render: model => previewMetric(model, 'tb4', 'Terminal-Bench 4.0 solved', percent) },
-    { key: 'ii', label: 'Intelligence ↑', direction: -1, render: model => previewMetric(model, 'ii', 'Intelligence Index', intelligence) },
-    { key: 'input', label: 'Input $/M ↓', direction: 1, render: model => previewMetric(model, 'input', 'Input $/M', money) },
-    { key: 'output', label: 'Output $/M ↓', direction: 1, render: model => previewMetric(model, 'output', 'Output $/M', money) },
-    { key: 'bestFor', label: 'Best for', render: model => bestFor(model) }
+  if (!expanded) return mode === 'llm' ? [
+    { key: 'name', label: 'Model', direction: 1, render: model => `<strong>${esc(model.name)}</strong>` },
+    { key: 'tb4', label: 'Terminal-Bench 4.0 % ↑', direction: -1, render: model => previewMetric(model, 'tb4', 'Terminal-Bench 4.0 solved', percent) },
+    { key: 'codingCost', label: '$ per attempt ↓', direction: 1, render: model => previewMetric(model, 'codingCost', 'Cost per attempt', money) },
+    { key: 'speed', label: 'Speed tok/s ↑', direction: -1, render: model => previewMetric(model, 'speed', 'Output speed', value => number(value)) },
+    { key: 'input', label: 'Input / Output $/M ↓', direction: 1, render: model => `<div class="price-pair">${previewMetric(model, 'input', 'Input $/M', money)}<span aria-hidden="true">/</span>${previewMetric(model, 'output', 'Output $/M', money)}</div>` }
   ] : [...common,
     { key: 'elo', label: 'Video score ↑', direction: -1, render: model => previewMetric(model, 'elo', 'Video arena score', value => number(value, 0)) },
     { key: 'rank', label: 'Arena rank ↓', direction: 1, render: model => previewMetric(model, 'rank', 'Arena rank', value => `#${number(value, 0)}`) },
@@ -159,7 +164,7 @@ function renderComparison() {
     if (bv == null) return -1;
     return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * sort.direction;
   };
-  renderTable($('#company-table'), chooseRows().sort(compare), false);
+  renderTable($(mode === 'video' ? '#video-table' : '#company-table'), chooseRows().sort(compare), false);
   renderTable($('#expanded-company-table'), chooseRows(true).sort(compare), true);
   const heading = $('#comparison-dialog-title');
   if (heading) heading.textContent = mode === 'llm' ? 'Full LLM comparison' : 'Full video comparison';
@@ -177,7 +182,7 @@ function renderTable(target, rows, expanded) {
     return [column.key, values.length ? Math[column.direction === 1 ? 'min' : 'max'](...values) : null];
   }));
   const caption = target.querySelector('caption') || target.createCaption();
-  caption.textContent = mode === 'llm' ? `${expanded ? 'All LLMs + effort variants' : 'Flagships + primary coding choices'} · USD / million tokens · Dates in evidence` : `Video arena + baselines · ${dateText(data.snapshot_date)} · USD / second`;
+  caption.textContent = mode === 'llm' ? `${expanded ? 'All LLMs + effort variants' : 'Coding and cost · API USD / million tokens'}` : 'Video arena · USD / second';
   if (expanded) caption.textContent += ' · Sources, dates and pricing conditions included';
   const head = target.tHead || target.createTHead();
   head.innerHTML = `<tr>${columns.map(column => `<th scope="col"${column.direction ? ` aria-sort="${column.key === sort.key ? (sort.direction === 1 ? 'ascending' : 'descending') : 'none'}"` : ''}>${column.direction ? `<button type="button" data-company-sort="${esc(column.key)}">${esc(column.label)}<span class="sort-indicator" aria-hidden="true">${column.key === sort.key ? (sort.direction === 1 ? '↑' : '↓') : '↕'}</span></button>` : esc(column.label)}</th>`).join('')}</tr>`;
@@ -222,15 +227,20 @@ function renderOverview() {
   const footerDate = $('#footer-date');
   if (footerDate) footerDate.textContent = `Last updated ${dateText(data.snapshot_date)} · Prices in USD before tax. Each fact retains its source date.`;
 }
-function setMode(nextMode) {
+function setMode(nextMode, updateCategory = true) {
+  if (updateCategory) category = ['llm', 'coding', 'video'].includes(nextMode) ? nextMode : 'llm';
   mode = nextMode === 'video' ? 'video' : 'llm';
   sort = { key: mode === 'llm' ? 'tb4' : 'elo', direction: -1 };
   document.documentElement.dataset.companyMode = mode;
   document.querySelectorAll('#mode-toggle [data-mode]').forEach(button => {
-    const active = button.dataset.mode === mode;
+    const active = button.dataset.mode === category;
     button.classList.toggle('selected', active);
-    button.setAttribute('aria-pressed', String(active));
+    button.setAttribute('aria-selected', String(active));
+    button.tabIndex = active ? 0 : -1;
   });
+  for (const [kind, id] of [['llm', 'llm-panel'], ['coding', 'coding-comparison'], ['video', 'video-panel']]) document.getElementById(id).hidden = kind !== category;
+  $('.primary-coding-chart').hidden = category === 'video';
+  $('#more-charts').hidden = category === 'video';
   document.querySelectorAll('[data-kind-panel], [data-model-kind]').forEach(panel => {
     const kind = panel.dataset.kindPanel || panel.dataset.modelKind;
     panel.hidden = kind !== mode;
@@ -238,7 +248,6 @@ function setMode(nextMode) {
   renderComparison();
   const fullScroll = $('#comparison-dialog .cmp-dialog-scroll');
   if (fullScroll) { fullScroll.scrollTop = 0; fullScroll.scrollLeft = 0; }
-  renderModelDetails();
   document.dispatchEvent(new CustomEvent('companies:mode', { detail: { mode } }));
 }
 function initTheme() {
@@ -292,7 +301,16 @@ function initComparisonDialog() {
   const dialog = $('#comparison-dialog');
   const expand = $('#expand-comparison');
   if (!dialog || !expand) return;
-  initTableDialog({ dialog, trigger: expand, close: $('#close-comparison'), onOpen: closeInfo, onClose: closeInfo });
+  let activeTrigger = expand;
+  expand.addEventListener('click', event => { if (event.isTrusted) activeTrigger = expand; });
+  initTableDialog({ dialog, trigger: expand, close: $('#close-comparison'), onOpen: closeInfo, onClose: () => {
+    closeInfo();
+    mode = category === 'video' ? 'video' : 'llm';
+    sort = { key: mode === 'video' ? 'elo' : 'tb4', direction: -1 };
+    renderComparison();
+    if (activeTrigger !== expand) requestAnimationFrame(() => activeTrigger.focus({ preventScroll: true }));
+  } });
+  $('#expand-video').addEventListener('click', () => { activeTrigger = $('#expand-video'); expand.click(); });
   $('#table-info-popover')?.addEventListener('toggle', event => {
     if (event.newState === 'closed') {
       infoTrigger?.setAttribute('aria-expanded', 'false');
@@ -305,7 +323,7 @@ function initComparisonDialog() {
   }, true);
 }
 function initNavigation() {
-  const aliases = { overview: 'conclusion', recommendation: 'scenarios', profiles: 'comparison', limits: 'comparison', takeaways: 'conclusion' };
+  const aliases = { overview: 'conclusion', recommendation: 'scenarios', profiles: 'comparison', limits: 'sources', takeaways: 'conclusion', harness: 'scenarios' };
   const revealModel = detail => {
     if (!detail) return;
     detail.open = true;
@@ -321,6 +339,7 @@ function initNavigation() {
     }
     if (!location.hash.startsWith('#model-')) {
       const target = document.getElementById(location.hash.slice(1));
+      if (target?.id === 'coding-comparison') setMode('coding');
       if (target) requestAnimationFrame(() => target.scrollIntoView());
       return;
     }
@@ -332,7 +351,13 @@ function initNavigation() {
   };
   document.addEventListener('click', event => {
     const toggle = event.target.closest('#mode-toggle [data-mode], #dialog-mode-toggle [data-mode]');
-    if (toggle) setMode(toggle.dataset.mode);
+    if (toggle) setMode(toggle.dataset.mode, !toggle.closest('#dialog-mode-toggle'));
+    if (event.target.closest('#show-all-models')) {
+      showAllModels = !showAllModels;
+      $('#show-all-models').textContent = showAllModels ? 'Show fewer models' : 'Show all models';
+      $('#show-all-models').setAttribute('aria-expanded', String(showAllModels));
+      renderComparison();
+    }
     const sorter = event.target.closest('[data-company-sort]');
     if (sorter) {
       const key = sorter.dataset.companySort;
@@ -353,6 +378,25 @@ function initNavigation() {
       const detail = document.getElementById(`model-${detailLink.dataset.openModel}`);
       revealModel(detail);
     }
+  });
+  $('#mode-toggle').addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const tabs = [...document.querySelectorAll('#mode-toggle [role="tab"]')];
+    const index = tabs.indexOf(document.activeElement);
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    setMode(tabs[next].dataset.mode);
+    tabs[next].focus({ preventScroll: true });
+  });
+  const comparisonHelp = $('.table-help');
+  for (const type of ['focus', 'pointerenter']) comparisonHelp.addEventListener(type, () => { $('#comparison-help').hidden = false; });
+  comparisonHelp.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { $('#comparison-help').hidden = true; event.preventDefault(); }
+  });
+  document.querySelectorAll('details > summary').forEach(summary => {
+    const detail = summary.parentElement;
+    const sync = () => summary.setAttribute('aria-expanded', String(detail.open));
+    sync(); detail.addEventListener('toggle', sync);
   });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
@@ -386,11 +430,13 @@ async function start() {
       if (!sourceKeys.has(key)) { data.sources.push({ ...source, id: `coding:${source.id}` }); sourceKeys.add(key); }
     }
     sourceMap = new Map((data.sources || []).map(source => [source.id, source]));
-    renderOverview(); setMode('llm');
-    renderCodingSections(data.report);
-    renderCompanyCharts(data);
-    renderCodingComparison(codingData);
+    write('#source-list', (data.sources || []).map(source => `<div class="source-item">${sourceLink(source)}<time datetime="${esc(source.date || data.snapshot_date)}">${dateText(source.date || data.snapshot_date)}</time></div>`).join(''));
+    setMode('llm');
+    renderCodingComparison(codingData, reportData);
     renderWorkflow(reportData.multi_model_workflow);
+    $('#workflow .workflow-status-note')?.remove();
+    renderCompactContent(reportData, codingData, companyData);
+    renderCompactCharts(reportData, codingData, data);
     const updatedDate = [data.snapshot_date, codingData.metadata.updated_date, reportData.multi_model_workflow?.updated_date].filter(Boolean).sort().at(-1);
     $('#last-updated').textContent = dateText(updatedDate);
     $('#last-updated').dateTime = updatedDate;

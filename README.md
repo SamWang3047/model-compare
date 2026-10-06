@@ -1,10 +1,10 @@
 # Model Compare
 
-A readable, interactive static website comparing Chinese AI models with GPT-6.1 Sol and Claude Opus. The original coding report and Chinese AI companies overview are merged into one guide, with an overview comparison, dedicated coding evidence, interactive graphs, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
+A readable, interactive static website comparing Chinese AI models with GPT-6.1 Sol and Claude Opus. Five blocks cover the overview, comparison, quick picks, monthly costs and personal workflow. LLMs, Coding and Video share one comparison block; secondary charts, plan rules and notes are collapsed. All three original datasets remain unchanged and downloadable.
 
 **[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
 
-The comparison covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun, Xiaomi/MiMo, Alibaba/Qwen and ByteDance Seedance alongside the Western baselines. The LLM/video tabs share a compact table and accessible full-table dialog. The companies overview’s intelligence/price and video quality/price graphs are retained, alongside the coding and monthly-cost graphs. Repeated model rows, recommendations, billing paragraphs and source URLs are consolidated. The former `/companies.html` URL redirects to the canonical page, preserving section links.
+The comparison covers Zhipu/Z.ai, DeepSeek, MiniMax, Kimi/Moonshot, StepFun, Xiaomi/MiMo, Alibaba/Qwen and ByteDance Seedance alongside the Western baselines. The default LLM table shows seven choices; **Show all models** and the full-table dialog retain additional models. Dates and source links live in the modals and footer. The former `/companies.html` URL redirects to the canonical page; merged harness links lead to quick picks.
 
 Vercel is connected to this repository. Pushes to `main` automatically deploy to production.
 
@@ -14,7 +14,7 @@ The compact **[My multi-model workflow](https://model-compare-delta.vercel.app/#
 
 **Site updated: 6 October 2026.** Zhipu’s overview now uses only **GLM 5.3 Flash**, refreshed directly from Artificial Analysis and official Z.ai pricing. Its tested effort is **max**; AA’s model page uses spaces while its leaderboard/API name is **GLM-5.3-Flash**. Other models’ figures remain unchanged; the larger-model native-agent row was removed rather than relabelled as Flash.
 
-The new **[Coding comparison](https://model-compare-delta.vercel.app/#coding-comparison)** adds seven exact AA model configurations, current independent Terminal-Bench 4.0 and Intelligence Index v4.3.2 results, output-token totals, Arena WebDev prices, two responsive charts and official coding-plan checks. Existing snapshots and content remain unchanged. New observations were retrieved on **6 October 2026**; Arena’s directly verified snapshot is **1 October**, and the explicitly historical Kimi observation is **12 August**. Requested 30 September Arena figures could not be verified and are listed as gaps instead of replacing current data.
+The **[Coding tab](https://model-compare-delta.vercel.app/#coding-comparison)** retains seven AA model configurations, independent Terminal-Bench 4.0 and Intelligence Index v4.3.2 results, output-token totals and Arena WebDev prices. Detailed columns remain in its modal, four original repository-agent rows remain in a collapsed table, and other agent configurations and plan checks are in footer notes. Observations were retrieved on **6 October 2026**; Arena’s directly verified snapshot is **1 October**, and the historical Kimi observation is **12 August**. Requested 30 September Arena figures remain labelled **Not found**.
 
 Arena’s blend weights **output:input 3:1**, `(input + 3 × output) / 4`; the older overview scatter weights **input:output 3:1**. Arena provider quotes, official API prices, full Intelligence Index costs and coding-agent costs are distinct measures. New values display one decimal, while evidence retains source precision. The new frontier connects only the selected models, not the global Arena frontier. Historical Kimi and missing entries are excluded from both new plots.
 

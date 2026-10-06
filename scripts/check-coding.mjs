@@ -219,7 +219,7 @@ if (arenaPoints.some(point => point.id !== 'opus') && pointIds.includes('opus'))
 }
 
 assert(/<section\b[^>]*\bid=["']coding-comparison["']/iu.test(html), 'Add the coding comparison as a page section.');
-assert(/href=["']#coding-comparison["']/iu.test(html), 'The coding section must be reachable through an in-page link.');
+assert(/data-mode=["']coding["']/iu.test(html) && /aria-controls=["']coding-comparison["']/iu.test(html), 'The coding comparison must be reachable through its tab.');
 for (const file of ['coding.json', 'coding-data.js', 'coding-comparison.js', 'coding-charts.js', 'coding-comparison.css', 'table-dialog.js']) {
   assert(await exists(file), `Missing static coding comparison asset: ${file}.`);
   const build = await read('scripts/build.mjs');
@@ -249,7 +249,8 @@ if (referenceIndex >= 0) {
     if (previousHtml.status === 0) {
       const previousSections = [...previousHtml.stdout.matchAll(/<section\b[^>]*\bid=["']([^"']+)["']/giu)].map(match => match[1]);
       const currentSections = new Set([...html.matchAll(/<section\b[^>]*\bid=["']([^"']+)["']/giu)].map(match => match[1]));
-      for (const id of previousSections) assert(currentSections.has(id), `Existing section #${id} was removed.`);
+      const mergedSections = { harness: 'scenarios' };
+      for (const id of previousSections) assert(currentSections.has(mergedSections[id] || id), `Existing section #${id} was removed without a merged destination.`);
     }
   }
 }
