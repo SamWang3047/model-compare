@@ -5,6 +5,7 @@ import path from 'node:path';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(await readFile(path.join(root, 'data.json'), 'utf8'));
 const companies = JSON.parse(await readFile(path.join(root, 'companies.json'), 'utf8'));
+const coding = JSON.parse(await readFile(path.join(root, 'coding.json'), 'utf8'));
 const urls = new Set();
 
 function collect(value) {
@@ -14,8 +15,11 @@ function collect(value) {
 }
 // Configuration API endpoints are not navigation links. Check the source
 // registry that the site renders rather than sending requests to auth routes.
-collect(data.sources ?? data);
-collect(companies.sources);
+if (!process.argv.includes('--coding-only')) {
+  collect(data.sources ?? data);
+  collect(companies.sources);
+}
+collect(coding.sources);
 
 async function inspect(url) {
   try {

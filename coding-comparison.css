@@ -1,0 +1,47 @@
+.coding-home-link{display:inline-block;margin:18px 0 0 24px;font-size:13px;font-weight:650;color:var(--accent)}
+.sidebar-note a{text-decoration:underline;text-underline-offset:3px}
+.coding-lead{font-size:18px;line-height:1.8;max-width:56em;margin-bottom:12px}
+#coding-comparison .comparison-toolbar{margin-top:28px}
+#coding-table{min-width:1070px}
+#coding-table th:first-child,#coding-table td:first-child{width:210px;min-width:210px;max-width:210px}
+#coding-table th:nth-child(2),#coding-table td:nth-child(2){width:130px;min-width:130px;max-width:130px}
+#coding-table th:nth-child(3),#coding-table td:nth-child(3){width:120px}
+#coding-table th:nth-child(4),#coding-table td:nth-child(4){width:145px}
+#coding-table th:nth-child(5),#coding-table td:nth-child(5){width:135px}
+#coding-table th:nth-child(6),#coding-table td:nth-child(6){width:125px}
+#coding-table th:last-child,#coding-table td:last-child{width:205px}
+#coding-full-table{min-width:2450px}
+#coding-full-table td{min-width:155px}
+#coding-full-table td:first-child{width:240px;min-width:240px;max-width:240px}
+#coding-full-table td:last-child{min-width:300px;max-width:370px}
+.coding-missing{color:var(--muted);font-weight:450!important;font-size:12px!important}
+.coding-precision{display:block;font-size:10px;line-height:1.55;font-weight:400;color:var(--muted);overflow-wrap:anywhere;max-width:28em}
+.coding-unit{font-size:10px;color:var(--muted);font-weight:400;line-height:1.5}
+.coding-vendor-result{border-top:1px dashed var(--line);padding-top:14px;margin-top:14px}
+.coding-task-callout h3{font-size:20px;margin-bottom:15px}
+.coding-task-callout p{font-size:14px;line-height:1.8}
+.coding-agent-evidence{margin-top:20px;font-size:12px}
+.coding-agent-evidence summary{cursor:pointer;font-weight:650}
+.coding-agent-evidence details>div{display:inline-block;vertical-align:top;width:calc(50% - 15px);padding:18px 15px 0 0}
+.coding-agent-evidence h4{font-size:14px}
+.coding-agent-evidence .cmp-fact+.cmp-fact{margin-top:16px}
+#coding-agent-references table{min-width:800px}
+#coding-agent-references table td{white-space:normal;min-width:150px;max-width:330px;vertical-align:top}
+.coding-terminal-reference{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.coding-terminal-reference h4{font-size:15px}
+.coding-jobs-heading{font-size:23px;margin-top:38px;margin-bottom:22px}
+#coding-jobs h4{font-size:17px;line-height:1.5;margin-bottom:12px}
+#coding-jobs p{font-size:14px;line-height:1.8;color:var(--muted)}
+.coding-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.coding-plan{padding:22px;border:1px solid var(--line);border-radius:10px;min-width:0}
+.coding-plan h4{font-size:19px}
+.coding-plan-type{font-size:11px;color:var(--muted);margin-bottom:18px;line-height:1.6}
+.coding-plan .cmp-fact+.cmp-fact{margin-top:18px;border-top:1px solid var(--line);padding-top:15px}
+.coding-plan .cmp-fact-value{font-size:14px;line-height:1.6}
+.coding-gap-list{padding-left:20px;margin-bottom:30px;font-size:13px}
+.coding-gap-list li{margin-bottom:22px;padding-left:4px}
+.coding-gap-list li>.cmp-fact{margin-top:8px}
+#coding-data-gaps>h4{font-size:16px;margin-top:24px}
+#coding-data-gaps>p{font-size:13px;line-height:1.8}
+#coding-full-table .cmp-provenance,#coding-data-gaps .cmp-provenance{align-items:flex-start}
+@media(max-width:767px){.coding-home-link{display:block;margin:18px 0 0}.coding-lead{font-size:16px}.coding-plans{grid-template-columns:1fr}.coding-plan{padding:18px}.coding-agent-evidence details>div{display:block;width:100%}.coding-jobs-heading{font-size:21px}#coding-full-table td:first-child{width:185px;min-width:185px;max-width:185px}}

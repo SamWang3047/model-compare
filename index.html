@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/companies.css">
   <link rel="stylesheet" href="/companies-charts.css">
+  <link rel="stylesheet" href="/coding-comparison.css">
   <script>
     try { const mode = localStorage.getItem('model-compare-theme') || 'system'; document.documentElement.dataset.theme = mode; } catch { document.documentElement.dataset.theme = 'system'; }
   </script>
@@ -38,12 +39,13 @@
         <p class="nav-label">MODEL COMPARE</p>
         <a class="active" href="#conclusion"><span>01</span>Overview</a>
         <a href="#comparison"><span>02</span>Compare models</a>
+        <a href="#coding-comparison"><span>↳</span>Coding comparison</a>
         <a href="#scenarios"><span>03</span>Choose by task</a>
         <a href="#harness"><span>04</span>Choose a harness</a>
         <a href="#subscriptions"><span>05</span>Understand costs</a>
         <a class="sources-nav" href="#sources">Sources &amp; data ↗</a>
       </nav>
-      <div class="sidebar-note"><p>LLM intelligence, coding and video quality use different scales.</p><a href="/data.json" download>Coding data ↓</a><br><a href="/companies.json" download>Model &amp; video data ↓</a></div>
+      <div class="sidebar-note"><p>LLM intelligence, coding and video quality use different scales.</p><a href="/data.json" download>Coding data ↓</a><br><a href="/companies.json" download>Model &amp; video data ↓</a><br><a href="/coding.json" download>New coding evidence ↓</a></div>
     </aside>
     <main id="main">
       <section id="conclusion" class="hero report-section" aria-labelledby="hero-title">
@@ -51,6 +53,7 @@
         <p class="hero-intro">Chinese AI models and Western flagships: coding, intelligence, cost and creative video.</p>
         <div id="overview-text" class="conclusion-block"></div>
         <a class="primary-link" href="#comparison">Explore the comparison <span aria-hidden="true">↓</span></a>
+        <a class="coding-home-link" href="#coding-comparison">Compare coding quality and cost <span aria-hidden="true">↓</span></a>
       </section>
       <section id="comparison" class="report-section" aria-labelledby="comparison-heading">
         <div class="section-heading"><span class="section-number">02</span><div><h2 id="comparison-heading">Compare the models</h2></div></div>
@@ -62,6 +65,22 @@
         <div class="chart-panel" data-kind-panel="video" hidden><div class="panel-heading"><span class="small-label">VIDEO QUALITY / PRICE</span><h3>Creative video, on its own scale</h3><p>Human preference in the audio text-to-video arena. Higher score and lower price are preferable.</p></div><div id="video-value-chart"></div></div>
         <div class="chart-panel" data-kind-panel="llm"><div class="panel-heading"><h3>How many coding tasks get solved?</h3></div><div id="benchmark-method" class="callout"></div><div id="coding-chart"></div><div id="comparison-interpretation" class="analysis-block"></div></div>
         <details class="accordion"><summary>Model details</summary><div id="model-details" class="detail-body"></div></details>
+      </section>
+      <section id="coding-comparison" class="report-section" aria-labelledby="coding-heading">
+        <div class="section-heading"><span class="section-number" aria-hidden="true">↳</span><div><h2 id="coding-heading">Coding comparison</h2></div></div>
+        <p id="coding-lead" class="coding-lead"></p>
+        <div id="coding-lead-evidence" class="provenance cmp-provenance"></div>
+        <div class="comparison-toolbar"><span class="toolbar-hint">Seven models · coding evidence and costs</span><button id="expand-coding" class="cmp-expand-button" type="button" aria-haspopup="dialog" aria-controls="coding-dialog"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Expand table</button></div>
+        <div class="table-scroll cmp-preview-scroll" role="region" aria-label="Compact sortable coding comparison; scroll horizontally on small screens" tabindex="0"><table id="coding-table" class="cmp-preview-table"><caption>Loading coding evidence…</caption><thead></thead><tbody></tbody></table></div>
+        <p id="coding-table-note" class="table-key"></p>
+        <div class="chart-panel"><div class="panel-heading"><h3>Web development quality at what price?</h3><p>Arena WebDev scores and Arena's own token-price mix. This measures front-end generation by user preference.</p></div><div id="coding-arena-chart"></div></div>
+        <div class="chart-panel coding-small-chart"><div class="panel-heading"><h3>How much quality do lower prices give up?</h3><p>Score and price gaps relative to Opus 5.5, calculated from the same Arena snapshot.</p></div><div id="coding-gap-chart"></div></div>
+        <div id="coding-task-callout" class="callout coding-task-callout"></div>
+        <details class="accordion"><summary>Agent + model evidence</summary><div id="coding-agent-references" class="detail-body"></div></details>
+        <details class="accordion"><summary>Coding subscription checks</summary><div id="coding-plan-checks" class="detail-body coding-plans"></div></details>
+        <h3 class="coding-jobs-heading">Which model for which coding job</h3>
+        <div id="coding-jobs" class="recommendation-grid"></div>
+        <details class="accordion"><summary>Data gaps &amp; benchmark caveats</summary><div id="coding-data-gaps" class="detail-body"></div></details>
       </section>
       <section id="scenarios" class="report-section" aria-labelledby="scenarios-heading">
         <div class="section-heading"><span class="section-number">03</span><div><h2 id="scenarios-heading">Choose by the task</h2></div></div>
@@ -84,7 +103,7 @@
       <footer id="sources" class="report-footer">
         <div class="section-heading"><div><h2>Sources &amp; data</h2></div></div>
         <div id="source-list" class="source-grid"></div>
-        <div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Coding data</a><a href="/companies.json" download>Model &amp; video data</a><a href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div>
+        <div class="footer-bottom"><a class="brand" href="#conclusion">model<span class="brand-secondary">compare</span></a><div><a href="/data.json" download>Coding data</a><a href="/companies.json" download>Model &amp; video data</a><a href="/coding.json" download>New coding evidence</a><a href="https://github.com/SamWang3047/model-compare" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p id="footer-date"></p></div>
       </footer>
     </main>
   </div>
@@ -94,7 +113,13 @@
     <div class="cmp-dialog-scroll" role="region" aria-label="Full sortable model comparison" tabindex="0"><table id="expanded-company-table" class="cmp-full-table"><caption>Full sourced comparison</caption><thead></thead><tbody></tbody></table></div>
   </dialog>
   <div id="table-info-popover" class="cmp-info-popover" popover="auto" role="dialog" aria-label="Metric evidence"></div>
+  <dialog id="coding-dialog" class="cmp-comparison-dialog coding-comparison-dialog" aria-labelledby="coding-dialog-title" aria-describedby="coding-dialog-description">
+    <div class="cmp-dialog-header"><div><h2 id="coding-dialog-title">Full coding comparison</h2><p id="coding-dialog-description">Independent scores, separate vendor results, source dates and raw precision. Click a heading to sort.</p></div><button id="close-coding" class="cmp-dialog-close" type="button" aria-label="Close expanded coding comparison"><span aria-hidden="true">×</span></button></div>
+    <div class="cmp-dialog-toolbar"><span class="toolbar-hint">Model names stay visible as you scroll</span></div>
+    <div class="cmp-dialog-scroll" role="region" aria-label="Full sortable coding comparison" tabindex="0"><table id="coding-full-table" class="cmp-full-table"><caption>Full coding evidence</caption><thead></thead><tbody></tbody></table></div>
+  </dialog>
+  <div id="coding-info-popover" class="cmp-info-popover" popover="auto" role="dialog" aria-label="Coding metric evidence"></div>
   <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
-  <noscript><p class="noscript-note">The sourced report is available in <a href="/data.json">coding data</a> and <a href="/companies.json">model and video data</a>. Interactive comparisons need JavaScript.</p></noscript>
+  <noscript><p class="noscript-note">The sourced report is available in <a href="/data.json">coding data</a>, <a href="/companies.json">model and video data</a> and <a href="/coding.json">new coding evidence</a>. Interactive comparisons need JavaScript.</p></noscript>
 </body>
 </html>

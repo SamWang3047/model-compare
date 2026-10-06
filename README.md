@@ -1,6 +1,6 @@
 # Model Compare
 
-A readable, interactive static website comparing Chinese AI models with GPT-6.1 Sol and Claude Opus. The original coding report and Chinese AI companies overview are merged into one guide, with one comparison table, one task guide, interactive graphs, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
+A readable, interactive static website comparing Chinese AI models with GPT-6.1 Sol and Claude Opus. The original coding report and Chinese AI companies overview are merged into one guide, with an overview comparison, dedicated coding evidence, interactive graphs, harness recommendations and subscription cost scenarios. The detailed research, removed sections and setup instructions remain in the downloadable datasets.
 
 **[Live website](https://model-compare-delta.vercel.app/) · [Public GitHub repository](https://github.com/SamWang3047/model-compare)**
 
@@ -11,6 +11,12 @@ Vercel is connected to this repository. Pushes to `main` automatically deploy to
 **Original coding-report snapshot: 5 October 2026.** The original report was prepared on **6 October 2026**. Benchmark evaluation dates are not consistently disclosed by Artificial Analysis. The website preserves the report's figures and conclusions; it does not claim that the snapshot is live pricing.
 
 **Site updated: 6 October 2026.** Zhipu’s overview now uses only **GLM 5.3 Flash**, refreshed directly from Artificial Analysis and official Z.ai pricing. Its tested effort is **max**; AA’s model page uses spaces while its leaderboard/API name is **GLM-5.3-Flash**. Other models’ figures remain unchanged; the larger-model native-agent row was removed rather than relabelled as Flash.
+
+The new **[Coding comparison](https://model-compare-delta.vercel.app/#coding-comparison)** adds seven exact AA model configurations, current independent Terminal-Bench 4.0 and Intelligence Index v4.3.2 results, output-token totals, Arena WebDev prices, two responsive charts and official coding-plan checks. Existing snapshots and content remain unchanged. New observations were retrieved on **6 October 2026**; Arena’s directly verified snapshot is **1 October**, and the explicitly historical Kimi observation is **12 August**. Requested 30 September Arena figures could not be verified and are listed as gaps instead of replacing current data.
+
+Arena’s blend weights **output:input 3:1**, `(input + 3 × output) / 4`; the older overview scatter weights **input:output 3:1**. Arena provider quotes, official API prices, full Intelligence Index costs and coding-agent costs are distinct measures. New values display one decimal, while evidence retains source precision. The new frontier connects only the selected models, not the global Arena frontier. Historical Kimi and missing entries are excluded from both new plots.
+
+Current primary AA data confirms terminal and intelligence scores for all seven configurations, including Qwen3.8-Flash-Next. GPT-6 Sol is a distinct predecessor to GPT-6.1 Sol. Flagship **GLM-5.3** agent results are reference-only and never assigned to Flash. Anthropic’s vendor result uses xhigh effort with fallback and stays separate from AA’s independent result. Official plan checks distinguish supported model versions and publish missing quotas as **Not found**.
 
 ## Run locally
 
@@ -43,6 +49,10 @@ To check external source links, run `npm run check:links`. The checker separates
 - `companies.html` — a fallback redirect for the old overview URL; Vercel also redirects it in production.
 - `companies.json` — intelligence and video metrics, company briefs, plans, task scenarios, limits and dated sources.
 - `companies-charts.js`, `companies-charts.css` — interactive overview charts, with keyboard/touch inspection and accessible data tables.
+- `coding.json` — all new coding figures, exact source names, dated evidence, plans, caveats and missing items.
+- `coding-comparison.js`, `coding-comparison.css` — compact coding table, expanded evidence, task guide and coding-only details.
+- `coding-charts.js`, `coding-data.js` — responsive Arena/gap charts and shared calculations using unrounded, matching-snapshot inputs.
+- `table-dialog.js` — shared keyboard, focus and scroll behavior for both expanded-table dialogs.
 - `scripts/` — dependency-free local development, build and validation tools.
 
 `og.png` is a pre-generated social preview. The optional `scripts/create-og.py` helper requires Pillow only if you want to regenerate that image; it is not part of the application or build.
@@ -54,6 +64,10 @@ Edit **`data.json`** without changing the layout. Model rows preserve full-preci
 Edit **`companies.json`** for intelligence, video and task-guide content. Each metric has `value`, `type`, `date`, `source_ids` and optional `note`; prose has the same evidence fields with `text`. Null means **Not found**, never zero. `model_labels` supplies the highlighted models beside task headings. Flagships, companions and comparison baselines are explicit roles. Source dates are access dates; unavailable benchmark-run dates are disclosed.
 
 Both datasets retain their original snapshots. `model-data.js` combines them when the page loads: identical model/effort configurations appear once; overview prices and existing metrics retain their values, while coding cost, speed, delay and context-recall facts retain the coding report’s date. MiMo, Qwen and Sol medium have no Intelligence Index in these stored snapshots, so that field stays **Not found** and they are excluded from the intelligence scatter. They remain available in the full comparison and model details. The footer lists each source URL once.
+
+Edit **`coding.json`** for the new coding comparison. Each fact has `value`, `unit`, `source_url`, `retrieved_date`, `label` and `note`; dated leaderboards add `snapshot_date`. Valid labels are `verified`, `vendor_reported`, `third_party`, `calculated` and `not_found`. Use `null` with an explanatory note for unavailable facts. Keep integers for raw token counts and full precision for scores/costs. `older_snapshot` prevents historical entries from joining current charts. `chart_settings` controls the illustrative screening zone, selected-model frontier and gap baseline. Prose recommendations separately identify analyst inference.
+
+Run `node scripts/check-coding.mjs --reference ca49d15` to verify sourced facts, matching snapshots, calculation behavior and preservation of the earlier datasets and sections. Run `npm run check:links -- --coding-only` to inspect the new source URLs; access blocks are reported separately from confirmed broken links.
 
 GLM Flash’s refreshed global rank is 36 among 260 scored model/effort variants in 264 current default leaderboard entries. Other models retain ranks from the earlier 259-scored/263-entry snapshot. Ranks use unrounded scores, including estimates, rather than model-page price-class ranks. Intelligence Index displays use one decimal. Flash gaps subtract raw scores and display one decimal; other models retain their original integer-rounded gap values, with that convention disclosed. Blended price uses an illustrative **3:1 uncached input:output** mix, not AA's default cached mix. Output-price ratios are tariff comparisons, not costs per successful task. The video chart uses only **AA-Video-T2V v2.0 with audio**, retaining its confidence intervals and AA's creator-API minute prices divided by 60; I2V results are kept separate. The dataset’s positioning entries contain qualitative statements, not invented numeric scores.
 

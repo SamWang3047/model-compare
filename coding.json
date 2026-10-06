@@ -1,0 +1,1776 @@
+{
+  "metadata": {
+    "updated_date": "2026-10-06",
+    "table_caption": "Arena: 1 Oct 2026 · Kimi: older 12 Aug snapshot · AA: retrieved 6 Oct 2026",
+    "display_note": "Independent results drive sorting. Figures display one decimal; info icons and the full table retain source precision. Arena weights output:input 3:1; API list prices and the earlier site price mix remain separate.",
+    "agent_note": "The Coding Agent Index compares complete agent + model configurations. These figures were verified on AA directly, rather than copied from third-party summaries. Evaluation-run dates are not disclosed; retrieval dates are shown."
+  },
+  "intelligence_index_version": "v4.3.2",
+  "lead": {
+    "value": "Opus 5.5 and GPT-6.1 Sol lead on coding; GLM-5.3 Flash and Qwen3.8 Flash Next are very cheap and good enough for routine work, but not same-tier replacements.",
+    "unit": "explanation",
+    "source_url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
+    "retrieved_date": "2026-10-06",
+    "classification": "analyst_inference"
+  },
+  "models": [
+    {
+      "id": "opus",
+      "name": "Claude Opus 5.5 (Max, Default Fallback)",
+      "chart_label": "Opus 5.5",
+      "baseline": true,
+      "metrics": {
+        "terminal_bench": {
+          "value": 59.5959595959596,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 57.6223698102963,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 259888331,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 4,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 20,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 96.6349793396129,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1000000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 8708.197642611496,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 5.982012019521066,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": 1815,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Current Arena snapshot is 1 October, not the requested 30 September snapshot. WebDev human preference score, not a task success percentage.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        },
+        "arena_price": {
+          "value": 16,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Arena-published blend = (input + 3 × output) / 4, weighting output:input 3:1. Arena provider quotes can differ from AA and official list prices. Preserve published precision; do not substitute the site’s other 3-input:1-output blend.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        },
+        {
+          "value": "The AA name includes Max, Default Fallback. Anthropic’s vendor result uses xhigh with fallback, so the two configurations remain separate.",
+          "unit": "explanation",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Independent 59.6%; vendor result uses xhigh + fallback.",
+      "source_names": {
+        "artificial_analysis": "Claude Opus 5.5 (Max, Default Fallback)",
+        "arena": "claude-opus-5.5-max"
+      },
+      "vendor_tb4": {
+        "value": 66.4,
+        "unit": "%",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-09-22",
+        "label": "vendor_reported",
+        "note": "Anthropic Terminal-Bench4.0 result uses xhigh effort with fallback, rather than Artificial Analysis max/default-fallback model configuration. Vendor standard error±2.6points. Keep separate and use independent59.6% for sorting/charts."
+      }
+    },
+    {
+      "id": "sol",
+      "name": "GPT-6.1 Sol (Max)",
+      "chart_label": "Sol 6.1",
+      "baseline": true,
+      "metrics": {
+        "terminal_bench": {
+          "value": 56.0606060606061,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 51.8332597011541,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 67198855,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 2,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 10,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 58.2900019579238,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1000000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 1081.552560620246,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 0.7241670655535033,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": 1758,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Current Arena snapshot is 1 October, not the requested 30 September snapshot. WebDev human preference score, not a task success percentage.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        },
+        "arena_price": {
+          "value": 8,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Arena-published blend = (input + 3 × output) / 4, weighting output:input 3:1. Arena provider quotes can differ from AA and official list prices. Preserve published precision; do not substitute the site’s other 3-input:1-output blend.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        },
+        {
+          "value": "The predecessor GPT-6 Sol is a different AA model. Its Terminal-Bench and Coding Agent Index results are reference-only and are not assigned to GPT-6.1 Sol.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "GPT-6.1 Sol, distinct from GPT-6 Sol.",
+      "source_names": {
+        "artificial_analysis": "GPT-6.1 Sol (Max)",
+        "arena": "gpt-6.1-sol-max"
+      }
+    },
+    {
+      "id": "glm",
+      "name": "GLM 5.3 Flash",
+      "chart_label": "GLM Flash",
+      "baseline": false,
+      "metrics": {
+        "terminal_bench": {
+          "value": 32.8282828282828,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 41.807466113455,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 180681476,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 0.15,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 0.5,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 52.9704419888956,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1000000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 280.28213741916164,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 0.2532595604307378,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": 1616,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Current Arena snapshot is 1 October, not the requested 30 September snapshot. WebDev human preference score, not a task success percentage.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        },
+        "arena_price": {
+          "value": 0.17,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Arena-published blend = (input + 3 × output) / 4, weighting output:input 3:1. Arena provider quotes can differ from AA and official list prices. Preserve published precision; do not substitute the site’s other 3-input:1-output blend.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        },
+        {
+          "value": "GLM-5.3 flagship harness results cannot establish Flash agent performance. The weighted Intelligence Index task cost is not a coding-agent task cost.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Flash, distinct from flagship GLM-5.3.",
+      "source_names": {
+        "artificial_analysis": "GLM 5.3 Flash",
+        "arena": "glm-5.3-flash"
+      }
+    },
+    {
+      "id": "qwen_flash",
+      "name": "Qwen3.8-Flash-Next",
+      "chart_label": "Qwen Flash Next",
+      "baseline": false,
+      "metrics": {
+        "terminal_bench": {
+          "value": 25.2525252525253,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 39.8223021864741,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 244946977,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 0.15,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 0.47,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 55.3437187542289,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 256000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 362.72318083357993,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 0.3721760025302965,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": 1637,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Current Arena snapshot is 1 October, not the requested 30 September snapshot. WebDev human preference score, not a task success percentage. Preliminary result.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        },
+        "arena_price": {
+          "value": 0.39,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Arena-published blend = (input + 3 × output) / 4, weighting output:input 3:1. Arena provider quotes can differ from AA and official list prices. Preserve published precision; do not substitute the site’s other 3-input:1-output blend.",
+          "snapshot_date": "2026-10-01",
+          "older_snapshot": false
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        },
+        {
+          "value": "Qwen3.8-Flash-Next accepts video input. Its current AA score and token usage are verified; older index versions and older speed summaries are not reused.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Preliminary Arena score; verified current AA index.",
+      "source_names": {
+        "artificial_analysis": "Qwen3.8-Flash-Next",
+        "arena": "qwen3.8-flash-next"
+      }
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi K3 (Max)",
+      "chart_label": "Kimi K3",
+      "baseline": false,
+      "metrics": {
+        "terminal_bench": {
+          "value": 12.6262626262626,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 43.5938229518782,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 160780069,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 3,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 15,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 48.7705542143769,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1048576,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 3658.0675385043187,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 2.0001323004425493,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": 1674,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code?viewBy=plot",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Older snapshot, not directly comparable. Verified in an official search-cached 12 August snapshot; the old URL now redirects. Excluded from both new charts.",
+          "snapshot_date": "2026-08-12",
+          "older_snapshot": true
+        },
+        "arena_price": {
+          "value": 12,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code?viewBy=plot",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "Arena-published blend = (input + 3 × output) / 4, weighting output:input 3:1. Arena provider quotes can differ from AA and official list prices. Preserve published precision; do not substitute the site’s other 3-input:1-output blend. Older snapshot, not directly comparable.",
+          "snapshot_date": "2026-08-12",
+          "older_snapshot": true
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        },
+        {
+          "value": "The Arena observation is historical; the AA data is current. The older score is excluded from the Arena and gap charts.",
+          "unit": "explanation",
+          "source_url": "https://arena.ai/leaderboard/code?viewBy=plot",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Older Arena snapshot; not directly comparable.",
+      "source_names": {
+        "artificial_analysis": "Kimi K3 (Max)",
+        "arena": "kimi-k3-max"
+      }
+    },
+    {
+      "id": "mimo",
+      "name": "MiMo-V2.6-Pro",
+      "chart_label": "MiMo Pro",
+      "baseline": false,
+      "metrics": {
+        "terminal_bench": {
+          "value": 34.8484848484849,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 46.3242065310383,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 143690985,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 0.435,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 0.87,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 46.5921824165886,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1000000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 206.65533881883294,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 0.13322318937213493,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": null,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "not_found",
+          "note": "No score for this exact model configuration was found in the checked Arena WebDev leaderboard. No estimate is used.",
+          "snapshot_date": "2026-10-06"
+        },
+        "arena_price": {
+          "value": null,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "not_found",
+          "note": "No price entry paired with this exact model configuration was found in the checked Arena Pareto data. Official API prices are listed separately.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Arena entry not found; independent AA coding score verified.",
+      "source_names": {
+        "artificial_analysis": "MiMo-V2.6-Pro",
+        "arena": null
+      }
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek V4.1 Flash (Max)",
+      "chart_label": "DeepSeek Flash",
+      "baseline": false,
+      "metrics": {
+        "terminal_bench": {
+          "value": 26.7676767676768,
+          "unit": "%",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Artificial Analysis independent model-level Terminal-Bench 4.0 result using its common harness. Agent leaderboard pairs are separate."
+        },
+        "intelligence": {
+          "value": 39.456167472527,
+          "unit": "index points",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Intelligence Index v4.3.2; preserve raw score."
+        },
+        "output_tokens": {
+          "value": 253113556,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total output tokens across the Intelligence Index evaluation suite, including reasoning and answer tokens; not per coding task. AA summary rounds to two significant figures."
+        },
+        "api_input": {
+          "value": 0.3,
+          "unit": "USD / 1M input tokens",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "api_output": {
+          "value": 1.2,
+          "unit": "USD / 1M output tokens",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "speed": {
+          "value": 221.84675730693,
+          "unit": "output tokens / s",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Dynamic speed on AA first-party provider benchmark at retrieval, not task-completion time."
+        },
+        "context": {
+          "value": 1000000,
+          "unit": "tokens",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": ""
+        },
+        "index_total_cost": {
+          "value": 476.89044593693893,
+          "unit": "USD",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Total cost to run the Intelligence Index evaluation suite. Not cost per coding task."
+        },
+        "index_cost_per_task": {
+          "value": 0.26522527009606844,
+          "unit": "USD / Intelligence Index task",
+          "source_url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Weighted average per Intelligence Index task, calculated using each evaluation weight and task count. Not Coding Agent Index cost per coding task."
+        },
+        "arena_score": {
+          "value": null,
+          "unit": "Arena WebDev points",
+          "source_url": "https://arena.ai/leaderboard/code/webdev",
+          "retrieved_date": "2026-10-06",
+          "label": "not_found",
+          "note": "No score for this exact model configuration was found in the checked Arena WebDev leaderboard. No estimate is used.",
+          "snapshot_date": "2026-10-06"
+        },
+        "arena_price": {
+          "value": null,
+          "unit": "USD / 1M blended tokens",
+          "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+          "retrieved_date": "2026-10-06",
+          "label": "not_found",
+          "note": "No price entry paired with this exact model configuration was found in the checked Arena Pareto data. Official API prices are listed separately.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "notes": [
+        {
+          "value": "Independent AA Terminal-Bench 4.0 uses mini-swe-agent. Intelligence Index v4.3.2 is general context, not a separate coding score. Output-token totals cover the full Intelligence Index suite, not one coding task.",
+          "unit": "explanation",
+          "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "retrieved_date": "2026-10-06",
+          "classification": "verified_context"
+        }
+      ],
+      "short_note": "Arena entry not found; independent AA coding score verified.",
+      "source_names": {
+        "artificial_analysis": "DeepSeek V4.1 Flash (Max)",
+        "arena": null
+      }
+    }
+  ],
+  "chart_settings": {
+    "arena_value_zone": {
+      "min_score": 1600,
+      "max_price": 1,
+      "note": "Illustrative screening rule: Arena score at least 1600 and Arena price at most $1/M. This is analyst inference, not a benchmark guarantee."
+    },
+    "arena_frontier_ids": [
+      "glm",
+      "qwen_flash",
+      "sol",
+      "opus"
+    ],
+    "frontier_note": "Frontier among selected models, not the global Arena frontier. The current global frontier excludes GPT-6.1 Sol because Sonnet 5.5 xhigh has a higher score at the same price.",
+    "gap_baseline_id": "opus",
+    "gap_model_ids": [
+      "glm",
+      "qwen_flash",
+      "sol"
+    ]
+  },
+  "task_callout": {
+    "value": "This compares flagship GLM-5.3 with the predecessor GPT-6 Sol, not GLM Flash or GPT-6.1 Sol. No matched GLM Flash agent result was found. Flash models can generate many output tokens; compare successful tasks and total spend, not token price alone. Intelligence Index token totals cover a broad evaluation suite and do not predict a developer’s coding bill.",
+    "unit": "explanation",
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "retrieved_date": "2026-10-06",
+    "classification": "analyst_inference"
+  },
+  "agent_pairs": [
+    {
+      "id": "fable_reference",
+      "name": "Claude Code - Fable 5.1 (max) (with fallback)",
+      "reference_only": true,
+      "metrics": {
+        "score": {
+          "value": 62.22249615769457,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 12.388092375137534,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Reference only; outside the seven-model scope."
+    },
+    {
+      "id": "astra_reference",
+      "name": "Codex - GPT-6 Astra (max)",
+      "reference_only": true,
+      "metrics": {
+        "score": {
+          "value": 61.64504498789397,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 7.46709735138597,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Reference only; outside the seven-model scope."
+    },
+    {
+      "id": "sol_predecessor",
+      "name": "Codex - GPT-6 Sol (max)",
+      "reference_only": true,
+      "metrics": {
+        "score": {
+          "value": 56.662591275779974,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 2.989729004180416,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Predecessor GPT-6 Sol, not GPT-6.1 Sol."
+    },
+    {
+      "id": "glm_flagship",
+      "name": "Opencode - GLM-5.3 ({'reasoning_effort': 'max'})",
+      "reference_only": true,
+      "metrics": {
+        "score": {
+          "value": 53.55484140097326,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 4.241385833751375,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Flagship GLM-5.3, not Flash."
+    },
+    {
+      "id": "opus_current",
+      "name": "Claude Code - Opus 5.5 (max)",
+      "reference_only": false,
+      "metrics": {
+        "score": {
+          "value": 65.9885802549234,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 13.036383418426828,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Current baseline agent + model pair; separate from model-level Terminal-Bench."
+    },
+    {
+      "id": "sol_current",
+      "name": "Codex - GPT-6.1 Sol (max)",
+      "reference_only": false,
+      "metrics": {
+        "score": {
+          "value": 60.14750704302517,
+          "unit": "Coding Agent Index points",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        },
+        "cost_per_task": {
+          "value": 1.554119528390054,
+          "unit": "USD / coding agent task",
+          "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+          "retrieved_date": "2026-10-06",
+          "label": "verified",
+          "note": "AA Coding Agent Index v1.5. Agent + exact model + effort configuration; evaluation-run date is not disclosed, retrieval date is shown.",
+          "snapshot_date": "2026-10-06"
+        }
+      },
+      "note": "Current baseline agent + model pair; separate from model-level Terminal-Bench."
+    }
+  ],
+  "terminal_reference": {
+    "name": "Claude Code + GLM-5.3 (max) — reference only",
+    "metric": {
+      "value": 41.82,
+      "unit": "%",
+      "source_url": "https://www.tbench.ai/",
+      "retrieved_date": "2026-10-06",
+      "label": "verified",
+      "note": "Terminal-Bench 4.0 submitted agent + flagship model pair, not the Flash model or AA model-level harness. Evaluation date 14 August 2026. The requested /leaderboard/terminal-bench/4.0 URL redirects to the current official leaderboard.",
+      "snapshot_date": "2026-08-14"
+    }
+  },
+  "plans": [
+    {
+      "name": "ClinePass",
+      "provider_type": "third_party",
+      "price": {
+        "value": 9.99,
+        "unit": "USD / month",
+        "source_url": "https://cline.bot/cline-pass",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-10-06",
+        "label": "verified",
+        "note": "Standard rate after promotional period; an additional processing fee may apply."
+      },
+      "facts": [
+        {
+          "value": "GLM 5.3 Flash; GLM 5.3; Kimi K3; DeepSeek V4 Pro; DeepSeek V4 Flash",
+          "unit": "official model names",
+          "source_url": "https://cline.bot/cline-pass",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Official current list additionally includes GLM 5.2, Kimi K2.7 Code/K2.6, MiniMax M3, MiMo V2.5/Pro, Qwen3.7 Max/Plus and Qwen3.8 Max. Exact DeepSeek V4.1 Flash, MiMo-V2.6-Pro and Qwen3.8-Flash-Next are not explicitly listed; do not infer their availability."
+        },
+        {
+          "value": null,
+          "unit": "requests / quota period",
+          "source_url": "https://cline.bot/cline-pass",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "not_found",
+          "note": "Official page claims generous quota and 2–5x standard API rate limits, but publishes no absolute request/token allowance on the reviewed page."
+        },
+        {
+          "value": "Cline Desktop, IDE, CLI and SDK; other coding agents using a ClinePass API key",
+          "unit": "supported clients",
+          "source_url": "https://cline.bot/cline-pass",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Supported use does not establish equal performance across harnesses."
+        }
+      ]
+    },
+    {
+      "name": "OpenCode Go",
+      "provider_type": "third_party",
+      "price": {
+        "value": 10,
+        "unit": "USD / month",
+        "source_url": "https://opencode.ai/v2/docs/console/go",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-10-06",
+        "label": "verified",
+        "note": "Current official plan table; the older first-month $5 promotion is not shown there."
+      },
+      "facts": [
+        {
+          "value": "GLM-5.3-Flash; GLM-5.3; Kimi K3; MiMo-V2.6-Pro; DeepSeek V4.1 Flash; Qwen3.8 Flash",
+          "unit": "official model names",
+          "source_url": "https://opencode.ai/v2/docs/console/go",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "The official Qwen name says Qwen3.8 Flash, not Qwen3.8-Flash-Next; exact alias mapping has not been established."
+        },
+        {
+          "value": {
+            "GLM-5.3-Flash": 60,
+            "GLM-5.3": 15,
+            "Kimi K3": 15,
+            "MiMo-V2.6-Pro": 15,
+            "DeepSeek V4.1 Flash": 60,
+            "Qwen3.8 Flash": 30
+          },
+          "unit": "USD-valued allowance by model",
+          "source_url": "https://opencode.ai/v2/docs/console/go",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Official model limits govern how usage counts toward allowances; do not add the model allowances into one spendable sum."
+        },
+        {
+          "value": {
+            "5_hours": 20,
+            "week": 50,
+            "month": 100
+          },
+          "unit": "% of model monthly allowance",
+          "source_url": "https://opencode.ai/v2/docs/console/go",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Limits may change. Optional Use balance setting can fall back to pay-as-you-go after quota exhaustion."
+        },
+        {
+          "value": "OpenCode and compatible coding agents; Claude Code, Codex, ZCode, Pi and additional clients listed as validated",
+          "unit": "clients",
+          "source_url": "https://opencode.ai/v2/docs/console/go",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Send stable session information. DeepSeek Harness is listed as problematic because some adapters omit session headers."
+        }
+      ]
+    },
+    {
+      "name": "OpenCode Go Plus",
+      "provider_type": "third_party",
+      "price": {
+        "value": 40,
+        "unit": "USD / month",
+        "source_url": "https://opencode.ai/v2/docs/console/go",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-10-06",
+        "label": "verified",
+        "note": "Higher allowances, same token prices as Go."
+      },
+      "facts": [
+        {
+          "value": {
+            "GLM-5.3-Flash": 180,
+            "GLM-5.3": 120,
+            "Kimi K3": 60,
+            "MiMo-V2.6-Pro": 60,
+            "DeepSeek V4.1 Flash": 120,
+            "Qwen3.8 Flash": 90
+          },
+          "unit": "USD-valued allowance by model",
+          "source_url": "https://opencode.ai/v2/docs/console/go",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Same 20% per 5 hours, 50% weekly, 100% monthly limits. Do not add individual model allowances into a pooled credit claim."
+        }
+      ]
+    },
+    {
+      "name": "Z.ai GLM Coding Plan",
+      "provider_type": "first_party",
+      "price": {
+        "value": {
+          "Lite": 18,
+          "Pro": 80,
+          "Max": 168
+        },
+        "unit": "USD / month",
+        "source_url": "https://z.ai/subscribe",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-10-06",
+        "label": "verified",
+        "note": "Verified in live browser with Individual and Monthly selected. The default annual view displays equivalent monthly prices $12.60/$56/$117.60, rather than monthly billing prices."
+      },
+      "facts": [
+        {
+          "value": "GLM-5.3 and GLM-5.3-Flash on all plans",
+          "unit": "official model names",
+          "source_url": "https://docs.z.ai/devpack/overview",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Older GLM-5.2/5.1 requests route to GLM-5.3; GLM-4.7 requests route to GLM-5.3-Flash."
+        },
+        {
+          "value": {
+            "Lite": 2000,
+            "Pro": 12000,
+            "Max": 28000
+          },
+          "unit": "credits / 5 hours",
+          "source_url": "https://docs.z.ai/devpack/overview",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Credit quota resets 5 hours after consumption; credits are weighted token/tool units, not prompts."
+        },
+        {
+          "value": {
+            "Lite": 10000,
+            "Pro": 60000,
+            "Max": 140000
+          },
+          "unit": "credits / week",
+          "source_url": "https://docs.z.ai/devpack/overview",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Activated upon subscription and reset every 7 days. GLM Flash multipliers input2.3/cache0.56/output8, divided by 10,000 tokens; off-peak credit use is half."
+        },
+        {
+          "value": null,
+          "unit": "simultaneous requests",
+          "source_url": "https://docs.z.ai/devpack/usage-policy",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "not_found",
+          "note": "Official policy says dynamically adjusted Max > Pro > Lite; recommends Lite one project, Pro 1–2 projects, Max2+ projects, without fixed concurrent request counts."
+        },
+        {
+          "value": "Officially supported coding tools only; Claude Code, Cline, OpenCode and others share plan quota; quota exhaustion requires waiting, with no automatic balance deduction",
+          "unit": "usage conditions",
+          "source_url": "https://docs.z.ai/devpack/faq",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "Use plan endpoints. Do not claim unrestricted API usage or unlimited autonomous sessions."
+        }
+      ]
+    },
+    {
+      "name": "DeepSeek first-party subscription",
+      "provider_type": "first_party",
+      "price": {
+        "value": null,
+        "unit": "USD / month",
+        "source_url": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "retrieved_date": "2026-10-06",
+        "snapshot_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No first-party coding subscription was found in the reviewed official pricing pages. Their documented service bills token use against topped-up or granted balance; avoid an absolute claim that no subscription exists anywhere."
+      },
+      "facts": [
+        {
+          "value": {
+            "input_off_peak": 0.15,
+            "output_off_peak": 0.6,
+            "cache_off_peak": 0.003,
+            "input_peak": 0.3,
+            "output_peak": 1.2,
+            "cache_peak": 0.006
+          },
+          "unit": "USD / 1M tokens",
+          "source_url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "retrieved_date": "2026-10-06",
+          "snapshot_date": "2026-10-06",
+          "label": "verified",
+          "note": "deepseek-flash currently serves DeepSeek-V4.1-Flash. Peak 01:00–04:00 and06:00–10:00UTC weekdays except Chinese public holidays; other hours off-peak. Official context1M, concurrency2500."
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Hardest tasks, refactors and long agent runs",
+      "value": "Claude Opus 5.5 is the preferred escalation model in this comparison. Its independent terminal result leads the selected models; longer-session reliability still needs testing on your repositories.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
+      "retrieved_date": "2026-10-06",
+      "classification": "analyst_inference"
+    },
+    {
+      "title": "Strong coding at about half the Arena price",
+      "value": "GPT-6.1 Sol is the balanced flagship choice. Half-price refers to the Arena token-price mix, not half the cost per successful task.",
+      "unit": "explanation",
+      "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+      "retrieved_date": "2026-10-06",
+      "classification": "analyst_inference"
+    },
+    {
+      "title": "Bulk work and front-end generation",
+      "value": "Use GLM-5.3 Flash for the lowest Arena-listed price, or Qwen3.8-Flash-Next for a higher Arena score and video input. Treat both as routine-work candidates and review their output.",
+      "unit": "explanation",
+      "source_url": "https://arena.ai/leaderboard/code/webdev",
+      "retrieved_date": "2026-10-06",
+      "classification": "analyst_inference"
+    },
+    {
+      "title": "Route by task difficulty",
+      "value": "Send hard tasks to a flagship and routine work to a Flash model. Track completions, retries, interventions and spend to check whether this route saves money for your workload.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+      "retrieved_date": "2026-10-06",
+      "classification": "analyst_inference"
+    }
+  ],
+  "unverified_claims": [
+    {
+      "title": "Claude Opus 5.5: requested 30 September Arena snapshot",
+      "metric": {
+        "value": null,
+        "unit": "historical snapshot",
+        "source_url": "https://arena.ai/leaderboard/code/webdev",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The exact requested date-specific figure could not be verified. The published table and charts instead use the directly verified 1 October snapshot.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "GPT-6.1 Sol: requested 30 September Arena snapshot",
+      "metric": {
+        "value": null,
+        "unit": "historical snapshot",
+        "source_url": "https://arena.ai/leaderboard/code/webdev",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The exact requested date-specific figure could not be verified. The published table and charts instead use the directly verified 1 October snapshot.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "Qwen3.8-Flash-Next: requested 30 September Arena snapshot",
+      "metric": {
+        "value": null,
+        "unit": "historical snapshot",
+        "source_url": "https://arena.ai/leaderboard/code/webdev",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The exact requested date-specific figure could not be verified. The published table and charts instead use the directly verified 1 October snapshot.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "GLM 5.3 Flash: requested 30 September Arena snapshot",
+      "metric": {
+        "value": null,
+        "unit": "historical snapshot",
+        "source_url": "https://arena.ai/leaderboard/code/webdev",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The exact requested date-specific figure could not be verified. The published table and charts instead use the directly verified 1 October snapshot.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "GLM 5.3 Flash: matched Coding Agent Index pair",
+      "metric": {
+        "value": null,
+        "unit": "matched agent configuration",
+        "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No exact agent + model + effort match for the coding-table configuration was found in the checked primary Coding Agent Index. No other model version or flagship result is substituted.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "Qwen3.8-Flash-Next: matched Coding Agent Index pair",
+      "metric": {
+        "value": null,
+        "unit": "matched agent configuration",
+        "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No exact agent + model + effort match for the coding-table configuration was found in the checked primary Coding Agent Index. No other model version or flagship result is substituted.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "Kimi K3 (Max): matched Coding Agent Index pair",
+      "metric": {
+        "value": null,
+        "unit": "matched agent configuration",
+        "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No exact agent + model + effort match for the coding-table configuration was found in the checked primary Coding Agent Index. No other model version or flagship result is substituted. Kimi CLI + Kimi K3 is listed, but the requested max effort is not explicitly established.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "MiMo-V2.6-Pro: matched Coding Agent Index pair",
+      "metric": {
+        "value": null,
+        "unit": "matched agent configuration",
+        "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No exact agent + model + effort match for the coding-table configuration was found in the checked primary Coding Agent Index. No other model version or flagship result is substituted.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "DeepSeek V4.1 Flash (Max): matched Coding Agent Index pair",
+      "metric": {
+        "value": null,
+        "unit": "matched agent configuration",
+        "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "No exact agent + model + effort match for the coding-table configuration was found in the checked primary Coding Agent Index. No other model version or flagship result is substituted. DeepSeek V4 Flash 0731 has a Codex row; it is not V4.1 Flash.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "ClinePass: exact DeepSeek V4.1 Flash support",
+      "metric": {
+        "value": null,
+        "unit": "model support",
+        "source_url": "https://cline.bot/cline-pass",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The official list names V4 Flash and V4 Pro, not V4.1 Flash. Version equivalence is not established.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "ClinePass: MiMo-V2.6-Pro support",
+      "metric": {
+        "value": null,
+        "unit": "model support",
+        "source_url": "https://cline.bot/cline-pass",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The reviewed official model list names older MiMo variants, not V2.6-Pro.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "ClinePass: Qwen3.8-Flash-Next support",
+      "metric": {
+        "value": null,
+        "unit": "model support",
+        "source_url": "https://cline.bot/cline-pass",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The reviewed official model list does not explicitly include Qwen3.8-Flash-Next.",
+        "snapshot_date": "2026-10-06"
+      }
+    },
+    {
+      "title": "OpenCode Go: Qwen3.8 Flash / Flash Next alias",
+      "metric": {
+        "value": null,
+        "unit": "model alias",
+        "source_url": "https://opencode.ai/v2/docs/console/go",
+        "retrieved_date": "2026-10-06",
+        "label": "not_found",
+        "note": "The official name is Qwen3.8 Flash; a mapping to Qwen3.8-Flash-Next has not been verified.",
+        "snapshot_date": "2026-10-06"
+      }
+    }
+  ],
+  "caveats": [
+    {
+      "value": "Arena WebDev is a dated user-preference snapshot of front-end generation. AA Terminal-Bench measures terminal task completion using a controlled harness; the Coding Agent Index measures agent + model configurations. The scores are not interchangeable.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "Third-party summaries attributed to MorphLLM should be checked against AA and tbench.ai. MorphLLM also offers inference services. This section uses primary AA and tbench results; it does not label reverified agent scores as third-party evidence.",
+      "unit": "explanation",
+      "source_url": "https://www.morphllm.com/",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "Vendor-reported results remain separate. Z.ai’s GLM Flash vendor chart uses Terminal-Bench 2.1 and is excluded from this 4.0 comparison. Anthropic’s 4.0 result is shown alongside, with its different xhigh effort and fallback noted; the independent AA score drives sorting.",
+      "unit": "explanation",
+      "source_url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context",
+      "source_urls": [
+        "https://www.anthropic.com/claude-opus-5-5"
+      ]
+    },
+    {
+      "value": "Arena’s displayed 3:1 ratio weights output tokens three times input tokens: (input + 3 × output) / 4. The other site scatter uses three input tokens per output token. Arena’s provider quotes can differ from official list prices; do not combine those cost measures.",
+      "unit": "explanation",
+      "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "The connected line is the efficient frontier among the selected current-snapshot models. It is not Arena’s global frontier. Kimi’s historical observation and missing model entries are excluded from the charts.",
+      "unit": "explanation",
+      "source_url": "https://arena.ai/leaderboard/code/webdev/pareto",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "Current Intelligence Index data uses AA v4.3.2. Qwen3.8-Flash-Next is directly verified on the current index; no number is inferred from open-weight status. Older index scores and older speed or token-use summaries are excluded.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    }
+  ],
+  "name_checks": [
+    {
+      "value": "GPT-6 Sol and GPT-6.1 Sol are distinct AA models. The supplied predecessor terminal figure is not assigned to the GPT-6.1 baseline; each model and agent configuration keeps its own source.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/models/gpt-6-sol",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "GLM-5.3 and GLM 5.3 Flash are distinct models. The OpenCode and Claude Code flagship references do not establish Flash performance.",
+      "unit": "explanation",
+      "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    },
+    {
+      "value": "ClinePass lists DeepSeek V4 Flash, while this comparison uses V4.1 Flash. OpenCode Go lists Qwen3.8 Flash without confirming the Flash Next alias. Exact support remains Not found.",
+      "unit": "explanation",
+      "source_url": "https://opencode.ai/v2/docs/console/go",
+      "retrieved_date": "2026-10-06",
+      "classification": "verified_context"
+    }
+  ],
+  "sources": [
+    {
+      "id": "coding_1",
+      "title": "Artificial Analysis independent Terminal-Bench 4.0",
+      "url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_2",
+      "title": "Artificial Analysis — claude-opus-5-5",
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_3",
+      "title": "Arena Code WebDev — 1 October snapshot",
+      "url": "https://arena.ai/leaderboard/code/webdev",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_4",
+      "title": "Arena Code WebDev Pareto — current price data",
+      "url": "https://arena.ai/leaderboard/code/webdev/pareto",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_5",
+      "title": "Artificial Analysis Intelligence Index v4.3.2 methodology",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_6",
+      "title": "Anthropic Opus 5.5 vendor evaluation",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_7",
+      "title": "Artificial Analysis — gpt-6-1-sol",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_8",
+      "title": "Artificial Analysis — glm-5-3-flash",
+      "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_9",
+      "title": "Artificial Analysis Coding Agent Index v1.5",
+      "url": "https://artificialanalysis.ai/agents/coding-agents",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_10",
+      "title": "Artificial Analysis — qwen3-8-flash-next",
+      "url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_11",
+      "title": "Artificial Analysis — kimi-k3",
+      "url": "https://artificialanalysis.ai/models/kimi-k3",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_12",
+      "title": "Arena Code — historical Kimi snapshot (URL redirects)",
+      "url": "https://arena.ai/leaderboard/code?viewBy=plot",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_13",
+      "title": "Artificial Analysis — mimo-v2-6-pro",
+      "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_14",
+      "title": "Artificial Analysis — deepseek-v4-1-flash",
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_15",
+      "title": "Terminal-Bench official submitted agent leaderboard",
+      "url": "https://www.tbench.ai/",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_16",
+      "title": "ClinePass official plan and model list",
+      "url": "https://cline.bot/cline-pass",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_17",
+      "title": "OpenCode Go official current plans",
+      "url": "https://opencode.ai/v2/docs/console/go",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_18",
+      "title": "Z.ai official checkout — individual monthly plans",
+      "url": "https://z.ai/subscribe",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_19",
+      "title": "docs.z.ai — official coding documentation",
+      "url": "https://docs.z.ai/devpack/overview",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_20",
+      "title": "docs.z.ai — official coding documentation",
+      "url": "https://docs.z.ai/devpack/usage-policy",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_21",
+      "title": "docs.z.ai — official coding documentation",
+      "url": "https://docs.z.ai/devpack/faq",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_22",
+      "title": "api-docs.deepseek.com — official coding documentation",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_23",
+      "title": "MorphLLM — commercial inference provider",
+      "url": "https://www.morphllm.com/",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_24",
+      "title": "Z.ai GLM Flash — vendor benchmark version",
+      "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_25",
+      "title": "Artificial Analysis — gpt-6-sol",
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol",
+      "date": "2026-10-06"
+    },
+    {
+      "id": "coding_26",
+      "title": "Arena official blend formula (served application code)",
+      "url": "https://arena.ai/_next/static/chunks/33fw_v4u55656.js",
+      "date": "2026-10-06"
+    }
+  ]
+}

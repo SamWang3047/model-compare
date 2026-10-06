@@ -32,7 +32,9 @@ assert(glmRows.length === 1, 'The overview must have one GLM model and one GLM s
 assert(glmRows[0]?.id === 'glm-5-3-flash', 'The sole GLM row must be the researched Flash model.');
 assert(/^GLM(?:-| )5\.3(?:-| )Flash$/iu.test(glmRows[0]?.name ?? ''), 'Use the AA-listed GLM Flash name without inventing an effort qualifier.');
 assert(data.companies.find(company => company.id === 'zai')?.flagshipId === 'glm-5-3-flash', 'Z.ai must point to Flash as its featured model.');
-for (const file of ['companies.json', 'data.json', 'README.md']) {
+// The new coding comparison legitimately cites flagship GLM agent results
+// as references; only the earlier featured-model datasets must stay Flash-only.
+for (const file of ['companies.json', 'data.json']) {
   assert(!/GLM(?:-| )5\.3(?!(?:-| )Flash)/iu.test(await read(file)), `${file}: stale full GLM-5.3 reference; the featured model must be Flash.`);
 }
 const valueZone = report.chart_settings?.value_zone;

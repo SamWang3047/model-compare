@@ -1,6 +1,8 @@
 import { renderCompanyCharts } from './companies-charts.js';
 import { renderCodingSections } from './app.js';
 import { createUnifiedData } from './model-data.js';
+import { initTableDialog } from './table-dialog.js';
+import { renderCodingComparison } from './coding-comparison.js';
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -20,8 +22,6 @@ let mode = 'llm';
 let sort = { key: 'tb4', direction: -1 };
 let infoEntries = new Map();
 let infoTrigger = null;
-let dialogTrigger = null;
-let scrollPosition = 0;
 
 function sourceLink(source, label = source.title) {
   let url;
@@ -291,42 +291,7 @@ function initComparisonDialog() {
   const dialog = $('#comparison-dialog');
   const expand = $('#expand-comparison');
   if (!dialog || !expand) return;
-  let previousBodyStyle = '';
-  expand.addEventListener('click', () => {
-    closeInfo();
-    dialogTrigger = expand;
-    scrollPosition = window.scrollY;
-    previousBodyStyle = document.body.getAttribute('style') || '';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPosition}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.overflow = 'hidden';
-    dialog.showModal();
-    const tableScroll = dialog.querySelector('.cmp-dialog-scroll');
-    if (tableScroll) { tableScroll.scrollTop = 0; tableScroll.scrollLeft = 0; }
-    $('#close-comparison')?.focus({ preventScroll: true });
-  });
-  $('#close-comparison')?.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => {
-    document.body.setAttribute('style', previousBodyStyle);
-    window.scrollTo(0, scrollPosition);
-    dialogTrigger?.focus({ preventScroll: true });
-    dialogTrigger = null;
-  });
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-  });
-  dialog.addEventListener('keydown', event => {
-    if (event.key !== 'Tab') return;
-    const focusable = [...dialog.querySelectorAll('button:not([disabled]), a[href], summary, [tabindex]:not([tabindex="-1"])')].filter(element => element.getClientRects().length);
-    const first = focusable[0], last = focusable.at(-1);
-    if (!first) { event.preventDefault(); return; }
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-  });
+  initTableDialog({ dialog, trigger: expand, close: $('#close-comparison'), onOpen: closeInfo, onClose: closeInfo });
   $('#table-info-popover')?.addEventListener('toggle', event => {
     if (event.newState === 'closed') {
       infoTrigger?.setAttribute('aria-expanded', 'false');
@@ -353,7 +318,11 @@ function initNavigation() {
       requestAnimationFrame(() => document.getElementById(legacyTarget)?.scrollIntoView());
       return;
     }
-    if (!location.hash.startsWith('#model-')) return;
+    if (!location.hash.startsWith('#model-')) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) requestAnimationFrame(() => target.scrollIntoView());
+      return;
+    }
     const model = modelFor(decodeURIComponent(location.hash.slice(7)));
     if (!model) return;
     if (model.kind !== mode) setMode(model.kind);
@@ -402,16 +371,28 @@ function initNavigation() {
 async function start() {
   initTheme();
   try {
-    const [response, reportResponse] = await Promise.all([fetch('./companies.json'), fetch('./data.json')]);
+    const [response, reportResponse, codingResponse] = await Promise.all([fetch('./companies.json'), fetch('./data.json'), fetch('./coding.json')]);
     if (!response.ok) throw new Error(`Company dataset returned ${response.status}`);
     if (!reportResponse.ok) throw new Error(`Chart settings returned ${reportResponse.status}`);
+    if (!codingResponse.ok) throw new Error(`Coding comparison returned ${codingResponse.status}`);
     const companyData = await response.json();
     const reportData = await reportResponse.json();
+    const codingData = await codingResponse.json();
     data = createUnifiedData(companyData, reportData);
+    const sourceKeys = new Set(data.sources.map(source => source.url.replace(/\/$/, '').split('#')[0]));
+    for (const source of codingData.sources) {
+      const key = source.url.replace(/\/$/, '').split('#')[0];
+      if (!sourceKeys.has(key)) { data.sources.push({ ...source, id: `coding:${source.id}` }); sourceKeys.add(key); }
+    }
     sourceMap = new Map((data.sources || []).map(source => [source.id, source]));
     renderOverview(); setMode('llm');
     renderCodingSections(data.report);
     renderCompanyCharts(data);
+    renderCodingComparison(codingData);
+    const updatedDate = [data.snapshot_date, codingData.metadata.updated_date].sort().at(-1);
+    $('#last-updated').textContent = dateText(updatedDate);
+    $('#last-updated').dateTime = updatedDate;
+    $('#footer-date').textContent = `Last updated ${dateText(updatedDate)} · Prices in USD before tax. Each fact retains its source date.`;
     initComparisonDialog();
     initNavigation();
     document.documentElement.dataset.ready = 'true';
